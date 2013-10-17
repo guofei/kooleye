@@ -41,15 +41,22 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
 group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
 
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+
+  gem 'pry-debugger'
 end
 
 group :test do
   gem 'database_cleaner'
   gem 'capybara'
 end
+
+gem 'devise'
+gem 'omniauth-facebook'
+gem 'omniauth-twitter'
