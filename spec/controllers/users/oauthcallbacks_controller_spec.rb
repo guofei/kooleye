@@ -11,9 +11,8 @@ describe Users::OmniauthCallbacksController, "handle facebook authentication cal
     it "create a new user" do
       User.should_receive(:find_or_create_for_facebook)
       get :facebook
+      expect(response.status).to eq(302)
     end
-
-    #it { response.should redirect_to @user }
   end
 
   describe "#logged in user" do
@@ -25,9 +24,8 @@ describe Users::OmniauthCallbacksController, "handle facebook authentication cal
     it "create a new authentication" do
       user.should_receive(:bind_service)
       get :facebook
+      expect(response).to redirect_to root_path
     end
-
-    #it { response.should redirect_to root_path }
   end
 end
 
