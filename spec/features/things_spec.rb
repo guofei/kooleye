@@ -10,11 +10,13 @@ feature 'things' do
     end
 
     scenario 'reads a thing' do
-      visit thing_path(thing.id)
+      visit thing_path(thing)
     end
 
     scenario 'share a new thing' do
-      pending "redirct to login page"
+      visit new_thing_path
+      pending
+      expect(response).to redirct_to root_path
     end
   end
 

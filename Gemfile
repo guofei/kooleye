@@ -60,3 +60,5 @@ end
 gem 'devise'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
+
+gem 'carrierwave'

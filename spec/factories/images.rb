@@ -1,9 +1,8 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
-  factory :authorization do
-    provider "facebook"
-    sequence(:uid)  { |n| "uid#{n}" }
-    user
+  factory :image do
+    image "MyString"
+    description "MyString"
   end
 end
