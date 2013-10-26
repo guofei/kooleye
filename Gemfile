@@ -53,8 +53,8 @@ group :development, :test do
 end
 
 group :test do
-  gem 'database_cleaner'
   gem 'capybara'
+  gem 'database_cleaner'
 end
 
 gem 'devise'

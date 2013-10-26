@@ -16,6 +16,12 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
+    <%= f.fields_for :images do |image| %>
+      <%= image.label :image %>
+      <%= image.file_field :file %>
+    <% end %>
+  </div>
+  <div class="field">
     <%= f.label :summary %><br>
     <%= f.text_field :summary %>
   </div>

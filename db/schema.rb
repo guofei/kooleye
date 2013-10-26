@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131020141702) do
+ActiveRecord::Schema.define(version: 20131026073953) do
 
   create_table "authorizations", force: true do |t|
     t.string   "provider"
@@ -24,11 +24,14 @@ ActiveRecord::Schema.define(version: 20131020141702) do
   add_index "authorizations", ["user_id"], name: "index_authorizations_on_user_id"
 
   create_table "images", force: true do |t|
-    t.string   "image"
+    t.string   "file"
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "thing_id"
   end
+
+  add_index "images", ["thing_id"], name: "index_images_on_thing_id"
 
   create_table "things", force: true do |t|
     t.string   "name"
@@ -36,7 +39,10 @@ ActiveRecord::Schema.define(version: 20131020141702) do
     t.text     "introduction"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
+
+  add_index "things", ["user_id"], name: "index_things_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

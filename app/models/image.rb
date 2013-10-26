@@ -1,4 +1,5 @@
 class Image < ActiveRecord::Base
-  mount_uploader :image, ImageUploader
   belongs_to :thing
+  mount_uploader :file, FileUploader
+  validates_presence_of :file
 end

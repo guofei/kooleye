@@ -2,7 +2,8 @@
 
 FactoryGirl.define do
   factory :image do
-    image "MyString"
-    description "MyString"
+    thing
+    file File.open(File.join(Rails.root, '/spec/factories/files/image.png'))
+    description "cat"
   end
 end

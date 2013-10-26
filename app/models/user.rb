@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
          :omniauthable
 
   has_many :authorizations, :dependent => :destroy
+  has_many :things
 
   def bind_service(response)
     provider = response["provider"]
