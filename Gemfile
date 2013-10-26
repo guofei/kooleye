@@ -57,6 +57,7 @@ group :test do
   gem 'database_cleaner'
 end
 
+gem "simple_form", "~> 3.0.0"
 gem 'devise'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'

@@ -2,9 +2,7 @@ class ThingsController < ApplicationController
   before_filter :authenticate_user!, only: [:new, :create]
   def new
     @thing = Thing.new
-    @thing.images.build
-    @thing.images.build
-    @thing.images.build
+    3.times { @thing.images.build }
   end
 
   def index

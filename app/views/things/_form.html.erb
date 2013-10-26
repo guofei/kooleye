@@ -1,35 +1,14 @@
-<%= form_for(@thing) do |f| %>
-  <% if @thing.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@thing.errors.count, "error") %> prohibited this book from being saved:</h2>
-
-      <ul>
-      <% @thing.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
+<%= simple_form_for(@thing) do |f| %>
+  <%= f.input :name %>
+  <%= f.simple_fields_for :images do |image| %>
+    <%= image.input :file, label: 'Image' %>
   <% end %>
+  <%= f.input :summary %>
+  <%= f.input :introduction %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.fields_for :images do |image| %>
-      <%= image.label :image %>
-      <%= image.file_field :file %>
-    <% end %>
-  </div>
-  <div class="field">
-    <%= f.label :summary %><br>
-    <%= f.text_field :summary %>
-  </div>
-  <div class="field">
-    <%= f.label :introduction %><br>
-    <%= f.text_field :introduction %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <%= f.button :submit %>
+    </div>
   </div>
 <% end %>

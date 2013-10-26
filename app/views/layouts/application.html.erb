@@ -19,7 +19,6 @@
   <![endif]-->
 </head>
 <body>
-
   <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
     <div class="container">
       <div class="navbar-header">
@@ -35,9 +34,12 @@
           <li class="active"><a href="#">Home</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#contact">Contact</a></li>
-	  <li><%= link_to "Twitter", user_omniauth_authorize_path(:twitter) %> </li>
-	  <li><%= link_to "Facebook", user_omniauth_authorize_path(:facebook) %> </li>
-	  <li><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></li>
+	  <% if user_signed_in? -%>
+	    <li><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></li>
+	  <% else -%>
+	    <li><%= link_to "Twitter", user_omniauth_authorize_path(:twitter) %> </li>
+	    <li><%= link_to "Facebook", user_omniauth_authorize_path(:facebook) %> </li>
+	  <% end -%>
         </ul>
       </div><!-- /.nav-collapse -->
     </div><!-- /.container -->
