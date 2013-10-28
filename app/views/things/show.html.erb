@@ -1,3 +1,45 @@
-<%= @thing.name -%>
-<%= @thing.summary -%>
-<%= @thing.introduction -%>
+<div class="page-header">
+  <h1><%= @thing.name -%> <small><%= @thing.summary -%></small></h1>
+</div>
+<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+  <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <% @thing.images.each_with_index do |image, index| -%>
+	<% if index == 0 -%>
+	  <li data-target="#carousel-example-generic" data-slide-to="<%= index -%>" class="active"></li>
+	<% else -%>
+	  <li data-target="#carousel-example-generic" data-slide-to="<%= index -%>"></li>
+	<% end -%>
+      <% end -%>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+      <% @thing.images.each_with_index do |image, index| -%>
+	<% if image.file? %>
+	  <div class="item<%= if index == 0 then " active" end -%>">
+	    <%= image_tag image.file.url %>
+	  </div>
+	<% end %>
+      <% end -%>
+    </div>
+
+    <!-- Controls -->
+    <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+    </a>
+    <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+    </a>
+  </div>
+
+  <%= @thing.introduction -%>
+
+</div>
+
+<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+
+</div>
+
+

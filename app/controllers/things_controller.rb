@@ -15,10 +15,12 @@ class ThingsController < ApplicationController
 
   def create
     @thing = Thing.new(thing_params)
+    @thing.user = current_user
     if @thing.save
       redirect_to thing_path(@thing)
     else
-      render new
+      3.times { @thing.images.build }
+      render 'new'
     end
   end
 
