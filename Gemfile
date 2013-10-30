@@ -63,3 +63,5 @@ gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 
 gem 'carrierwave'
+
+gem "font-awesome-rails", "~> 4.0.1.0"

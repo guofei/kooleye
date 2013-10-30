@@ -1,8 +1,8 @@
 <div class="page-header">
-  <h1><%= @thing.name -%> <small><%= @thing.summary -%></small></h1>
+  <center><h1><%= @thing.name -%> <small><%= @thing.summary -%></small></h1></center>
 </div>
 
-<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+<div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
   <div id="carousel-thing" class="carousel slide">
     <!-- Indicators -->
     <ol class="carousel-indicators">
@@ -47,20 +47,41 @@
     <% @thing.images.each_with_index do |image, index| -%>
       <% if image.file? %>
 	<div class="col-sm-3 col-md-3">
-	  <a href="#" class="thumbnail" onclick="$('.carousel').carousel(<%= index -%>);">
-	    <%= image_tag image.file.url %>
-	  </a>
+	  <div class="thumbnail">
+	    <%= image_tag image.file.url, style: "cursor:pointer;", onclick: "$('.carousel').carousel(#{index});" %>
+	  </div>
 	</div>
       <% end %>
     <% end -%>
   </div>
 
+  <hr />
+
   <%= @thing.introduction -%>
+
 
 </div>
 
-<div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-
+<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+  <div class="panel panel-default">
+    <div class="panel-body">
+      Basic panel example
+      <hr />
+      <ul class="list-unstyled">
+	<li><span class="glyphicon glyphicon-heart-empty"></span> Like</li>
+	<li><span class="glyphicon glyphicon-ok-circle"></span> Have</li>
+	<li><i class="icon-facebook fa-lg"></i> Facebook</li>
+	<li>
+	  <%= fa_stacked_icon "twitter", base: "square-o" -%>
+	  Twitter
+	</li>
+	<li>Twitter</li>
+	<li><%= fa_icon "camera-retro" -%></li>
+	<li><button class="btn btn-facebook"><i class="fa fa-facebook-square"></i> | Connect with Facebook</button>
+</li>
+      </ul>
+    </div>
+  </div>
 </div>
 
 
