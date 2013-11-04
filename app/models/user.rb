@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
   has_many :authorizations, :dependent => :destroy
   has_many :things
 
+  validates :name, presence: true
+
   def bind_service(response)
     provider = response["provider"]
     uid = response["uid"]

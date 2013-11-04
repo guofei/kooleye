@@ -34,7 +34,7 @@ def stub_env_for_omniauth
   OmniAuth.config.mock_auth[:facebook] = OmniAuth::AuthHash.new({
                                                                   "provider" => "facebook",
                                                                   "uid" => "1234",
-                                                                  "info" => { "nickname" => "fb", "email" => "ghost@nobody.com" }
+                                                                  "info" => { "name" => "name", "nickname" => "fb", "email" => "ghost@nobody.com" }
                                                                    })
   request.env["devise.mapping"] = Devise.mappings[:user]
   request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:facebook]

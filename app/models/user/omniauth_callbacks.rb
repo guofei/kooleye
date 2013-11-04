@@ -27,9 +27,12 @@ class User
     private
     def new_from_provider_data(provider, uid, data)
       User.new do |user|
+        user.name = data["name"]
         user.email = data["email"]
-        user.email = "twitter+#{uid}@twitter.com" if provider == "twitter"
-
+        if provider == "twitter"
+          user.name = data["nickname"]
+          user.email = "twitter+#{uid}@twitter.com"
+        end
         user.password = Devise.friendly_token[0, 20]
       end
     end

@@ -16,6 +16,12 @@ feature 'things' do
       expect(page).to have_content thing.introduction
     end
 
+    scenario 'login as facebook' do
+      visit root_path
+      login_with_facebook "myname"
+      expect(page).to have_content("myname")
+    end
+
     scenario 'share a new thing' do
       visit new_thing_path
       expect(page).to have_content("Sign")
