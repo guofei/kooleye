@@ -11,6 +11,7 @@ FactoryGirl.define do
     after(:build) do |thing, eval|
       thing.images << FactoryGirl.build(:image, thing: thing)
     end
+    video "http://www.youtube.com/embed/dFVxGRekRSg"
     user
   end
 end

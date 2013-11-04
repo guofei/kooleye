@@ -33,10 +33,12 @@ feature 'things' do
       fill_in 'Name', with: newthing.name
       fill_in 'Summary', with: newthing.summary
       fill_in 'Introduction', with: newthing.introduction
+      fill_in 'Video', with: newthing.video
       attach_file 'thing_images_attributes_0_file', File.join(Rails.root, '/spec/factories/files/image.png')
       attach_file 'thing_images_attributes_1_file', File.join(Rails.root, '/spec/factories/files/image.png')
       expect{ click_button 'Create Thing' }.to change(Thing, :count)
       expect(page).to have_content(newthing.introduction)
+      expect(page).to have_selector("iframe[src=\"#{newthing.video}\"]")
     end
     scenario 'adds a comment'
   end
