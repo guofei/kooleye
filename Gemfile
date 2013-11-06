@@ -66,3 +66,4 @@ gem 'carrierwave'
 gem 'mini_magick'
 
 gem "font-awesome-rails", "~> 4.0.1.0"
+gem 'ckeditor_rails'

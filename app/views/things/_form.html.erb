@@ -1,15 +1,17 @@
-<%= simple_form_for(@thing) do |f| %>
-  <%= f.input :name %>
-  <%= f.simple_fields_for :images do |image| %>
-    <%= image.input :file, label: 'Image' %>
-  <% end %>
-  <%= f.input :video -%>
-  <%= f.input :summary %>
-  <%= f.input :introduction %>
+<div class="notrubolink" data-no-turbolink>
+  <%= simple_form_for(@thing) do |f| %>
+    <%= f.input :name %>
+    <%= f.simple_fields_for :images do |image| %>
+      <%= image.input :file, label: 'Image' %>
+    <% end %>
+    <%= f.input :video -%>
+    <%= f.input :summary %>
+    <%= f.input :introduction, input_html: { class: 'ckeditor' } %>
 
-  <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-      <%= f.button :submit %>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+	<%= f.button :submit %>
+      </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>

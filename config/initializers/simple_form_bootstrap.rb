@@ -4,7 +4,7 @@ SimpleForm.setup do |config|
     b.use :html5
     b.use :placeholder
     b.use :label
-    b.use :input, :wrap_with => { :tag => 'div', :class => 'controls col-xs-4 col-sm-4 col-md-4 col-lg-4' }
+    b.use :input, :wrap_with => { :tag => 'div', :class => 'controls col-xs-10 col-sm-10 col-md-10 col-lg-10' }
     b.use :error, :wrap_with => { :tag => 'span', :class => 'help-block' }
     b.use :hint,  :wrap_with => { :tag => 'p', :class => 'help-block' }
   end
