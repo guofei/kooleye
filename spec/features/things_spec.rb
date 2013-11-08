@@ -20,6 +20,7 @@ feature 'things' do
       visit root_path
       login_with_facebook "myname"
       expect(page).to have_content("myname")
+      expect(page).to have_content("Edit User")
     end
 
     scenario 'share a new thing' do

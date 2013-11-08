@@ -1,27 +1,16 @@
 class User
   module OmniauthCallbacks
-    ["facebook","twitter"].each do |provider|
-      define_method "find_or_create_for_#{provider}" do |response|
-        uid = response["uid"]
-        data = response["info"]
-
-        if user = Authorization.where("provider" => provider , "uid" => uid).first.try(:user)
-          user
-        elsif user = User.find_by_email(data["email"])
-          user.bindp_service(response)
-          user
-        else
-          user = new_from_provider_data(provider, uid, data)
-
-          if user.save(:validate => false)
-            user.authorizations << Authorization.new(provider: provider, uid: uid )
-            return user
-          else
-            Rails.logger.warn("Error: User.create_from_hash, #{user.errors.inspect}")
-            return nil
-          end
+    def from_omniauth(auth, current_user)
+      authorization = Authorization.where(provider: auth["provider"], uid: auth["uid"].to_s).first_or_initialize
+      if authorization.user.blank?
+        user = current_user.nil? ? User.where('email = ?', auth["info"]["email"]).first : current_user
+        if user.blank?
+          user = new_from_provider_data(auth["provider"], auth["uid"], auth["info"])
+          user.save(:validate => false)
         end
+        authorization = user.bind_service(auth)
       end
+      authorization.user
     end
 
     private

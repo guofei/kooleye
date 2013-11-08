@@ -5,26 +5,13 @@ describe Users::OmniauthCallbacksController, "handle facebook authentication cal
   describe "#annonymous user" do
     before(:each) do
       stub_env_for_omniauth
-      User.stub(:find_or_create_for_facebook).and_return(user)
+      User.stub(:from_omniauth).and_return(user)
     end
 
-    it "create a new user" do
-      User.should_receive(:find_or_create_for_facebook)
+    it "create or find a user" do
+      User.should_receive(:from_omniauth)
       get :facebook
       expect(response.status).to eq(302)
-    end
-  end
-
-  describe "#logged in user" do
-    before(:each) do
-      stub_env_for_omniauth
-      controller.stub(:current_user).and_return(user)
-    end
-
-    it "create a new authentication" do
-      user.should_receive(:bind_service)
-      get :facebook
-      expect(response).to redirect_to root_path
     end
   end
 end

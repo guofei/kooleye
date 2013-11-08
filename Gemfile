@@ -5,7 +5,6 @@ gem 'rails', '4.0.0'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
-gem "anjlab-bootstrap-rails", "~> 3.0.0.3", :require => 'bootstrap-rails'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -57,8 +56,9 @@ group :test do
   gem 'database_cleaner'
 end
 
+gem "anjlab-bootstrap-rails", "~> 3.0.1.0", :require => 'bootstrap-rails'
 gem "simple_form", "~> 3.0.0"
-gem 'devise'
+gem "devise", "~> 3.1.1"
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 
