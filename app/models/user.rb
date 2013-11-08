@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
 
   has_many :authorizations, :dependent => :destroy
   has_many :things
+  has_many :comments
 
   validates :name, presence: true
 
