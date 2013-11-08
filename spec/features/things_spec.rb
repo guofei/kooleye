@@ -36,7 +36,8 @@ feature 'things' do
       login_as user
     end
     scenario 'shares a new thing' do
-      visit new_thing_path
+      #FIXME: Need Refactoring : change "add images" to ajax
+      visit new_thing_path + "?n=2"
       fill_in 'Name', with: newthing.name
       fill_in 'Summary', with: newthing.summary
       fill_in 'Introduction', with: newthing.introduction

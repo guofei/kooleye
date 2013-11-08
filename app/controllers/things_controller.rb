@@ -1,8 +1,10 @@
 class ThingsController < ApplicationController
   before_filter :authenticate_user!, only: [:new, :create]
   def new
+    #FIXME: Need Refactoring : change "add images" to ajax
+    n = params["n"].nil? ? 1 : params["n"].to_i
     @thing = Thing.new
-    2.times { @thing.images.build }
+    n.times { @thing.images.build }
   end
 
   def index
@@ -19,7 +21,7 @@ class ThingsController < ApplicationController
     if @thing.save
       redirect_to thing_path(@thing)
     else
-      2.times { @thing.images.build }
+      1.times { @thing.images.build }
       render 'new'
     end
   end
