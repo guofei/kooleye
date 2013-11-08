@@ -2,7 +2,7 @@ class ThingsController < ApplicationController
   before_filter :authenticate_user!, only: [:new, :create]
   def new
     @thing = Thing.new
-    4.times { @thing.images.build }
+    2.times { @thing.images.build }
   end
 
   def index
@@ -19,7 +19,7 @@ class ThingsController < ApplicationController
     if @thing.save
       redirect_to thing_path(@thing)
     else
-      3.times { @thing.images.build }
+      2.times { @thing.images.build }
       render 'new'
     end
   end

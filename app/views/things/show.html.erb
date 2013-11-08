@@ -46,7 +46,7 @@
   <div class="row">
     <% @thing.images.each_with_index do |image, index| -%>
       <% if image.file? %>
-	<div class="col-sm-3 col-md-3">
+	<div class="col-sm-2 col-md-2">
 	  <div class="thumbnail">
 	    <%= image_tag image.file.thumb.url, onclick: "$('.carousel').carousel(#{index});", style: "cursor: pointer;" %>
 	  </div>
@@ -64,6 +64,10 @@
   </div>
 
   <hr />
+
+  <div class="page-header">
+    <h3>Comment</h3>
+  </div>
 
 
 </div>

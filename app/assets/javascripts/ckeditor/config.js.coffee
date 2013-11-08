@@ -1,5 +1,6 @@
 # http://docs.cksource.com/ckeditor_api/symbols/CKEDITOR.config.html#.toolbar_Full
 CKEDITOR.editorConfig = (config) ->
+  config.height = '400'
   config.toolbar_Pure = [
     { name: 'document',    items: [ 'Source','-','Save','NewPage','DocProps','Preview','Print','-','Templates' ] },
     { name: 'clipboard',   items: [ 'Cut','Copy','Paste','PasteText','PasteFromWord','-','Undo','Redo' ] },
