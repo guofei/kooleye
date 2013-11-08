@@ -57,7 +57,7 @@
 
   <hr />
 
-  <p><%= @thing.introduction -%></p>
+  <p><%= simple_format @thing.introduction -%></p>
 
   <div class="video-container">
     <%= content_tag :iframe, '', src: @thing.video, frameborder: "0", width: "560", height: "315" -%>

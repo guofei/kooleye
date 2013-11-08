@@ -1,26 +1,36 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="col-lg-6 col-md-6 col-sm-6 col-lg-xs-6">
 
-<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-  <%= devise_error_messages! %>
+  <h3>Edit <%= resource_name.to_s.humanize %></h3>
 
-  <%= f.input :name, label: "Nickname" -%>
-  <%= f.input :email, :autofocus => true %></div>
+  <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+    <%= devise_error_messages! %>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <%= f.input :name, label: "Nickname" -%>
+    <%= f.input :email -%>
+
+    <div class="form-group">
+      <div class="col-xs-offset-3 col-sm-offset-3 col-md-offset-3 col-lg-offset-3 col-xs-9 col-sm-9 col-md-9 col-lg-9">
+	<%= f.button :submit %>
+      </div>
+    </div>
   <% end %>
 
-  <div class="form-group">
-    <div class="col-xs-offset-2 col-sm-offset-2 col-md-offset-2 col-lg-offset-2 col-xs-10 col-sm-10 col-md-10 col-lg-10">
-      <%= f.button :submit %>
+  <hr />
+
+  <h3>Cancel my account</h3>
+
+  <div class="row">
+
+    <div class="col-xs-offset-3 col-sm-offset-3 col-md-offset-3 col-lg-offset-3 col-xs-9 col-sm-9 col-md-9 col-lg-9">
+
+      <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, class: "btn" %></p>
     </div>
+
   </div>
-<% end %>
 
-<hr />
+  <%= link_to "Back", :back %>
 
-<h3>Cancel my account</h3>
+</div>
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %></p>
-
-<%= link_to "Back", :back %>
+<div class="col-lg-6 col-md-6 col-sm-6 col-lg-xs-6">
+</div>
