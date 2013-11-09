@@ -15,7 +15,9 @@ class User < ActiveRecord::Base
   def bind_service(response)
     provider = response["provider"]
     uid = response["uid"]
-    authorizations.create(:provider => provider , :uid => uid )
+    token = response["credentials"]["token"]
+    secret = response["credentials"]["secret"]
+    authorizations.create(provider: provider , uid: uid, token: token, secret: secret)
   end
 
   def virtual_mail?

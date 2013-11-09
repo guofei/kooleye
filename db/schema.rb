@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131108161222) do
+ActiveRecord::Schema.define(version: 20131109081827) do
 
   create_table "authorizations", force: true do |t|
     t.string   "provider"
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 20131108161222) do
     t.string   "uid"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "token"
+    t.string   "secret"
   end
 
   add_index "authorizations", ["user_id"], name: "index_authorizations_on_user_id"

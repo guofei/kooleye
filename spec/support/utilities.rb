@@ -10,7 +10,8 @@ def login_with_facebook(name)
   OmniAuth.config.mock_auth[:facebook] = OmniAuth::AuthHash.new({
                                                                   "provider" => "facebook",
                                                                   "uid" => "1234",
-                                                                  "info" => { "name" => name, "nickname" => "fb", "email" => "ghost@nobody.com" }
+                                                                  "info" => { "name" => name, "nickname" => "fb", "email" => "ghost@nobody.com" },
+                                                                  "credentials" => {"token" => "fdsf", "secret" => "fdsfsdfsf"}
                                                                    })
   visit root_path
   click_link_or_button 'Facebook'
