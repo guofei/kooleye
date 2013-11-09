@@ -25,10 +25,7 @@ class User < ActiveRecord::Base
   end
 
   def email_view
-    if virtual_mail?
-      return ""
-    else
-      return email
-    end
+    return "" if virtual_mail?
+    return email
   end
 end
