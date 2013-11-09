@@ -65,50 +65,10 @@
 
   <hr />
 
-  <div class="page-header">
-    <h3>Comment</h3>
-  </div>
-  <% @thing.comments.each do |comment| -%>
-    <p><%= comment.user.name -%></p>
-    <p><%= simple_format comment.content -%></p>
-  <% end -%>
-
-  <%= simple_form_for([@thing, @thing.comments.build]) do |f| %>
-    <%= f.input :content %>
-    <div class="form-group">
-      <div class="col-sm-offset-3 col-sm-9">
-	<%= f.button :submit %>
-      </div>
-    </div>
-  <% end -%>
+  <%= render template: "comments/index" -%>
 
 </div>
 
-<div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
-  <div class="panel panel-default">
-    <div class="panel-body">
-      <%= link_to "購入する", "#", class: "btn btn-primary btn-lg btn-block" -%>
-      <hr />
-
-      <ul class="list-unstyled">
-	<li>
-	  <%= link_to "#" do fa_stacked_icon "heart-o", base: "square-o", text: "1人が好き", class: "fa-lg" end -%>
-	</li>
-	<li>
-	  <%= link_to "#" do fa_stacked_icon "flag-o", base: "square-o", text: "1人が所有している", class: "fa-lg" end -%>
-	</li>
-	<li>
-	  <%= link_to "#" do fa_stacked_icon "facebook", base: "square-o", text: "Facebookで共有する", class: "fa-lg" end -%>
-	</li>
-	<li>
-	  <%= link_to "#" do fa_stacked_icon "twitter", base: "square-o", text: "Twitterで共有する", class: "fa-lg" end -%>
-	</li>
-      </ul>
-      <hr />
-
-      User
-    </div>
-  </div>
-</div>
+<%= render "sidebar" -%>
 
 
