@@ -17,4 +17,16 @@ class User < ActiveRecord::Base
     uid = response["uid"]
     authorizations.create(:provider => provider , :uid => uid )
   end
+
+  def virtual_mail?
+    email.include? "@twitter.com"
+  end
+
+  def email_view
+    if virtual_mail?
+      return ""
+    else
+      return email
+    end
+  end
 end

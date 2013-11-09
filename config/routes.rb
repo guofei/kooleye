@@ -5,9 +5,8 @@ Lfti::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'welcome#index'
-  resources :things, :only => [:index, :show, :new, :create] do
-    resources :comments
-  end
+  resources :things, :only => [:index, :show, :new, :create]
+  resources :comments
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

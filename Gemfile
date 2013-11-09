@@ -59,7 +59,10 @@ end
 gem "anjlab-bootstrap-rails", "~> 3.0.1.0", :require => 'bootstrap-rails'
 gem "simple_form", "~> 3.0.0"
 gem "devise", "~> 3.1.1"
+
+gem 'fb_graph'
 gem 'omniauth-facebook'
+gem 'twitter', "~> 5.0.0.rc.1"
 gem 'omniauth-twitter'
 
 gem 'carrierwave'
