@@ -10,8 +10,6 @@ class User < ActiveRecord::Base
   has_many :things
   has_many :comments
 
-  validates :name, presence: true
-
   def bind_service(response)
     provider = response["provider"]
     uid = response["uid"]

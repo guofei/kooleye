@@ -47,6 +47,5 @@ feature 'things' do
       expect(page).to have_content(newthing.introduction)
       expect(page).to have_selector("iframe[src=\"#{newthing.video}\"]")
     end
-    scenario 'adds a comment'
   end
 end

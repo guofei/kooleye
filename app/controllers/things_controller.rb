@@ -13,7 +13,6 @@ class ThingsController < ApplicationController
 
   def show
     @thing = Thing.find(params[:id])
-    @comment = Comment.new
   end
 
   def create
