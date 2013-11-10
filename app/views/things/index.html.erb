@@ -4,9 +4,7 @@
     <div class="col-xs-12 col-sm-6">
       <div class="panel panel-default">
 	<div class="panel-body">
-	  <%= link_to thing_path(thing) do -%>
-	    <%= image_tag thing.images.first.file.url, class: "img-responsive" -%>
-	  <% end -%>
+	  <%= link_to thing_path(thing), class: "thumbnail" do image_tag thing.images.first.file.normal.url end -%>
 	  <p><%= thing.name -%> | <%= thing.summary -%></p>
 	</div>
       </div>

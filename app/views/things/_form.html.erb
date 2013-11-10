@@ -1,27 +1,26 @@
-<div class="notrubolink" data-no-turbolink>
-  <%= simple_form_for(@thing) do |f| %>
-    <%= f.input :name %>
-    <%= f.simple_fields_for :images do |image| %>
-      <%= image.input :file, label: 'Image' %>
-    <% end %>
-
-    <!-- FIXME: Need Refactoring : change "add images" to ajax -->
-    <div class="form-group">
-      <div class="col-sm-offset-3 col-sm-9">
-	<%= link_to "Add Images", new_thing_path + "?n=#{@thing.images.size + 1}" -%>
-      </div>
-    </div>
-
-    <%= f.input :video -%>
-    <%= f.input :summary %>
-    <%= f.input :introduction, input_html: { class: 'ckeditor' } %>
-
-    <div class="form-group">
-      <div class="col-sm-offset-3 col-sm-9">
-	<%= f.button :submit %>
-      </div>
-    </div>
+<%= simple_form_for(@thing) do |f| %>
+  <%= f.input :name %>
+  <%= f.simple_fields_for :images do |image| %>
+    <%= image.input :file, label: 'Image' %>
   <% end %>
-</div>
+
+  <!-- FIXME: Need Refactoring : change "add images" to ajax -->
+  <div class="form-group">
+    <div class="col-sm-offset-3 col-sm-9">
+      <%= link_to "Add Images", new_thing_path + "?n=#{@thing.images.size + 1}" -%>
+    </div>
+  </div>
+
+  <%= f.input :video -%>
+  <%= f.input :summary %>
+  <%= f.input :introduction, input_html: { class: 'ckeditor' } %>
+
+  <div class="form-group">
+    <div class="col-sm-offset-3 col-sm-9">
+      <%= f.button :submit %>
+    </div>
+  </div>
+<% end %>
+
 
 
