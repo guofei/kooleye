@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   has_many :authorizations, :dependent => :destroy
   has_many :things
   has_many :comments
+  has_many :likes
 
   def bind_service(response)
     provider = response["provider"]

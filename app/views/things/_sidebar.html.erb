@@ -6,7 +6,7 @@
 
       <ul class="list-unstyled">
 	<li>
-	  <%= link_to "#" do fa_stacked_icon "heart-o", base: "square-o", text: "1人が好き", class: "fa-lg" end -%>
+	  <%= link_to thing_likes_path(@thing), method: "post", id: 'like' do fa_stacked_icon "heart-o", base: "square-o", text: "#{@thing.likes.size}人が好き", class: "fa-lg" end -%>
 	</li>
 	<li>
 	  <%= link_to "#" do fa_stacked_icon "flag-o", base: "square-o", text: "1人が所有している", class: "fa-lg" end -%>

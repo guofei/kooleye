@@ -7,6 +7,7 @@ Lfti::Application.routes.draw do
   root 'welcome#index'
   resources :things, :only => [:index, :show, :new, :create] do
     resources :comments, :only => [:create]
+    resources :likes, :only => [:create]
   end
 
   # Example of regular route:
