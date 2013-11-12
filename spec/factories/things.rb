@@ -12,6 +12,7 @@ FactoryGirl.define do
       thing.images << FactoryGirl.build(:image, thing: thing)
     end
     video "http://www.youtube.com/embed/dFVxGRekRSg"
+    votes 0
     user
   end
 end

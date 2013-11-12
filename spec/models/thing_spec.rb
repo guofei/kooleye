@@ -28,4 +28,14 @@ describe Thing do
     before { thing.introduction = "a" * 19 }
     it { should_not be_valid }
   end
+
+  describe "vote" do
+    it { should respond_to(:vote) }
+
+    it "should add a vote" do
+      thing.save
+      thing.vote
+      expect(thing.votes).to eq(1)
+    end
+  end
 end

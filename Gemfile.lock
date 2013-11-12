@@ -263,7 +263,7 @@ DEPENDENCIES
   omniauth-twitter
   pry-debugger
   rails (= 4.0.0)
-  rspec-rails
+  rspec-rails (~> 2.14.0)
   sass-rails (~> 4.0.0)
   sdoc
   simple_form (~> 3.0.0)

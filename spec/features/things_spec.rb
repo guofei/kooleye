@@ -17,9 +17,10 @@ feature 'things' do
     end
 
     scenario 'login as facebook' do
+      facebook_user = FactoryGirl.build(:user)
       visit root_path
-      login_with_facebook "myname"
-      expect(page).to have_content("myname")
+      login_with_facebook facebook_user
+      expect(page).to have_content(facebook_user.name)
     end
 
     scenario 'share a new thing' do

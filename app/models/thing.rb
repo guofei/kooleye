@@ -10,4 +10,13 @@ class Thing < ActiveRecord::Base
   validates :name, presence: true, length: { maximum: 30 }
   validates :summary, presence: true
   validates :introduction, presence: true, length: { minimum: 20 }
+
+  def vote
+    self.votes += 1
+    self.save
+  end
+
+  # ref: http://www.ruanyifeng.com/blog/2012/02/ranking_algorithm_hacker_news.html
+  def score
+  end
 end

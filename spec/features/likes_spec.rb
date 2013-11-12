@@ -4,10 +4,9 @@ require 'spec_helper'
 feature 'likes' do
   let(:thing) { FactoryGirl.create(:thing) }
   let(:user) { FactoryGirl.create(:user) }
-  let(:like) { FactoryGirl.create(:like, user: user, thing: thing) }
+  let(:like) { FactoryGirl.build(:like, user: user, thing: thing) }
   context 'as a guest' do
     background do
-      like
       visit thing_path(thing)
     end
 
@@ -23,7 +22,7 @@ feature 'likes' do
 
   context 'as a user' do
     background do
-      login_with_facebook user.name
+      login_as user
       visit thing_path(thing)
     end
 

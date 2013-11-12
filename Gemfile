@@ -46,17 +46,19 @@ group :development, :test do
   gem 'sqlite3'
 
   gem 'pry-debugger'
-end
 
-group :development do
-  gem 'guard'
-end
-
-group :test do
-  gem 'rspec-rails'
+  gem 'rspec-rails', "~> 2.14.0"
   gem 'factory_girl_rails'
   gem 'capybara'
   gem 'database_cleaner'
+
+  gem 'guard'
+end
+
+group :development do
+end
+
+group :test do
 end
 
 gem "anjlab-bootstrap-rails", "~> 3.0.1.0", :require => 'bootstrap-rails'

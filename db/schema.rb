@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131110162938) do
+ActiveRecord::Schema.define(version: 20131111161329) do
 
   create_table "authorizations", force: true do |t|
     t.string   "provider"
@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 20131110162938) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.string   "video"
+    t.integer  "votes"
   end
 
   add_index "things", ["user_id"], name: "index_things_on_user_id"

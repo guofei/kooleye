@@ -6,6 +6,7 @@ class LikesController < ApplicationController
     @like.user = current_user
     if not @like.duplication?
       @like.save
+      @thing.vote
     end
     redirect_to thing_path(@thing)
   end
