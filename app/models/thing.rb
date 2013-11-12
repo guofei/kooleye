@@ -18,5 +18,7 @@ class Thing < ActiveRecord::Base
 
   # ref: http://www.ruanyifeng.com/blog/2012/02/ranking_algorithm_hacker_news.html
   def score
+    t = (Time.zone.now - self.created_at) / (60 * 60)
+    (self.votes - 1) / ((t + 2) ** 1.8)
   end
 end
