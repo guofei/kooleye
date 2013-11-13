@@ -61,10 +61,7 @@
 
   <p><%= simple_format @thing.introduction -%></p>
 
-  <div class="video-container">
-    <%= content_tag :iframe, '', src: @thing.video, frameborder: "0", width: "560", height: "315" -%>
-  </div>
-
+  <%= youtube_embed(@thing) -%>
   <hr />
 
   <%= render template: "comments/index" -%>
