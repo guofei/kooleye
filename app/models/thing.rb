@@ -11,14 +11,9 @@ class Thing < ActiveRecord::Base
   validates :summary, presence: true
   validates :introduction, presence: true, length: { minimum: 20 }
 
-  def vote
-    self.votes += 1
-    self.save
-  end
-
   # ref: http://www.ruanyifeng.com/blog/2012/02/ranking_algorithm_hacker_news.html
-  def score
+  def score(votes)
     t = (Time.zone.now - self.created_at) / (60 * 60)
-    (self.votes - 1) / ((t + 2) ** 1.8)
+    (votes - 1) / ((t + 2) ** 1.8)
   end
 end

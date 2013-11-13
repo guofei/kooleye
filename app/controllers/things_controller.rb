@@ -18,7 +18,6 @@ class ThingsController < ApplicationController
   def create
     @thing = Thing.new(thing_params)
     @thing.user = current_user
-    @thing.votes = 0
     if @thing.save
       redirect_to thing_path(@thing)
     else
