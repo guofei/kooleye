@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   has_many :things
   has_many :comments
   has_many :likes
+  has_many :havables
 
   def bind_service(response)
     provider = response["provider"]

@@ -1,4 +1,4 @@
-class Like < ActiveRecord::Base
+class Havable < ActiveRecord::Base
   belongs_to :user
   belongs_to :thing
 

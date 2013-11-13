@@ -9,7 +9,7 @@
 	  <%= link_to thing_likes_path(@thing), method: "post", id: 'like' do fa_stacked_icon "heart-o", base: "square-o", text: "#{@thing.likes.size}人が好き", class: "fa-lg" end -%>
 	</li>
 	<li>
-	  <%= link_to "#" do fa_stacked_icon "flag-o", base: "square-o", text: "1人が所有している", class: "fa-lg" end -%>
+	  <%= link_to thing_havables_path(@thing), method: "post", id: 'have' do fa_stacked_icon "flag-o", base: "square-o", text: "#{@thing.havables.size}人が所有している", class: "fa-lg" end -%>
 	</li>
 	<li>
 	  <%= link_to "https://www.facebook.com/sharer/sharer.php?u=http://www.yahoo.co.jp/", target: "_blank" do fa_stacked_icon "facebook", base: "square-o", text: "Facebookでシェア", class: "fa-lg" end -%>
