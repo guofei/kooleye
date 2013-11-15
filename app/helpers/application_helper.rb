@@ -1,4 +1,8 @@
 module ApplicationHelper
+  def title(page_title)
+      content_for :title, page_title.to_s
+  end
+
   def youtube_embed(thing)
     if not thing.youtube_id.nil?
       content_tag(:div, class: "video-container") do
