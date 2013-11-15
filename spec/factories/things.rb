@@ -5,7 +5,6 @@ FactoryGirl.define do
     sequence :name do |n|
       "jawbon#{n}"
     end
-
     summary "Activity Tracker"
     introduction "Discover the unparalleled technical innovation, ease-of-use, and sophisticated design of Jawbone wearable technology and audio devices"
     after(:build) do |thing, eval|

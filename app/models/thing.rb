@@ -13,13 +13,18 @@ class Thing < ActiveRecord::Base
   validates :introduction, presence: true, length: { minimum: 20 }
 
   def youtube_id
-    if video[/youtu\.be\/([^\?]*)/]
-      $1
-    elsif
-      video[/^.*((v\/)|(embed\/)|(watch\?))\??v?=?([^\&\?]*).*/]
-      $5
-    else
-      nil
+    return $1 if video[/youtu\.be\/([^\?]*)/]
+    return $5 if video[/^.*((v\/)|(embed\/)|(watch\?))\??v?=?([^\&\?]*).*/]
+    nil
+  end
+
+  class << self
+    def sort_by_hot
+      all.sort_by { |thing| thing.likes + thing.havables }
+    end
+
+    def sort_by_new
+      all
     end
   end
 
