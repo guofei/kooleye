@@ -29,12 +29,12 @@ class FileUploader < CarrierWave::Uploader::Base
     def store_dir
       "#{Rails.root}/spec/support/uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
     end
-  end
-  if Rails.env.development?
+  else
     def store_dir
-      "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+      "#{model.class.to_s.underscore}/#{model.id}"
     end
   end
+
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url

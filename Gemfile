@@ -71,6 +71,8 @@ gem 'twitter', "~> 5.0.0.rc.1"
 gem 'omniauth-twitter'
 
 gem 'carrierwave'
+gem 'fog'
+gem 'unf'
 gem 'mini_magick'
 
 gem "font-awesome-rails", "~> 4.0.1.0"
