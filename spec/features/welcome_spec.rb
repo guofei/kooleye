@@ -9,7 +9,7 @@ feature 'welcome page' do
   background { visit root_path }
 
   scenario "visit welcome page" do
-    expect(page).to have_content "LookForwardTo.it"
+    expect(page).to have_content "Home"
   end
 
   scenario "hot thing" do
