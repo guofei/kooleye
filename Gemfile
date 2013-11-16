@@ -80,6 +80,7 @@ gem 'ckeditor_rails'
 
 
 # for heroku
+gem 'unicorn'
 gem 'rails_12factor', group: :production
 gem 'pg'
 ruby "2.0.0"
