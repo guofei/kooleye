@@ -1,5 +1,7 @@
 require 'spec_helper'
 
 describe Image do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { should respond_to(:url) }
+  it { should respond_to(:normal_url) }
+  it { should respond_to(:thumb_url) }
 end

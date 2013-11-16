@@ -21,11 +21,11 @@
 	<% if image.file? %>
 	  <% if index == 0 -%>
 	    <div class="item active">
-	      <%= image_tag image.file.url, class: "img-responsive" %>
+	      <%= image_tag image.url, class: "img-responsive" %>
 	    </div>
 	  <% else -%>
 	    <div class="item">
-	      <%= image_tag image.file.url, class: "img-responsive" %>
+	      <%= image_tag image.url, class: "img-responsive" %>
 	    </div>
 	  <% end -%>
 	<% end %>
@@ -45,13 +45,11 @@
 
   <div class="row">
     <% @thing.images.each_with_index do |image, index| -%>
-      <% if image.file? %>
-	<div class="col-sm-2 col-md-2">
-	  <div class="thumbnail">
-	    <%= image_tag image.file.thumb.url, onclick: "$('.carousel').carousel(#{index});", style: "cursor: pointer;" %>
-	  </div>
+      <div class="col-sm-2 col-md-2">
+	<div class="thumbnail">
+	  <%= image_tag image.thumb_url, onclick: "$('.carousel').carousel(#{index});", style: "cursor: pointer;" %>
 	</div>
-      <% end %>
+      </div>
     <% end -%>
   </div>
 
