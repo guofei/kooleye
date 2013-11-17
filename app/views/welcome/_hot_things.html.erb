@@ -1,14 +1,14 @@
 <div class="row">
-
-  <% @hot_things.each do |thing| -%>
-    <div class="col-xs-12 col-sm-6">
-      <div class="panel panel-default">
-	<div class="panel-body">
-	  <%= link_to_thing_thumbnail thing -%>
-	  <%= content_tag(:p, "#{thing.name} #{thing.summary}") -%>
+  <div id="masonry-container">
+    <% @hot_things.each do |thing| -%>
+      <div class="masonry-item col-xs-12 col-sm-6">
+	<div class="panel panel-default">
+	  <div class="panel-body">
+	    <%= link_to_thing_thumbnail thing -%>
+	    <%= content_tag(:p, "#{thing.name} #{thing.summary}") -%>
+	  </div>
 	</div>
       </div>
-    </div>
-  <% end -%>
-
+    <% end -%>
+  </div>
 </div><!--/row-->
