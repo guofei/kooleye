@@ -34,16 +34,19 @@ feature 'things' do
     let(:newthing) { FactoryGirl.build(:thing) }
     background do
       login_as user
+      visit new_thing_path
     end
+
+    scenario 'add a image' do
+      attach_file 'image_file', File.join(Rails.root, '/spec/factories/files/image.png')
+      #expect{ click_button 'Create Image' }.to change(Image, :count)
+    end
+
     scenario 'shares a new thing' do
-      #FIXME: Need Refactoring : change "add images" to ajax
-      visit new_thing_path + "?n=2"
       fill_in 'Name', with: newthing.name
       fill_in 'Summary', with: newthing.summary
       fill_in 'Introduction', with: newthing.introduction
       fill_in 'Video', with: newthing.video
-      attach_file 'thing_images_attributes_0_file', File.join(Rails.root, '/spec/factories/files/image.png')
-      attach_file 'thing_images_attributes_1_file', File.join(Rails.root, '/spec/factories/files/image.png')
       expect{ click_button 'Create Thing' }.to change(Thing, :count)
       expect(page).to have_content(newthing.introduction)
       expect(page).to have_selector("iframe[src=\"#{newthing.video}\"]")

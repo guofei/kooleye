@@ -12,16 +12,18 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.remotipart
 //= require ckeditor-jquery
 //= require turbolinks
 //= require_tree .
 //= require twitter/bootstrap
 //= require masonry/jquery.masonry
+
 $(function(){
     var $container = $('#masonry-container');
     $container.imagesLoaded( function(){
 	$container.masonry({
 	    itemSelector : '.masonry-item'
-	    });
 	});
+    });
 });

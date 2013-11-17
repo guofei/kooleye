@@ -1,0 +1,8 @@
+<%= simple_form_for Image.new, :html => { :multipart => true }, :remote => true do |f| %>
+    <%= f.input :file, label: "Image" %>
+    <div class="form-group">
+      <div class="col-sm-offset-3 col-sm-9">
+	<%= f.submit "Add" %>
+      </div>
+    </div>
+<% end %>

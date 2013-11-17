@@ -4,7 +4,6 @@ class ThingsController < ApplicationController
     #FIXME: Need Refactoring : change "add images" to ajax
     n = params["n"].nil? ? 1 : params["n"].to_i
     @thing = Thing.new
-    n.times { @thing.images.build }
   end
 
   def index
@@ -19,9 +18,15 @@ class ThingsController < ApplicationController
     @thing = Thing.new(thing_params)
     @thing.user = current_user
     if @thing.save
+      if(params[:thing][:images])
+        params[:thing][:images].each do |i|
+          image = Image.find(i)
+          image.thing = @thing
+          image.save
+        end
+      end
       redirect_to thing_path(@thing)
     else
-      1.times { @thing.images.build }
       render 'new'
     end
   end

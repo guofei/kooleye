@@ -10,6 +10,7 @@ Lfti::Application.routes.draw do
     resources :likes, :only => [:create]
     resources :havables, :only => [:create]
   end
+  resources :images, :only => [:create]
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

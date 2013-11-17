@@ -71,6 +71,7 @@ gem 'twitter', "~> 5.0.0.rc.1"
 gem 'omniauth-twitter'
 
 gem 'carrierwave'
+gem 'remotipart'
 gem 'fog'
 gem 'unf'
 gem 'mini_magick'

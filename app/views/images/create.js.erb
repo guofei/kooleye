@@ -1,0 +1,11 @@
+// Display a Javascript alert
+$("#images").append(
+'<%= image_tag @image.thumb_url %>'
+)
+$('<input>').attr({
+    type: 'hidden',
+    id:   '<%= "thing_images_#{@image.id}" %>',
+    name: '<%= "thing[images][]" %>',
+    value: '<%= @image.id %>'
+}).appendTo('#new_thing');
+
