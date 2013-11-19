@@ -19,12 +19,3 @@
 //= require twitter/bootstrap
 //= require masonry/jquery.masonry
 //= require turbolinks
-
-$(function(){
-    var $container = $('#masonry-container');
-    $container.imagesLoaded( function(){
-	$container.masonry({
-	    itemSelector : '.masonry-item'
-	});
-    });
-});

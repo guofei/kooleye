@@ -18,15 +18,24 @@
  *= require 'masonry/right-to-left'
  *= require 'masonry/transitions'
  */
+
 @import "twitter/bootstrap";
 @import "font-awesome";
+
 
 html {
     overflow-x: hidden; /* Prevent scroll on narrow devices */
 }
+
 body {
+    font-family: 'Hiragino Kaku Gothic ProN', Meiryo, 'MS PGothic', Sans-serif;
     padding-top: 70px;
 }
+
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, .lead, small {
+    font-family: 'Hiragino Kaku Gothic ProN', Meiryo, 'MS PGothic', Sans-serif;
+}
+
 footer {
     padding: 30px 0;
 }
