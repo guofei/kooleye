@@ -80,6 +80,7 @@ gem "font-awesome-rails", "~> 4.0.1.0"
 gem 'ckeditor_rails'
 
 gem 'masonry-rails'
+gem 'jquery-turbolinks'
 
 # for heroku
 gem 'unicorn'

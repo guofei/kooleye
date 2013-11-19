@@ -114,6 +114,9 @@ GEM
     jquery-rails (3.0.4)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
+    jquery-turbolinks (2.0.1)
+      railties (>= 3.1.0)
+      turbolinks
     json (1.8.1)
     jwt (0.1.8)
       multi_json (>= 1.5)
@@ -291,6 +294,7 @@ DEPENDENCIES
   guard
   jbuilder (~> 1.2)
   jquery-rails
+  jquery-turbolinks
   koala (~> 1.8.0rc1)
   masonry-rails
   mini_magick
