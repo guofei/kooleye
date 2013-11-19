@@ -33,7 +33,7 @@ feature 'things' do
     let(:user) { FactoryGirl.create(:user) }
     let(:newthing) { FactoryGirl.build(:thing) }
     background do
-      login_as user
+      login_with_facebook user
       visit new_thing_path
     end
 

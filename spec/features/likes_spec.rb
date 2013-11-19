@@ -22,7 +22,7 @@ feature 'likes' do
 
   context 'as a user' do
     background do
-      login_as user
+      login_with_facebook user
       visit thing_path(thing)
     end
 
