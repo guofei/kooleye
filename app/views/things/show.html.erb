@@ -42,28 +42,30 @@
       <span class="glyphicon glyphicon-chevron-right"></span>
     </a>
   </div>
-
   <hr />
 
-  <div class="row">
-    <% @thing.images.each_with_index do |image, index| -%>
-      <div class="col-sm-2 col-md-2">
-	<div class="thumbnail">
-	  <%= image_tag image.thumb_url, onclick: "$('.carousel').carousel(#{index});", style: "cursor: pointer;" %>
+  <% if @thing.images.size > 1 -%>
+    <div class="row">
+      <% @thing.images.each_with_index do |image, index| -%>
+	<div class="col-sm-2 col-md-2">
+	  <div class="thumbnail">
+	    <%= image_tag image.thumb_url, onclick: "$('.carousel').carousel(#{index});", style: "cursor: pointer;" %>
+	  </div>
 	</div>
-      </div>
-    <% end -%>
-  </div>
+      <% end -%>
+    </div>
+    <hr />
+  <% end -%>
 
-  <hr />
+  <% if not @thing.youtube_id.nil? -%>
+    <%= youtube_embed(@thing) -%>
+    <hr />
+  <% end -%>
+
 
   <p><%= simple_format @thing.introduction -%></p>
 
-  <%= youtube_embed(@thing) -%>
-  <hr />
-
   <%= render template: "comments/index" -%>
-
 </div>
 
 <%= render "sidebar" -%>
