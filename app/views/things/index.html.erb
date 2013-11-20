@@ -7,7 +7,10 @@
       <div class="panel panel-default">
 	<div class="panel-body">
 	  <%= link_to_thing_thumbnail thing -%>
-	  <%= content_tag(:p, "#{thing.name} #{thing.summary}") -%>
+	  <center>
+	    <%= content_tag(:p, "#{thing.name} #{thing.summary}") -%>
+	    <%= like_icon thing -%><%= have_icon thing -%>
+	  </center>
 	</div>
       </div>
     </div>
