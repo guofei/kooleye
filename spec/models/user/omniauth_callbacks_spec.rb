@@ -11,26 +11,18 @@ describe User::OmniauthCallbacks do
   end
 
   it "should find the user" do
-    expect(User.from_omniauth response_args(user, authorization), nil).to eq(user)
+    expect(User.from_omniauth response_args(authorization.provider, authorization.uid, user.name, user.email), nil).to eq(user)
   end
 
   it "should bind serveice for user" do
-    u = User.from_omniauth response_args(not_bind_user, auth), not_bind_user
+    u = User.from_omniauth response_args(auth.provider, auth.uid, not_bind_user.name, not_bind_user.email), not_bind_user
     expect(u.authorizations.first.user).to eq(not_bind_user)
   end
 
   it "shoule create a user" do
     guest = FactoryGirl.build(:user)
-    u = User.from_omniauth response_args(guest, auth), nil
+    u = User.from_omniauth response_args(auth.provider, auth.uid, guest.name, guest.email), nil
     expect(u.email).to eq(guest.email)
     expect(User.find(u).email).to eq(guest.email)
   end
-end
-
-def response_args(user, auth)
-  args = {"provider" => auth.provider,
-    "uid" => auth.uid,
-    "info" => { "nickname" => "fb", "email" => user.email },
-    "credentials" => {"token" => "fdsf", "secret" => "fdsfsdfsf"}
-  }
 end

@@ -15,15 +15,3 @@ describe Users::OmniauthCallbacksController, "handle facebook authentication cal
     end
   end
 end
-
-def stub_env_for_omniauth
-  OmniAuth.config.test_mode = true
-  OmniAuth.config.mock_auth[:facebook] = OmniAuth::AuthHash.new({
-                                                                  "provider" => "facebook",
-                                                                  "uid" => "1234",
-                                                                  "info" => { "name" => "name", "nickname" => "fb", "email" => "ghost@nobody.com" },
-                                                                  "credentials" => {"token" => "fdsf", "secret" => "fdsfsdfsf"}
-                                                                   })
-  request.env["devise.mapping"] = Devise.mappings[:user]
-  request.env["omniauth.auth"] = OmniAuth.config.mock_auth[:facebook]
-end

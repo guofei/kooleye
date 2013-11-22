@@ -14,6 +14,10 @@ feature 'comments' do
       expect(page).to have_content(comment.content)
     end
 
+    scenario 'read comment' do
+      expect(page).to have_link(comment.user.name, href: comment.user.url)
+    end
+
     scenario 'add comment' do
       fill_in 'comment_content', with:"test"
       click_button 'Create Comment'

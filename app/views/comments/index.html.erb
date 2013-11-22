@@ -1,10 +1,21 @@
 <div class="page-header">
   <h3>Comment</h3>
 </div>
+
 <% @thing.comments.each do |comment| -%>
-  <p><%= comment.user.name -%></p>
-  <p><%= simple_format comment.content -%></p>
+<div class="media">
+  <%= link_to comment.user.url, class: "pull-left" do image_tag comment.user.image end -%>
+  <div class="media-body">
+    <div class="media-heading">
+      <%= link_to comment.user.name, comment.user.url -%>
+      <small><%= comment.created_at -%></small>
+    </div>
+    <%= simple_format comment.content -%>
+  </div>
+</div>
 <% end -%>
+
+<hr />
 
 <%= simple_form_for([@thing, @thing.comments.build]) do |f| %>
   <%= f.input :content, label: false %>
