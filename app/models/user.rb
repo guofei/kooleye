@@ -6,11 +6,11 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable
 
-  has_many :authorizations, :dependent => :destroy
   has_many :things
-  has_many :comments
-  has_many :likes
-  has_many :havables
+  has_many :authorizations, :dependent => :destroy
+  has_many :comments, :dependent => :destroy
+  has_many :likes, :dependent => :destroy
+  has_many :havables, :dependent => :destroy
 
   def bind_service(response)
     provider = response["provider"]
@@ -27,5 +27,12 @@ class User < ActiveRecord::Base
   def email_view
     return "" if virtual_mail?
     return email
+  end
+
+  def set_profile(name, url, image)
+    self.name = name if self.name.blank?
+    self.url = url if self.url.blank?
+    self.image = image if self.image.blank?
+    save
   end
 end

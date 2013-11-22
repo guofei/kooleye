@@ -19,8 +19,17 @@
 	</li>
       </ul>
       <hr />
-
-      User
+      <div class="media">
+	<% if @thing.user -%>
+	  <%= link_to @thing.user.url, class: "pull-left" do image_tag @thing.user.image end -%>
+	  <div class="media-body">
+	    <div class="media-heading">
+	      Created by:
+	    </div>
+	    <%= link_to @thing.user.name, @thing.user.url -%>
+	  </div>
+	<% end -%>
+      </div>
     </div>
   </div>
 </div>

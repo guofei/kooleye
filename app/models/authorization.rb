@@ -11,15 +11,11 @@ class Authorization < ActiveRecord::Base
     return if self.token.blank?
     begin
       graph = Koala::Facebook::API.new(self.token)
+      set_token_nil if not @graph.debug_token(self.token)["data"]["scopes"].include? "publish_stream"
       fbdata = graph.get_object("me")
-      self.user.name = fbdata['name'] if self.user.name.blank?
-      self.user.url = fbdata['link'] if self.user.url.blank?
-      self.user.image = "http://graph.facebook.com/" + fbdata['id'] + "/picture?type=square" if self.user.image.blank?
-      self.user.save
+      self.user.set_profile fbdata['name'], fbdata['link'], "http://graph.facebook.com/" + fbdata['id'] + "/picture?type=square"
     rescue
-      self.token = nil
-      self.secret = nil
-      self.save
+      set_token_nil
     end
   end
 
@@ -32,14 +28,16 @@ class Authorization < ActiveRecord::Base
         config.access_token        = self.token
         config.access_token_secret = self.secret
       end
-      self.user.name = twitter.user.user_name.to_s if self.user.name.blank?
-      self.user.url = twitter.user.url.to_s if self.user.url.blank?
-      self.user.image = twitter.user.profile_image_uri.to_s if self.user.image.blank?
-      self.user.save
+      self.user.set_profile twitter.user.user_name.to_s, twitter.user.url.to_s, twitter.user.profile_image_uri.to_s
     rescue
-      self.token = nil
-      self.secret = nil
-      self.save
+      set_token_nil
     end
+  end
+
+  private
+  def set_token_nil
+    self.token = nil
+    self.secret = nil
+    self.save
   end
 end
