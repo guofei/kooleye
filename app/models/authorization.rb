@@ -11,7 +11,7 @@ class Authorization < ActiveRecord::Base
     return if self.token.blank?
     begin
       graph = Koala::Facebook::API.new(self.token)
-      set_token_nil if not @graph.debug_token(self.token)["data"]["scopes"].include? "publish_stream"
+      set_token_nil if not graph.debug_token(self.token)["data"]["scopes"].include? "publish_stream"
       fbdata = graph.get_object("me")
       self.user.set_profile fbdata['name'], fbdata['link'], "http://graph.facebook.com/" + fbdata['id'] + "/picture?type=square"
     rescue
