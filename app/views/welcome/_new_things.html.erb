@@ -1,5 +1,7 @@
 <div class="panel panel-info">
-  <div class="panel-heading">News</div>
+  <div class="panel-heading">
+    <%= link_to things_path do fa_icon "external-link", text: "New Items" end -%>
+  </div>
   <% @new_things.each do |thing| -%>
     <div class="panel-body">
       <%= link_to_thing_thumbnail thing -%>
