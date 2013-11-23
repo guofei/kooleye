@@ -1,12 +1,12 @@
 <%= title "#{@thing.name} - #{@thing.summary} - kooleye" -%>
 
-<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+<div class="col-xs-12">
   <div class="page-header">
     <center><h1><%= @thing.name -%> <small><%= @thing.summary -%></small></h1></center>
   </div>
 </div>
 
-<div class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
+<div class="col-xs-12 col-md-9">
   <div id="carousel-thing" class="carousel slide">
     <!-- Indicators -->
     <ol class="carousel-indicators">
@@ -49,14 +49,14 @@
   <% if @thing.images.size > 1 -%>
     <div class="row">
       <% @thing.images.each_with_index do |image, index| -%>
-	<div class="col-sm-2 col-md-2">
+	<div class="hidden-xs col-sm-2 col-md-2">
 	  <div class="thumbnail">
 	    <%= image_tag image.thumb_url, onclick: "$('.carousel').carousel(#{index});", style: "cursor: pointer;" %>
 	  </div>
 	</div>
       <% end -%>
     </div>
-    <hr />
+    <hr class="hidden-xs">
   <% end -%>
 
   <% if not @thing.youtube_id.nil? -%>
@@ -68,6 +68,7 @@
   <p><%= sanitize @thing.introduction -%></p>
 
   <%= render template: "comments/index" -%>
+  <br />
 </div>
 
 <%= render "sidebar" -%>
