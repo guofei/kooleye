@@ -7,6 +7,7 @@ Lfti::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'welcome#index'
+  resources :abouts, :only => [:show]
   resources :things, :only => [:index, :show, :new, :create] do
     resources :comments, :only => [:create]
     resources :likes, :only => [:create]

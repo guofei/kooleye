@@ -66,7 +66,12 @@
       </div><!--/row-->
       <hr>
       <footer>
-	<p>&copy; kooleye.com 2013</p>
+	<p>
+	  &copy; kooleye.com 2013 
+	  <% About.all.each do |about| -%>
+	    <small><%= link_to about.title, about_path(about) -%></small>
+	  <% end -%>
+	</p>
       </footer>
     </div><!--/.container-->
   </body>
