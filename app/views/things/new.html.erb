@@ -1,11 +1,19 @@
-<h2>New Thing</h2>
+<div class="col-sx-12 col-md-10 col-md-offset-1">
+  <h2>Create New Item</h2>
 
-<%= render 'images/form' -%>
+  <hr />
 
-<div class="col-sm-offset-3 col-sm-9">
-  <div id="images"></div>
+  <div class="panel panel-default">
+    <div class="panel-heading">Images:</div>
+    <div class="panel-body">
+      <div id="show-images"></div>
+    </div>
+  </div>
+
+  <%= render 'images/form' -%>
+
+  <%= render 'form' %>
+
+  <br />
+  <%= link_to 'Back', things_path %>
 </div>
-
-<%= render 'form' %>
-
-<%= link_to 'Back', things_path %>
