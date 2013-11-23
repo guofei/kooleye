@@ -65,7 +65,7 @@
   <% end -%>
 
 
-  <p><%= simple_format @thing.introduction -%></p>
+  <p><%= sanitize @thing.introduction -%></p>
 
   <%= render template: "comments/index" -%>
 </div>
