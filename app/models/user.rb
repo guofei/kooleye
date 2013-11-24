@@ -29,13 +29,22 @@ class User < ActiveRecord::Base
     return email
   end
 
-  def send_twitter
-    twitter = Twitter::REST::Client.new do |config|
-      config.consumer_key        = ENV['TWITTER_APP_ID']
-      config.consumer_secret     = ENV['TWITTER_APP_SECRET']
-      config.access_token        = authorizations.last.token
-      config.access_token_secret = authorizations.last.secret
-      end
+  def send_to_facebook(msg, title, url)
+    begin
+      client = authorizations.last.facebook_client
+      client.put_wall_post(msg, {name: title, link: url}) if client
+    rescue Koala::KoalaError => e
+      p e
+    end
+  end
+
+  def send_to_twitter(msg)
+    begin
+      client = authorizations.last.twitter_client
+      client.update(msg) if client
+    rescue Twitter::Error => e
+      p e
+    end
   end
 
   def send_facebook

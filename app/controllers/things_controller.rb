@@ -1,7 +1,6 @@
 class ThingsController < ApplicationController
   before_filter :authenticate_user!, only: [:new, :create]
   def new
-    #FIXME: Need Refactoring : change "add images" to ajax
     n = params["n"].nil? ? 1 : params["n"].to_i
     @thing = Thing.new
   end
@@ -25,6 +24,9 @@ class ThingsController < ApplicationController
           image.save
         end
       end
+      #TODO
+      current_user.send_to_twitter(@thing.name + ": " + @thing.summary + " " + url_for(@thing))
+      current_user.send_to_facebook(@thing.name, @thing.summary, url_for(@thing))
       redirect_to thing_path(@thing)
     else
       render 'new'

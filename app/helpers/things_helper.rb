@@ -6,6 +6,7 @@ module ThingsHelper
   def have_icon(thing)
     fa_icon "flag", text: "#{thing.havables.size}"
   end
+
   def link_to_thing_thumbnail(thing)
     link_to thing_path(thing), class: "thumbnail" do
       if thing.images.size > 0
@@ -14,5 +15,13 @@ module ThingsHelper
         thing.name
       end
     end
+  end
+
+  def twitter?(thing)
+    current_user.authorizations.last.provider == 'twitter'
+  end
+
+  def facebook?(thing)
+    current_user.authorizations.last.provider == 'facebook'
   end
 end
