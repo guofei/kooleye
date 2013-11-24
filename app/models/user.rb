@@ -29,6 +29,19 @@ class User < ActiveRecord::Base
     return email
   end
 
+  def send_twitter
+    twitter = Twitter::REST::Client.new do |config|
+      config.consumer_key        = ENV['TWITTER_APP_ID']
+      config.consumer_secret     = ENV['TWITTER_APP_SECRET']
+      config.access_token        = authorizations.last.token
+      config.access_token_secret = authorizations.last.secret
+      end
+  end
+
+  def send_facebook
+
+  end
+
   def set_profile(name, url, image)
     self.name = name if self.name.blank?
     self.url = url if self.url.blank?
