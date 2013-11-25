@@ -39,7 +39,8 @@ feature 'things' do
     end
 
     scenario 'add a image' do
-      attach_file 'image_file', File.join(Rails.root, '/spec/factories/files/image.png')
+      pending
+      #attach_file 'image_file', File.join(Rails.root, '/spec/factories/files/image.png')
       #expect{ click_button 'Create Image' }.to change(Image, :count)
     end
 
