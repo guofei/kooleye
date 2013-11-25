@@ -1,7 +1,7 @@
 ActiveAdmin.register Thing do
 
 
-  permit_params :name, :summary, :introduction
+  permit_params :name, :summary, :introduction, :video
   # See permitted parameters documentation:
   # https://github.com/gregbell/active_admin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #

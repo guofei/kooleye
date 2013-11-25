@@ -24,9 +24,9 @@ class ThingsController < ApplicationController
           image.save
         end
       end
-      #TODO
-      current_user.send_to_twitter(@thing.name + ": " + @thing.summary + " " + url_for(@thing))
-      current_user.send_to_facebook(@thing.name, @thing.summary, url_for(@thing))
+
+      current_user.send_to_twitter("#{@thing.name} #{@thing.summary} #{@thing.introduction}", url_for(@thing)) if params[:sync][:twitter] == "1"
+      current_user.send_to_facebook(@thing.name, @thing.summary, url_for(@thing)) if params[:sync][:facebook] == "1"
       redirect_to thing_path(@thing)
     else
       render 'new'

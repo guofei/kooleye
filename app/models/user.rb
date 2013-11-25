@@ -29,19 +29,19 @@ class User < ActiveRecord::Base
     return email
   end
 
-  def send_to_facebook(msg, title, url)
+  def send_to_facebook(msg, page_title, page_url)
     begin
       client = authorizations.last.facebook_client
-      client.put_wall_post(msg, {name: title, link: url}) if client
+      client.put_wall_post(ActionController::Base.helpers.strip_tags(msg), {name: page_title, link: page_url}) if client
     rescue Koala::KoalaError => e
       p e
     end
   end
 
-  def send_to_twitter(msg)
+  def send_to_twitter(msg, url)
     begin
       client = authorizations.last.twitter_client
-      client.update(msg) if client
+      client.update(ActionController::Base.helpers.strip_tags(msg)[0, 100] + url) if client
     rescue Twitter::Error => e
       p e
     end
