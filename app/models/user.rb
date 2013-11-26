@@ -41,7 +41,7 @@ class User < ActiveRecord::Base
   def send_to_twitter(msg, url)
     begin
       client = authorizations.last.twitter_client
-      client.update(ActionController::Base.helpers.strip_tags(msg)[0, 100] + url) if client
+      client.update(ActionController::Base.helpers.strip_tags(msg)[0, 100] + " " + url) if client
     rescue Twitter::Error => e
       p e
     end

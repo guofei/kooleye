@@ -2,8 +2,17 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $ ->
+        $container = $('#masonry-container')
+        $container.imagesLoaded ->
+                $container.masonry itemSelector : '.masonry-item'
+
+$ ->
         $("#image-upload-btn").click ->
                 $("#image_file").click()
 
                 $("#image_file").change ->
                         $("#new_image").submit()
+
+@remove_image = (id) ->
+        $("#image-li-" + id).remove()
+        $("#thing_images_" + id).remove()
