@@ -117,7 +117,7 @@ GEM
       net-ssh (>= 2.1.3)
       nokogiri (~> 1.5)
       ruby-hmac
-    font-awesome-rails (4.0.1.0)
+    font-awesome-rails (4.0.3.0)
       railties (>= 3.2, < 5.0)
     formatador (0.2.4)
     formtastic (2.3.0.rc2)
@@ -342,11 +342,12 @@ DEPENDENCIES
   devise (~> 3.1.1)
   factory_girl_rails
   fog
-  font-awesome-rails (~> 4.0.1.0)
+  font-awesome-rails (~> 4.0.3.0)
   guard
   jbuilder (~> 1.2)
   jquery-rails
   jquery-turbolinks
+  kaminari
   koala (~> 1.8.0rc1)
   masonry-rails
   mini_magick

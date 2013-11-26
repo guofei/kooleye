@@ -78,7 +78,9 @@ gem 'fog'
 gem 'unf'
 gem 'mini_magick'
 
-gem "font-awesome-rails", "~> 4.0.1.0"
+gem 'kaminari'
+
+gem "font-awesome-rails", "~> 4.0.3.0"
 gem 'ckeditor_rails'
 
 gem 'masonry-rails'

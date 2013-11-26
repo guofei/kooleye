@@ -8,10 +8,16 @@ $ ->
 
 $ ->
         $("#image-upload-btn").click ->
-                $("#image_file").click()
-
                 $("#image_file").change ->
                         $("#new_image").submit()
+
+                $("#image_file").click()
+
+        $("#new_image").submit ->
+                $("#image-upload-btn").attr("style","display:none")
+                true
+
+
 
 @remove_image = (id) ->
         $("#image-li-" + id).remove()

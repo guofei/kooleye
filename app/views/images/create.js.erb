@@ -1,3 +1,4 @@
 $('<%= j(render(partial: @image)) %>').appendTo('#show-images')
 $('<%= j(render(partial: "input", locals: { image: @image } )) %>').appendTo('#new_thing')
 
+$("#image-upload-btn").removeAttr("style");

@@ -6,7 +6,7 @@ class ThingsController < ApplicationController
   end
 
   def index
-    @things = Thing.all
+    @things = Thing.page params[:page]
   end
 
   def show
