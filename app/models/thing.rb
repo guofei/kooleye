@@ -20,6 +20,12 @@ class Thing < ActiveRecord::Base
     all
   }
 
+  def other_things(n = 9)
+    return self.class.sort_by_hot.take(n) if not user
+    size = user.things.size > n ? n/2 : user.things.size
+    user.things.take(size) + self.class.sort_by_hot.take(n - size)
+  end
+
   def youtube_id
     return $1 if video[/youtu\.be\/([^\?]*)/]
     return $5 if video[/^.*((v\/)|(embed\/)|(watch\?))\??v?=?([^\&\?]*).*/]

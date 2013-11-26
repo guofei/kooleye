@@ -24,11 +24,26 @@
 	  <%= link_to @thing.user.url, class: "pull-left" do image_tag @thing.user.image end -%>
 	  <div class="media-body">
 	    <div class="media-heading">
-	      Created by:
+	      作成者：
 	    </div>
 	    <%= link_to @thing.user.name, @thing.user.url -%>
 	  </div>
 	<% end -%>
+      </div>
+      <hr />
+      <div class="row media suggestion">
+	<div class="media-body">
+	  <div class="media-heading">
+	    <%= fa_icon "thumbs-o-up", text: "これにも注目" -%>
+	  </div>
+	  <% @thing.other_things.each do |thing| -%>
+	    <% if thing.images.size > 0 -%>
+	      <div class="col-xs-4">
+		<%= link_to thing_path(thing) do image_tag thing.images.last.thumb_url, class: "img-thumbnail" end -%>
+	      </div>
+	    <% end -%>
+	  <% end -%>
+	</div>
       </div>
     </div>
   </div>

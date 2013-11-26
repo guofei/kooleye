@@ -1,8 +1,12 @@
 require 'spec_helper'
 
 describe Thing do
+  let(:user) { FactoryGirl.create(:user) }
   let(:thing) { FactoryGirl.build(:thing) }
   subject{ thing }
+
+  it { should respond_to(:other_things) }
+  it { should respond_to(:youtube_id) }
 
   describe "when name is not present" do
     before { thing.name = " " }
@@ -29,8 +33,16 @@ describe Thing do
     it { should_not be_valid }
   end
 
+  describe "ohter things" do
+    before do
+      thing.user = user
+      thing.save
+      another = FactoryGirl.create(:thing, user: user)
+    end
+    its("other_things.size") { should eq 2 }
+  end
+
   describe "youtube it" do
-    it { should respond_to(:youtube_id) }
     context "www.youtube.com/watch?v=123abc" do
       before{ thing.video = "www.youtube.com/watch?v=123abc" }
       its(:youtube_id) { should eq("123abc") }

@@ -44,15 +44,14 @@
       <span class="glyphicon glyphicon-chevron-right"></span>
     </a>
   </div>
+
   <hr />
 
   <% if @thing.images.size > 1 -%>
-    <div class="row">
+    <div class="row images-thumb">
       <% @thing.images.each_with_index do |image, index| -%>
-	<div class="hidden-xs col-sm-2 col-md-2">
-	  <div class="thumbnail">
-	    <%= image_tag image.thumb_url, onclick: "$('.carousel').carousel(#{index});", style: "cursor: pointer;" %>
-	  </div>
+	<div class="hidden-xs col-sm-2">
+	  <%= image_tag image.thumb_url, class: "img-thumbnail", onclick: "$('.carousel').carousel(#{index});", style: "cursor: pointer;" %>
 	</div>
       <% end -%>
     </div>
