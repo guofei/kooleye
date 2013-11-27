@@ -25,11 +25,11 @@
 	<% if image.file? %>
 	  <% if index == 0 -%>
 	    <div class="item active">
-	      <%= image_tag image.url, class: "img-responsive" %>
+	      <%= image_tag image.url, alt: "#{@thing.name} #{index}", class: "img-responsive" %>
 	    </div>
 	  <% else -%>
 	    <div class="item">
-	      <%= image_tag image.url, class: "img-responsive" %>
+	      <%= image_tag image.url, alt: "#{@thing.name} #{index}", class: "img-responsive" %>
 	    </div>
 	  <% end -%>
 	<% end %>

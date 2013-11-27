@@ -31,5 +31,5 @@
       <%= check_box 'sync', 'facebook', {:checked => facebook?(@thing)} %><%= fa_icon "facebook-square", text: "に投稿" -%>
     </label>
   </div>
-  <%= f.button :submit %>
+  <%= f.button :submit, value: t('view.comment.submit'), class: "btn btn-primary" %>
 <% end -%>

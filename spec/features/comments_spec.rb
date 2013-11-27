@@ -20,7 +20,7 @@ feature 'comments' do
 
     scenario 'add comment' do
       fill_in 'comment_content', with:"test"
-      click_button 'Create Comment'
+      click_button I18n.t('view.comment.submit')
       expect(page).to have_content("Login")
     end
   end
@@ -33,7 +33,7 @@ feature 'comments' do
 
     scenario 'add comment' do
       fill_in 'comment_content', with: "thank you very much kaku"
-      click_button 'Create Comment'
+      click_button I18n.t('view.comment.submit')
       expect(page).to have_content("thank you very much kaku")
     end
   end
