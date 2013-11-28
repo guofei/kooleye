@@ -12,6 +12,7 @@ Lfti::Application.routes.draw do
     resources :comments, :only => [:create]
     resources :likes, :only => [:create]
     resources :havables, :only => [:create]
+    resources :buys, only: [:index]
   end
   resources :images, :only => [:create]
 

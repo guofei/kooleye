@@ -19,11 +19,13 @@ module ThingsHelper
 
   def twitter?(thing)
     return false if not user_signed_in?
+    return false if current_user.authorizations.size == 0
     current_user.authorizations.last.provider == 'twitter'
   end
 
   def facebook?(thing)
     return false if not user_signed_in?
+    return false if current_user.authorizations.size == 0
     current_user.authorizations.last.provider == 'facebook'
   end
 end

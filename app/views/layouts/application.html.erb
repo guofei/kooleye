@@ -42,7 +42,7 @@
 	  <ul class="nav navbar-nav navbar-right">
 	    <% if user_signed_in? -%>
               <li class="dropdown">
-		<a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.name -%><b class="caret"></b></a>
+		<a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.name || current_user.email -%><b class="caret"></b></a>
 		<ul class="dropdown-menu">
 		  <li><%= link_to 'Edit', edit_user_registration_path %></li>
 		  <li><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></li>
@@ -50,10 +50,11 @@
               </li>
 	    <% else -%>
               <li class="dropdown">
-		<a href="#" class="dropdown-toggle" data-toggle="dropdown">Login<b class="caret"></b></a>
+		<a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= t('shared.login') -%><b class="caret"></b></a>
 		<ul class="dropdown-menu">
-		  <li><%= link_to "Twitter", user_omniauth_authorize_path(:twitter) %> </li>
-		  <li><%= link_to "Facebook", user_omniauth_authorize_path(:facebook) %> </li>
+		  <li><%= link_to user_omniauth_authorize_path(:twitter) do fa_icon "twitter", text: "| Connect with Twitter" end %> </li>
+		  <li><%= link_to user_omniauth_authorize_path(:facebook) do fa_icon "facebook-square", text: "| Connect with Facebook" end %> </li>
+		  <li><%= link_to new_user_session_path do fa_icon "shield", text: "| Sign in with Kooleye ID" end %> </li>
 		</ul>
               </li>
 	    <% end -%>
