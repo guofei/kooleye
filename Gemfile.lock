@@ -63,6 +63,9 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    capybara-webkit (1.0.0)
+      capybara (~> 2.0, >= 2.0.2)
+      json
     carrierwave (0.9.0)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
@@ -335,6 +338,7 @@ DEPENDENCIES
   activeadmin!
   anjlab-bootstrap-rails (~> 3.0.2.0)
   capybara
+  capybara-webkit
   carrierwave
   ckeditor_rails
   coffee-rails (~> 4.0.0)

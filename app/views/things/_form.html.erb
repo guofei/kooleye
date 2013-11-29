@@ -1,4 +1,5 @@
 <%= simple_form_for(@thing) do |f| %>
+  <%= f.error :images, id: 'images_error' %>
   <div class="form-group">
     <%= f.input :name, input_html: { class: "form-control" }  %>
   </div>
@@ -19,5 +20,5 @@
       <%= check_box 'sync', 'facebook', {:checked => facebook?(@thing)} %><%= fa_icon "facebook-square", text: "に投稿" -%>
     </label>
   </div>
-  <%= f.button :submit %>
+  <%= f.button :submit  %>
 <% end %>

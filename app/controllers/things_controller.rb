@@ -16,15 +16,16 @@ class ThingsController < ApplicationController
   def create
     @thing = Thing.new(thing_params)
     @thing.user = current_user
-    if @thing.save
-      if(params[:thing][:images])
-        params[:thing][:images].each do |i|
-          image = Image.find(i)
-          image.thing = @thing
-          image.save
-        end
+    if(params[:thing][:images])
+      params[:thing][:images].each do |i|
+        image = Image.find(i)
+        image.thing = @thing
+        image.save
+        @thing.images << image
       end
+    end
 
+    if @thing.save
       current_user.send_to_twitter("#{@thing.name} #{@thing.summary} #{@thing.introduction}", url_for(@thing)) if params[:sync][:twitter] == "1"
       current_user.send_to_facebook(@thing.name, @thing.summary, url_for(@thing)) if params[:sync][:facebook] == "1"
       redirect_to thing_path(@thing)

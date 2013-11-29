@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 require 'spec_helper'
 
 feature 'things' do
@@ -34,22 +35,32 @@ feature 'things' do
     let(:user) { FactoryGirl.create(:user) }
     let(:newthing) { FactoryGirl.build(:thing) }
     background do
-      login_with_facebook user
+      login_by_webkit user
       visit new_thing_path
     end
 
-    scenario 'add a image' do
+    scenario 'add a image', js: true do
+      script = "$('#image_file').show();"
+      script << "$('#image-upload-submit').show();"
+      page.driver.browser.execute_script(script)
+      attach_file 'image_file', File.join(Rails.root, '/spec/factories/files/image.png')
       pending
-      #attach_file 'image_file', File.join(Rails.root, '/spec/factories/files/image.png')
-      #expect{ click_button 'Create Image' }.to change(Image, :count)
     end
 
-    scenario 'shares a new thing' do
+    scenario 'shares a new thing', js: true do
+      pending
+      script = "$('#image_file').show();"
+      page.driver.browser.execute_script(script)
+      attach_file 'image_file', File.join(Rails.root, '/spec/factories/files/image.png')
+      script = "$('#new_image').submit();"
+      page.driver.browser.execute_script(script)
+      script = "$('#thing_introduction').val(new Array(200).join('a '));"
+      page.driver.browser.execute_script(script)
       fill_in 'Name', with: newthing.name
       fill_in 'Summary', with: newthing.summary
-      fill_in 'Introduction', with: newthing.introduction
       fill_in 'Video', with: newthing.video
-      expect{ click_button 'Create Thing' }.to change(Thing, :count)
+      I18n.locale = :ja
+      expect{ click_link_or_button I18n.t('helpers.submit.create') }.to change(Thing, :count)
       expect(page).to have_content(newthing.introduction)
       expect(page).to have_selector("iframe[src=\"#{newthing.video}\"]")
     end

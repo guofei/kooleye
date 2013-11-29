@@ -6,9 +6,9 @@ FactoryGirl.define do
     image "http://graph.facebook.com/100003537136773/picture?type=square"
     url "https://www.facebook.com/test"
     sequence :email do |n|
-      "person#{n}@example.com"
+      "person#{n}@mymail.com"
     end
 
-    password "12345678"
+    password "1234abcd"
   end
 end

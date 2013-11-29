@@ -11,6 +11,7 @@ class Thing < ActiveRecord::Base
   validates :name, presence: true, length: { maximum: 30 }
   validates :summary, presence: true
   validates :introduction, presence: true, length: { minimum: 20 }
+  validates :images, :length => { :minimum => 1, :message => "*Image can't be empty" }
 
   scope :sort_by_hot, -> {
     joins(:likes).reorder("count(likes.id) DESC").group("things.id")

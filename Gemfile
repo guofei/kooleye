@@ -60,6 +60,8 @@ group :development do
 end
 
 group :test do
+  gem 'capybara-webkit'
+  #gem "selenium-webdriver", "~> 2.37.0"
 end
 
 gem "anjlab-bootstrap-rails", "~> 3.0.2.0", :require => 'bootstrap-rails'
