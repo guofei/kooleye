@@ -11,4 +11,12 @@ module UsersHelper
       link_to user.name, user.url
     end
   end
+
+  def link_to_user_image(user)
+    if user.url.blank? or user.name.blank?
+      link_to "#", class: "pull-left" do image_tag "none.png" end
+    else
+      link_to user.url, class: "pull-left" do image_tag user.image end
+    end
+  end
 end

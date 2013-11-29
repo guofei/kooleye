@@ -23,7 +23,7 @@
 
       <div class="media">
 	<% if @thing.user -%>
-	  <%= link_to @thing.user.url, class: "pull-left" do image_tag @thing.user.image end -%>
+	  <%= link_to_user_image @thing.user -%>
 	  <div class="media-body">
 	    <div class="media-heading">
 	      作成者：
