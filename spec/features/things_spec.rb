@@ -44,11 +44,11 @@ feature 'things' do
       script << "$('#image-upload-submit').show();"
       page.driver.browser.execute_script(script)
       attach_file 'image_file', File.join(Rails.root, '/spec/factories/files/image.png')
-      pending
+      pending "i dont know how to test it!!!!!!!!!!!"
     end
 
     scenario 'shares a new thing', js: true do
-      pending
+      pending "i dont know how to test it!!!!!!!!!!!"
       script = "$('#image_file').show();"
       page.driver.browser.execute_script(script)
       attach_file 'image_file', File.join(Rails.root, '/spec/factories/files/image.png')

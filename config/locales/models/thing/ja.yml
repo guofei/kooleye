@@ -1,0 +1,10 @@
+ja:
+  activerecord:
+    model:
+      thing: Thing
+    attributes:
+      thing:
+        name: 商品名
+        video: ビデオURL（YouTube）
+        summary: 概要
+        introduction: 詳細

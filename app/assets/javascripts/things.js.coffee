@@ -14,7 +14,7 @@ $ ->
                 $("#image_file").click()
 
         $("#new_image").submit ->
-                $("#image-upload-btn").attr("style","display:none")
+                $("#image-upload").attr("style","display:none")
                 true
 
 
