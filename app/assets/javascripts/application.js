@@ -12,11 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.turbolinks
 //= require jquery.remotipart
 //= require ckeditor-jquery
 //= require_tree .
 //= require twitter/bootstrap
 //= require masonry/jquery.masonry
 //= require holder
-//= require turbolinks
+

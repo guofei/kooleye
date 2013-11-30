@@ -21,7 +21,7 @@ feature 'comments' do
     scenario 'add comment' do
       fill_in 'comment_content', with:"test"
       click_button I18n.t('view.comment.submit')
-      expect(page).to have_content("Login")
+      expect(page).to have_content(I18n.t("shared.login"))
     end
   end
 

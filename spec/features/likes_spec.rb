@@ -10,13 +10,9 @@ feature 'likes' do
       visit thing_path(thing)
     end
 
-    scenario 'read likes' do
-      expect(page).to have_content("が好き")
-    end
-
     scenario 'like' do
       click_link "like"
-      expect(page).to have_content("Login")
+      expect(page).to have_content(I18n.t("shared.login"))
     end
   end
 

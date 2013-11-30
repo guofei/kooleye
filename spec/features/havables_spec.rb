@@ -11,13 +11,9 @@ feature 'havables' do
       visit thing_path(thing)
     end
 
-    scenario 'read havables' do
-      expect(page).to have_content("人が所有している")
-    end
-
     scenario 'have' do
       click_link "have"
-      expect(page).to have_content("Login")
+      expect(page).to have_content(I18n.t("shared.login"))
     end
   end
 
