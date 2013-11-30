@@ -3,7 +3,7 @@
 FactoryGirl.define do
   factory :image do
     thing
-    file File.open(File.join(Rails.root, '/spec/factories/files/image.png'))
+    file File.open(File.join(Rails.root, '/spec/factories/files/test.png'))
     description "cat"
   end
 end

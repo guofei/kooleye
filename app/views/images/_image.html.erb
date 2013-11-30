@@ -1,3 +1,4 @@
 <li id="image-li-<%= image.id %>" class="list-group-item">
   <button type="button" class="pull-left close image-close-btn" aria-hidden="true" onclick="remove_image(<%= image.id %>)">&times;</button><%= image_tag image.thumb_url %>
+  <%= link_to 'Delete', image_path(image), method: :delete, remote: true, style: "display:none", id: "rm-image-#{image.id}" %>
 </li>

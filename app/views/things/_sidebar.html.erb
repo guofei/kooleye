@@ -38,7 +38,7 @@
 	<div class="row media suggestion">
 	  <div class="media-body">
 	    <div class="media-heading">
-	      <%= fa_icon "heart-o", text: "この商品が好きな人" -%>
+	      <%= fa_icon "heart-o", text: "Likeした人" -%>
 	    </div>
 	    <div class="imgs">
 	      <% @thing.likes[0, 50].each do |like| -%><%= link_to_user_mini_image like.user -%><% end -%>

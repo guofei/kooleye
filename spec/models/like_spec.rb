@@ -11,11 +11,15 @@ describe Like do
   describe "duplication?" do
     context "when user had liked" do
       let!(:liked) { FactoryGirl.create(:like, user: user, thing: thing) }
-      its(:duplication?) { should be_true }
+      it "duplication" do
+        expect(like.duplication?).to be_true
+      end
     end
 
     context "when user have not liked" do
-      its(:duplication?) { should be_false }
+      it "not duplication" do
+        expect(like.duplication?).to be_false
+      end
     end
   end
 end

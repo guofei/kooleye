@@ -1,16 +1,17 @@
 class ImagesController < ApplicationController
-  before_filter :authenticate_user!, only: [:create]
+  before_filter :authenticate_user!
   def create
-    @image = Image.new(image_params)
-    respond_to do |format|
-      if @image.save
-        format.js
-      end
-    end
+    @image = Image.create(image_params)
+  end
+
+  def destroy
+    @image = Image.find(params[:id])
+    @destroy_id = @image.id
+    @image.destroy
   end
 
   private
   def image_params
-    params.require(:image).permit(:file)
+    params.require(:image).permit(:file, :thing_token)
   end
 end

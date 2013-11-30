@@ -14,8 +14,7 @@ Lfti::Application.routes.draw do
     resources :havables, :only => [:create]
     resources :buys, only: [:index]
   end
-  resources :images, :only => [:create]
-
+  resources :images, :only => [:create, :destroy]
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

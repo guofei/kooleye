@@ -49,7 +49,7 @@ group :development, :test do
 
   gem 'pry-debugger'
 
-  gem 'rspec-rails', "~> 2.14.0"
+  gem "rspec-rails", "~> 2.14.0"
   gem 'factory_girl_rails'
   gem 'capybara'
   gem 'database_cleaner'
@@ -76,7 +76,7 @@ gem 'twitter', "~> 5.0.0.rc.1"
 gem 'omniauth-twitter'
 
 gem 'carrierwave'
-gem 'remotipart'
+gem 'jquery-fileupload-rails'
 gem 'fog'
 gem 'unf'
 gem 'mini_magick'

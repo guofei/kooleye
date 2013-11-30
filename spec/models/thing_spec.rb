@@ -7,6 +7,16 @@ describe Thing do
 
   it { should respond_to(:other_things) }
   it { should respond_to(:youtube_id) }
+  it { should respond_to(:generate_token) }
+  it { should respond_to(:token) }
+
+  describe "token" do
+    it "generate token" do
+      random_token = thing.generate_token
+      expect(random_token.size).to be > 0
+      expect(random_token).to eq thing.token
+    end
+  end
 
   describe "when name is not present" do
     before { thing.name = " " }
@@ -43,13 +53,13 @@ describe Thing do
   end
 
   describe "youtube it" do
-    context "www.youtube.com/watch?v=123abc" do
-      before{ thing.video = "www.youtube.com/watch?v=123abc" }
-      its(:youtube_id) { should eq("123abc") }
+    context "www.youtube.com/watch?v=id" do
+      before{ thing.video = "www.youtube.com/watch?v=id" }
+      its(:youtube_id) { should eq("id") }
     end
-    context "youtu.be/123abc" do
-      before{ thing.video = "youtu.be/123abc" }
-      its(:youtube_id) { should eq("123abc") }
+    context "youtu.be/id" do
+      before{ thing.video = "youtu.be/id" }
+      its(:youtube_id) { should eq("id") }
     end
     context "noid" do
       before{ thing.video = "" }

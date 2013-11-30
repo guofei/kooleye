@@ -1,4 +1,8 @@
-$('<%= j(render(partial: @image)) %>').appendTo('#show-images')
-$('<%= j(render(partial: "input", locals: { image: @image } )) %>').appendTo('#new_thing')
+<% if @image.new_record? %>
+  alert('Failed');
+<% else %>
+  $('<%= j(render(partial: @image)) %>').appendTo('#show-images')
 
-$("#image-upload").removeAttr("style");
+  $("#upload-btn").removeAttr("style");
+  $(".upload-progress").remove();
+<% end %>

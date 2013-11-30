@@ -21,6 +21,13 @@ class Thing < ActiveRecord::Base
     all
   }
 
+  def generate_token
+    self.token = loop do
+      random_token = SecureRandom.urlsafe_base64
+      break random_token unless self.class.where(token: random_token).exists?
+    end
+  end
+
   def other_things(n = 9)
     return self.class.sort_by_hot.take(n) if not user
     size = user.things.size > n ? n/2 : user.things.size

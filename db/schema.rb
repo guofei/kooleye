@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131123050700) do
+ActiveRecord::Schema.define(version: 20131201063349) do
 
   create_table "abouts", force: true do |t|
     t.string   "title"
@@ -92,6 +92,7 @@ ActiveRecord::Schema.define(version: 20131123050700) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "thing_id"
+    t.string   "thing_token"
   end
 
   add_index "images", ["thing_id"], name: "index_images_on_thing_id"
@@ -114,6 +115,7 @@ ActiveRecord::Schema.define(version: 20131123050700) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.string   "video"
+    t.string   "token"
   end
 
   add_index "things", ["user_id"], name: "index_things_on_user_id"

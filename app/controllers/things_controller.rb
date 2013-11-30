@@ -1,8 +1,9 @@
 class ThingsController < ApplicationController
   before_filter :authenticate_user!, only: [:new, :create]
   def new
-    n = params["n"].nil? ? 1 : params["n"].to_i
     @thing = Thing.new
+    @image = @thing.images.build
+    @image.thing_token = @thing.generate_token
   end
 
   def index
@@ -16,15 +17,7 @@ class ThingsController < ApplicationController
   def create
     @thing = Thing.new(thing_params)
     @thing.user = current_user
-    if(params[:thing][:images])
-      params[:thing][:images].each do |i|
-        image = Image.find(i)
-        image.thing = @thing
-        image.save
-        @thing.images << image
-      end
-    end
-
+    @thing.images << Image.where(:thing_token => @thing.token)
     if @thing.save
       current_user.send_to_twitter("#{@thing.name} #{@thing.summary} #{@thing.introduction}", url_for(@thing)) if params[:sync][:twitter] == "1"
       current_user.send_to_facebook(@thing.name, @thing.summary, url_for(@thing)) if params[:sync][:facebook] == "1"
@@ -36,6 +29,6 @@ class ThingsController < ApplicationController
 
   private
   def thing_params
-    params.require(:thing).permit(:name, :summary, :introduction, :video, :images_attributes => [:file])
+    params.require(:thing).permit(:name, :summary, :introduction, :video, :token, :images_attributes => [:file])
   end
 end

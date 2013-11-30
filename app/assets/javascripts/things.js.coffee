@@ -7,18 +7,29 @@ $ ->
                 $container.masonry itemSelector : '.masonry-item'
 
 $ ->
-        $("#image-upload-btn").click ->
-                $("#image_file").change ->
-                        $("#new_image").submit()
+        $("#upload-btn").click ->
+                $("#upload_file").click()
 
-                $("#image_file").click()
-
-        $("#new_image").submit ->
-                $("#image-upload").attr("style","display:none")
-                true
-
-
+jQuery ->
+        $('#upload_file').attr('name','image[file]')
+        $('#new_upload').fileupload
+                dataType: 'script'
+                add: (e, data) ->
+                        types = /(\.|\/)(gif|jpe?g|png)$/i
+                        file = data.files[0]
+                        if types.test(file.type) || types.test(file.name)
+                                data.context = $(tmpl("template-upload", file))
+                                $('#new_upload').append(data.context)
+                                $("#upload-btn").attr("style","display:none")
+                                data.submit()
+                        else
+                                alert("#{file.name} is not a gif, jpg or png image file")
+                progress: (e, data) ->
+                        if data.context
+                                progress = parseInt(data.loaded / data.total * 100, 10)
+                                data.context.find('.progress-bar').css('width', progress + '%')
 
 @remove_image = (id) ->
+        $("#rm-image-" + id).click()
         $("#image-li-" + id).remove()
-        $("#thing_images_" + id).remove()
+
