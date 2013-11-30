@@ -46,6 +46,10 @@
   </div>
 
   <hr />
+  <div class="text-center">
+    <%= link_to thing_likes_path(@thing), method: "post", id: 'like' do fa_stacked_icon "heart-o", base: "square-o", text: "Like it", class: "fa-lg" end -%>
+    <%= link_to thing_havables_path(@thing), method: "post", id: 'have' do fa_stacked_icon "flag-o", base: "square-o", text: "Have it", class: "fa-lg" end -%>
+  </div>
 
   <% if @thing.images.size > 1 -%>
     <div class="row images-thumb">
