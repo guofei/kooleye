@@ -1,5 +1,5 @@
 class Thing < ActiveRecord::Base
-  has_many :images, -> { order(created_at: :desc) }, dependent: :destroy
+  has_many :images, dependent: :destroy
   has_many :comments
   has_many :likes
   has_many :havables
