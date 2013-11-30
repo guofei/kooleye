@@ -17,5 +17,3 @@
 //= require_tree .
 //= require twitter/bootstrap
 //= require masonry/jquery.masonry
-//= require holder
-
