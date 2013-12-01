@@ -39,6 +39,15 @@ feature 'things' do
       visit new_thing_path
     end
 
+    scenario "share thing without image" do
+      fill_in I18n.t('activerecord.attributes.thing.name'), with: newthing.name
+      fill_in I18n.t('activerecord.attributes.thing.summary'), with: newthing.summary
+      fill_in I18n.t('activerecord.attributes.thing.video'), with: newthing.video
+      fill_in I18n.t('activerecord.attributes.thing.introduction'), with: newthing.introduction
+      click_link_or_button I18n.t('helpers.submit.create')
+      expect(page).to have_content(I18n.t('view.thing.image-error'))
+    end
+
     pending "add image !!!!!!!!!!!"
 #    scenario 'add a image', js: true do
 #      upload_image

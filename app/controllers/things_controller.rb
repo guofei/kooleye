@@ -23,6 +23,8 @@ class ThingsController < ApplicationController
       current_user.send_to_facebook(@thing.name, @thing.summary, url_for(@thing)) if params[:sync][:facebook] == "1"
       redirect_to thing_path(@thing)
     else
+      @image = @thing.images.build
+      @image.thing_token = @thing.generate_token
       render 'new'
     end
   end
