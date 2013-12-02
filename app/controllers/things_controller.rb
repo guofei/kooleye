@@ -7,7 +7,11 @@ class ThingsController < ApplicationController
   end
 
   def index
-    @things = Thing.page params[:page]
+    if(params[:sort] == "hot")
+      @things = Thing.sort_by_hot.page params[:page]
+    else
+      @things = Thing.page params[:page]
+    end
   end
 
   def show

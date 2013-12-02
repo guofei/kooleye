@@ -1,0 +1,5 @@
+<% if @havable.new_record? %>
+  alert("すでにHaveしました")
+<% else %>
+  $("#have").html('<%= j(render :partial=>"thing", locals: {thing: @thing}) %>')
+<% end %>

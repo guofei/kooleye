@@ -1,10 +1,10 @@
 module ThingsHelper
   def like_icon(thing)
-    fa_icon "heart", text: "#{thing.likes.size}"
+    fa_icon "heart", text: "#{thing.likes.size}", style: "color: darkred;"
   end
 
   def have_icon(thing)
-    fa_icon "flag", text: "#{thing.havables.size}"
+    fa_icon "flag", text: "#{thing.havables.size}", style: "color: darkgreen;"
   end
 
   def link_to_thing_thumbnail(thing)

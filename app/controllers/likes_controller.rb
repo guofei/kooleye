@@ -4,9 +4,20 @@ class LikesController < ApplicationController
     @thing = Thing.find(params[:thing_id])
     @like = @thing.likes.build
     @like.user = current_user
-    if not @like.duplication?
-      @like.save
+    @like.save if not @like.duplication?
+    respond_to do |format|
+      format.html { redirect_to thing_path(@thing) }
+      format.js
     end
-    redirect_to thing_path(@thing)
+  end
+
+  private
+  def authenticate_user!
+    unless current_user
+      respond_to do |format|
+        format.js { render "shared/login" }
+        format.html { super }
+      end
+    end
   end
 end

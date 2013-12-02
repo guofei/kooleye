@@ -25,7 +25,7 @@ def login_with_facebook(user)
   OmniAuth.config.test_mode = true
   OmniAuth.config.mock_auth[:facebook] = OmniAuth::AuthHash.new(response_args "facebook", "123", user.name, user.email)
   visit root_path
-  click_link_or_button 'Connect with Facebook'
+  click_link_or_button 'facebook-login'
 end
 
 def stub_env_for_omniauth

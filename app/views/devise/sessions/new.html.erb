@@ -1,14 +1,11 @@
 <div class="row">
-  <hr />
-  <div class="col-sm-12">
-    <%= render "devise/shared/sns" -%>
-  </div>
+  <%= render "devise/shared/sns" -%>
 
-  <div class="col-sm-12">
-    <div class="panel panel-default">
-      <div class="panel-heading"><a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#collapse">Kooleye IDでログイン</a></div>
-      <div id="collapse" class="panel-collapse collapse">
-	<div class="panel-body">
+  <div class="panel panel-default">
+    <div class="panel-heading"><a data-toggle="collapse" data-toggle="collapse" data-parent="#accordion" href="#collapse">Kooleye IDでログイン</a></div>
+    <div id="collapse" class="panel-collapse collapse in">
+      <div class="panel-body">
+	<div class="row">
 	  <div class="col-sm-8 col-sm-offset-2">
 	    <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
 	      <div class="form-group">
