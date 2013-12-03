@@ -5,7 +5,7 @@
       <%- resource_class.omniauth_providers.each do |provider| %>
 	<div class="row">
 	  <div class="col-xs-12 col-sm-10 col-sm-offset-2 col-md-9 col-md-offset-3">
-	    <%= link_to omniauth_authorize_path(resource_name, provider), class: "btn btn-lg btn-#{provider}" do fa_icon "#{provider}", text: "| Connect with #{provider.to_s.titleize}" end %>
+	    <%= link_to omniauth_authorize_path(resource_name, provider), class: "btn btn-lg btn-#{provider}" do fa_icon "#{provider}", text: "| #{provider.to_s.titleize}でスタートする" end %>
 	  </div>
 	</div>
 	<br />

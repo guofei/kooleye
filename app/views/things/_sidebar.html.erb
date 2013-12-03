@@ -34,18 +34,22 @@
       </div>
       <hr />
 
-      <% if @thing.likes.size > 0 -%>
-	<div class="row media suggestion">
-	  <div class="media-body">
-	    <div class="media-heading">
-	      <%= fa_icon "heart-o", text: "Likeした人" -%>
-	    </div>
+      <div class="row media suggestion">
+	<div class="media-body">
+	  <div class="media-heading">
+	    <%= fa_icon "heart-o", text: "Likeした人" -%>
+	  </div>
+	  <% if @thing.likes.size > 0 -%>
 	    <div class="imgs">
 	      <% @thing.likes[0, 50].each do |like| -%><%= link_to_user_mini_image like.user -%><% end -%>
 	    </div>
-	  </div>
+	  <% else -%>
+	    <div class="no">
+	      <%= fa_icon "frown-o", text: "まだ1人もいません。私のことが好きなら、ぜひLikeしてください" -%>
+	    </div>
+	  <% end -%>
 	</div>
-      <% end -%>
+      </div>
 
       <div class="row media suggestion">
 	<div class="media-body">
