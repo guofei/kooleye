@@ -21,12 +21,19 @@ class ApplicationController < ActionController::Base
     if (request.fullpath != "/users/sign_in" &&
         request.fullpath != "/users/sign_up" &&
         request.fullpath != "/users/password" &&
+        request.fullpath != "/admin" &&
+        request.fullpath != "/admin/login" &&
+        request.fullpath != "/admin/logout" &&
         !request.xhr?) # don't store ajax calls
       session[:previous_url] = request.fullpath
     end
   end
 
   def after_sign_in_path_for(resource)
-    session[:previous_url] || root_path
+    if current_admin_user.blank?
+      session[:previous_url] || root_path
+    else
+      admin_dashboard_path
+    end
   end
 end

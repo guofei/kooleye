@@ -1,5 +1,10 @@
 <% if @like.new_record? %>
   alert("すでにLikeしました")
 <% else %>
-  $("#like").html('<%= j(render :partial=>"thing", locals: {thing: @thing}) %>')
+  if($("#like")[0]){
+    $("#like").html('<%= j(render :partial=>"thing", locals: {thing: @thing}) %>');
+  }
+  if($("#like-<%= @thing.id %>")[0]){
+    $("#like-<%= @thing.id %>").html('<%= j(render :partial=>"welcome", locals: {thing: @thing}) %>');
+  }
 <% end %>

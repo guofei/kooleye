@@ -1,5 +1,10 @@
 <% if @havable.new_record? %>
   alert("すでにHaveしました")
 <% else %>
-  $("#have").html('<%= j(render :partial=>"thing", locals: {thing: @thing}) %>')
+  if($("#have")[0]){
+    $("#have").html('<%= j(render :partial=>"thing", locals: {thing: @thing}) %>')
+  }
+  if($("#have-<%= @thing.id %>")[0]){
+    $("#have-<%= @thing.id %>").html('<%= j(render :partial=>"welcome", locals: {thing: @thing}) %>');
+  }
 <% end %>
