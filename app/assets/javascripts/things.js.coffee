@@ -7,6 +7,10 @@ $ ->
                 $container.masonry itemSelector : '.masonry-item'
 
 $ ->
+        $('[data-toggle="tooltip"]').tooltip({'placement': 'bottom'})
+
+
+$ ->
         $("#upload-btn").click ->
                 $("#upload_file").click()
 

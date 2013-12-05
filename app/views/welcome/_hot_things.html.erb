@@ -7,8 +7,8 @@
 	    <%= link_to_thing_thumbnail thing -%>
 	    <center>
 	      <%= content_tag(:p, "#{thing.name} #{thing.summary}") -%>
-	      <%= link_to thing_likes_path(thing), remote: true, method: "post", id: "like-#{thing.id}", style: "color: darkred" do like_icon thing end -%>&nbsp;
-	      <%= link_to thing_havables_path(thing), remote:true, method: "post", id: "have-#{thing.id}", style: "color: darkgreen;" do have_icon thing end -%>
+	      <%= link_to thing_likes_path(thing), remote: true, method: "post", id: "like-#{thing.id}", "data-toggle" => "tooltip", title: "クリックで投票", style: "color: darkred" do like_icon thing end -%>&nbsp;
+	      <%= link_to thing_havables_path(thing), remote:true, method: "post", id: "have-#{thing.id}", "data-toggle" => "tooltip", title: "クリックで投票", style: "color: darkgreen;" do have_icon thing end -%>
 	    </center>
 	  </div>
 	</div>

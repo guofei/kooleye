@@ -6,10 +6,10 @@
 
       <ul class="list-unstyled">
 	<li>
-	  <%= link_to thing_likes_path(@thing), remote: true, method: "post", id: 'like' do fa_stacked_icon "heart-o", base: "square-o", text: "Like it (#{@thing.likes.size}人)", class: "fa-lg" end -%>
+	  <%= link_to thing_likes_path(@thing), remote: true, method: "post", id: 'like', "data-toggle" => "tooltip", title: "クリックで投票" do fa_stacked_icon "heart-o", base: "square-o", text: "Like it (#{@thing.likes.size}人)", class: "fa-lg" end -%>
 	</li>
 	<li>
-	  <%= link_to thing_havables_path(@thing), remote:true, method: "post", id: 'have' do fa_stacked_icon "flag-o", base: "square-o", text: "Have it (#{@thing.havables.size}人)", class: "fa-lg" end -%>
+	  <%= link_to thing_havables_path(@thing), remote:true, method: "post", id: 'have', "data-toggle" => "tooltip", title: "クリックで投票" do fa_stacked_icon "flag-o", base: "square-o", text: "Have it (#{@thing.havables.size}人)", class: "fa-lg" end -%>
 	</li>
 	<li>
 	  <%= link_to "https://www.facebook.com/sharer/sharer.php?u=#{thing_url(@thing)}", target: "_blank" do fa_stacked_icon "facebook", base: "square-o", text: "Facebookでシェア", class: "fa-lg" end -%>
