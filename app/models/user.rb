@@ -31,7 +31,7 @@ class User < ActiveRecord::Base
 
   def send_to_facebook(msg, page_title, page_url)
     begin
-      client = authorizations.last.facebook_client
+      client = get_auth("facebook").facebook_client
       client.put_wall_post(ActionController::Base.helpers.strip_tags(msg), {name: page_title, link: page_url}) if client
     rescue Koala::KoalaError => e
       p e
@@ -40,15 +40,17 @@ class User < ActiveRecord::Base
 
   def send_to_twitter(msg, url)
     begin
-      client = authorizations.last.twitter_client
+      client = get_auth("twitter").twitter_client
       client.update(ActionController::Base.helpers.strip_tags(msg)[0, 100] + " " + url) if client
     rescue Twitter::Error => e
       p e
     end
   end
 
-  def send_facebook
-
+  def get_auth(provider)
+    authorizations.reverse_each do |auth|
+      return auth if auth.provider == provider
+    end
   end
 
   def set_profile(name, url, image)

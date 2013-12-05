@@ -12,6 +12,18 @@ describe User do
   it { should respond_to(:send_to_facebook) }
   it { should respond_to(:send_to_twitter) }
 
+  it "get auth" do
+    user.save
+    fb = FactoryGirl.build(:authorization, user: user)
+    fb.provider = "facebook"
+    fb.save
+    twi = FactoryGirl.build(:authorization, user: user)
+    twi.provider = "twitter"
+    twi.save
+    expect(user.get_auth("facebook")).to eq fb
+    expect(user.get_auth("twitter")).to eq twi
+  end
+
   it "set profile" do
     user.name = nil
     user.url = nil
