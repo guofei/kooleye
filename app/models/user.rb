@@ -49,7 +49,7 @@ class User < ActiveRecord::Base
 
   def get_auth(provider)
     authorizations.reverse_each do |auth|
-      return auth if auth.provider == provider
+      return auth if auth.provider == provider.to_s
     end
   end
 

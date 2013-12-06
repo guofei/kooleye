@@ -9,13 +9,28 @@ describe Thing do
   it { should respond_to(:youtube_id) }
   it { should respond_to(:generate_token) }
   it { should respond_to(:token) }
+  it { should respond_to(:count_by) }
 
-  describe "token" do
-    it "generate token" do
-      random_token = thing.generate_token
-      expect(random_token.size).to be > 0
-      expect(random_token).to eq thing.token
+  describe "count by" do
+    before do
+      thing.save
+      FactoryGirl.create(:vote, user: user, thing: thing)
+      FactoryGirl.create(:vote, user: user, thing: thing, vote_type: "")
+      FactoryGirl.create(:vote, user: user, thing: thing, vote_type: "have")
     end
+    it "count by like" do
+      expect(thing.votes.count).to eq 3
+      expect(thing.count_by(:like)).to eq 2
+    end
+    it "count by have" do
+      expect(thing.count_by(:have)).to eq 1
+    end
+  end
+
+  it "generate token" do
+    random_token = thing.generate_token
+    expect(random_token.size).to be > 0
+    expect(random_token).to eq thing.token
   end
 
   describe "when name is not present" do

@@ -34,6 +34,12 @@ class Thing < ActiveRecord::Base
     user.things.take(size) + self.class.sort_by_hot.take(n - size)
   end
 
+  def count_by(type)
+    votes.select do |v|
+      v.vote_type == type.to_s || (v.vote_type.blank? && type.to_s == "like")
+    end.count
+  end
+
   def youtube_id
     return $1 if video[/youtu\.be\/([^\?]*)/]
     return $5 if video[/^.*((v\/)|(embed\/)|(watch\?))\??v?=?([^\&\?]*).*/]

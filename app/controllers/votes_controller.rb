@@ -1,10 +1,12 @@
 class VotesController < ApplicationController
   before_filter :authenticate_user!, only: [:create]
   def create
+    @type = params[:type] == "have" ? "have":"like"
     @thing = Thing.find(params[:thing_id])
-    @like = @thing.votes.build
-    @like.user = current_user
-    @like.save if not @like.duplication?
+    @vote = @thing.votes.build
+    @vote.user = current_user
+    @vote.vote_type = @type
+    @vote.save if not @vote.duplication?
     respond_to do |format|
       format.html { redirect_to thing_path(@thing) }
       format.js

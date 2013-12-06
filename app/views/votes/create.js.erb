@@ -1,10 +1,10 @@
-<% if @like.new_record? %>
-  alert("すでにLikeしました")
+<% if @vote.new_record? %>
+  alert("すでに<%= @type %>しました");
 <% else %>
-  if($("#like")[0]){
-    $("#like").html('<%= j(render :partial=>"thing", locals: {thing: @thing}) %>');
+  if($("#<%= @type %>")[0]){
+    $("#<%= @type %>").html('<%= j(render :partial=>"thing", locals: {thing: @thing, type: @type}) %>');
   }
-  if($("#like-<%= @thing.id %>")[0]){
-    $("#like-<%= @thing.id %>").html('<%= j(render :partial=>"welcome", locals: {thing: @thing}) %>');
+  if($("#<%= @type %>-<%= @thing.id %>")[0]){
+    $("#<%= @type %>-<%= @thing.id %>").html('<%= j(render :partial=>"icons", locals: {thing: @thing, type: @type}) %>');
   }
 <% end %>

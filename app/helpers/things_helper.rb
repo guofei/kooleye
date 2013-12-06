@@ -1,19 +1,27 @@
 # -*- coding: utf-8 -*-
 module ThingsHelper
   def like_icon(thing)
-    fa_icon "heart", text: "#{thing.votes.size}"
+    fa_icon "heart", text: "#{thing.count_by(:like)}"
   end
 
   def have_icon(thing)
-    fa_icon "flag", text: "#{thing.havables.size}"
+    fa_icon "flag", text: "#{thing.count_by(:have)}"
   end
 
   def link_to_like_icon(thing)
-    link_to thing_votes_path(thing), remote: true, method: "post", id: "like-#{thing.id}", "data-toggle" => "tooltip", title: "クリックで投票", style: "color: darkred" do like_icon thing end
+    link_to thing_votes_path(thing, type: "like"), remote: true, method: "post", id: "like-#{thing.id}", "data-toggle" => "tooltip", title: "クリックで投票", style: "color: darkred" do like_icon thing end
   end
 
   def link_to_have_icon(thing)
-    link_to thing_havables_path(thing), remote:true, method: "post", id: "have-#{thing.id}", "data-toggle" => "tooltip", title: "クリックで投票", style: "color: darkgreen;" do have_icon thing end
+    link_to thing_votes_path(thing, type: "have"), remote: true, method: "post", id: "have-#{thing.id}", "data-toggle" => "tooltip", title: "クリックで投票", style: "color: darkgreen;" do have_icon thing end
+  end
+
+  def link_to_like_li(thing)
+    link_to thing_votes_path(thing, type: "like"), remote: true, method: "post", id: 'like', "data-toggle" => "tooltip", title: "クリックで投票" do fa_stacked_icon "heart-o", base: "square-o", text: "Like it (#{thing.count_by(:like)}人)", class: "fa-lg" end
+  end
+
+  def link_to_have_li(thing)
+    link_to thing_votes_path(thing, type: "have"), remote: true, method: "post", id: 'have', "data-toggle" => "tooltip", title: "クリックで投票" do fa_stacked_icon "flag-o", base: "square-o", text: "Have it (#{thing.count_by(:have)}人)", class: "fa-lg" end
   end
 
   def link_to_thing_thumbnail(thing)

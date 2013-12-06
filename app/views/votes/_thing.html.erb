@@ -1,1 +1,5 @@
-<%= link_to thing_votes_path(thing), remote: true, method: "post", id: 'like' do fa_stacked_icon "heart-o", base: "square-o", text: "Like it (#{thing.votes.size}人)", class: "fa-lg" end -%>
+<% if type == "like" -%>
+  <%= link_to_like_li thing -%>
+<% elsif type == "have" -%>
+  <%= link_to_have_li thing -%>
+<% end -%>
