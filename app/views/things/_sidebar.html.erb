@@ -6,7 +6,7 @@
 
       <ul class="list-unstyled">
 	<li>
-	  <%= link_to thing_likes_path(@thing), remote: true, method: "post", id: 'like', "data-toggle" => "tooltip", title: "クリックで投票" do fa_stacked_icon "heart-o", base: "square-o", text: "Like it (#{@thing.likes.size}人)", class: "fa-lg" end -%>
+	  <%= link_to thing_votes_path(@thing), remote: true, method: "post", id: 'like', "data-toggle" => "tooltip", title: "クリックで投票" do fa_stacked_icon "heart-o", base: "square-o", text: "Like it (#{@thing.votes.size}人)", class: "fa-lg" end -%>
 	</li>
 	<li>
 	  <%= link_to thing_havables_path(@thing), remote:true, method: "post", id: 'have', "data-toggle" => "tooltip", title: "クリックで投票" do fa_stacked_icon "flag-o", base: "square-o", text: "Have it (#{@thing.havables.size}人)", class: "fa-lg" end -%>
@@ -39,9 +39,9 @@
 	  <div class="media-heading">
 	    <%= fa_icon "heart-o", text: "Likeした人" -%>
 	  </div>
-	  <% if @thing.likes.size > 0 -%>
+	  <% if @thing.votes.size > 0 -%>
 	    <div class="imgs">
-	      <% @thing.likes[0, 50].each do |like| -%><%= link_to_user_mini_image like.user -%><% end -%>
+	      <% @thing.votes[0, 50].each do |like| -%><%= link_to_user_mini_image like.user -%><% end -%>
 	    </div>
 	  <% else -%>
 	    <div class="no">

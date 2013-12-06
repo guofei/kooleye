@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 module ThingsHelper
   def like_icon(thing)
-    fa_icon "heart", text: "#{thing.likes.size}"
+    fa_icon "heart", text: "#{thing.votes.size}"
   end
 
   def have_icon(thing)
@@ -9,7 +9,7 @@ module ThingsHelper
   end
 
   def link_to_like_icon(thing)
-    link_to thing_likes_path(thing), remote: true, method: "post", id: "like-#{thing.id}", "data-toggle" => "tooltip", title: "クリックで投票", style: "color: darkred" do like_icon thing end
+    link_to thing_votes_path(thing), remote: true, method: "post", id: "like-#{thing.id}", "data-toggle" => "tooltip", title: "クリックで投票", style: "color: darkred" do like_icon thing end
   end
 
   def link_to_have_icon(thing)

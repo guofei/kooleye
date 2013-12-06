@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 require 'spec_helper'
 
-feature 'likes' do
+feature 'votes' do
   let(:thing) { FactoryGirl.create(:thing) }
   let(:user) { FactoryGirl.create(:user) }
-  let(:like) { FactoryGirl.build(:like, user: user, thing: thing) }
+  let(:like) { FactoryGirl.build(:vote, user: user, thing: thing) }
   context 'as a guest' do
     background do
       visit thing_path(thing)
@@ -23,14 +23,14 @@ feature 'likes' do
     end
 
     scenario 'like' do
-      expect{ click_link "like" }.to change(thing.likes, :count).by(1)
+      expect{ click_link "like" }.to change(thing.votes, :count).by(1)
     end
 
     scenario 'like twice' do
       expect do
         click_link "like"
         click_link "like"
-      end.to change(thing.likes, :count).by(1)
+      end.to change(thing.votes, :count).by(1)
     end
   end
 end

@@ -4,7 +4,7 @@ feature 'welcome page' do
   let!(:hot_thing) { FactoryGirl.create(:thing) }
   let!(:new_thing) { FactoryGirl.create(:thing) }
   let!(:user) { FactoryGirl.create(:user) }
-  let!(:like) { FactoryGirl.create(:like, user: user, thing: hot_thing) }
+  let!(:like) { FactoryGirl.create(:vote, user: user, thing: hot_thing) }
 
   background { visit root_path }
 

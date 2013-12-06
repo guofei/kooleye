@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131201063349) do
+ActiveRecord::Schema.define(version: 20131206081753) do
 
   create_table "abouts", force: true do |t|
     t.string   "title"
@@ -97,16 +97,6 @@ ActiveRecord::Schema.define(version: 20131201063349) do
 
   add_index "images", ["thing_id"], name: "index_images_on_thing_id"
 
-  create_table "likes", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "thing_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "likes", ["thing_id"], name: "index_likes_on_thing_id"
-  add_index "likes", ["user_id"], name: "index_likes_on_user_id"
-
   create_table "things", force: true do |t|
     t.string   "name"
     t.string   "summary"
@@ -140,5 +130,15 @@ ActiveRecord::Schema.define(version: 20131201063349) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "votes", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "thing_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "votes", ["thing_id"], name: "index_votes_on_thing_id"
+  add_index "votes", ["user_id"], name: "index_votes_on_user_id"
 
 end

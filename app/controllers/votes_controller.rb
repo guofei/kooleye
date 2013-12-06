@@ -1,8 +1,8 @@
-class LikesController < ApplicationController
+class VotesController < ApplicationController
   before_filter :authenticate_user!, only: [:create]
   def create
     @thing = Thing.find(params[:thing_id])
-    @like = @thing.likes.build
+    @like = @thing.votes.build
     @like.user = current_user
     @like.save if not @like.duplication?
     respond_to do |format|
