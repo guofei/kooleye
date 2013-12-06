@@ -17,14 +17,17 @@
 		<%= f.email_field :email, :autofocus => true, class: "form-control" %>
 	      </div>
 	      <div class="form-group">
-		<%= f.label :password %>
+		<%= f.label "パスワード" %>
 		<%= f.password_field :password, class: "form-control" %>
 	      </div>
 	      <div class="form-group">
-		<%= f.label :password_confirmation %>
+		<%= f.label "パスワードの確認" %>
 		<%= f.password_field :password_confirmation, class: "form-control" %>
 	      </div>
-	      <%= f.submit "Sign up", class:"btn btn-default" %>
+	      <div class="form-group">
+		会員登録をいただく場合はこちらの<%= link_to About.first.title, about_path(About.first) %>に同意したものとみなされます。
+	      </div>
+	      <%= f.submit "会員登録", class:"btn btn-default" %>
 	    <% end %>
 	    <%= render "devise/shared/links" %>
 	  </div>
