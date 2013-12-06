@@ -35,9 +35,7 @@ class Thing < ActiveRecord::Base
   end
 
   def count_by(type)
-    votes.select do |v|
-      v.vote_type == type.to_s || (v.vote_type.blank? && type.to_s == "like")
-    end.count
+    votes.select { |v| v.vote_type == type.to_s }.count
   end
 
   def youtube_id

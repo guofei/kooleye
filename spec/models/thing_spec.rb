@@ -15,7 +15,7 @@ describe Thing do
     before do
       thing.save
       FactoryGirl.create(:vote, user: user, thing: thing)
-      FactoryGirl.create(:vote, user: user, thing: thing, vote_type: "")
+      FactoryGirl.create(:vote, user: user, thing: thing)
       FactoryGirl.create(:vote, user: user, thing: thing, vote_type: "have")
     end
     it "count by like" do

@@ -41,7 +41,9 @@
 	  </div>
 	  <% if @thing.votes.size > 0 -%>
 	    <div class="imgs">
-	      <% @thing.votes[0, 50].each do |like| -%><%= link_to_user_mini_image like.user -%><% end -%>
+	      <% @thing.votes[0, 50].each do |vote| -%>
+		<%= link_to_user_mini_image vote.user if vote.vote_type == "like" -%>
+	      <% end -%>
 	    </div>
 	  <% else -%>
 	    <div class="no">
