@@ -31,7 +31,7 @@ class Thing < ActiveRecord::Base
   def other_things(n = 9)
     return self.class.sort_by_hot.take(n) if not user
     size = user.things.size > n ? n/2 : user.things.size
-    user.things.take(size) + self.class.sort_by_hot.take(n - size)
+    (user.things.take(size) + self.class.sort_by_hot.take(n - size)).uniq
   end
 
   def count_by(type)

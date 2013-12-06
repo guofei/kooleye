@@ -1,34 +1,34 @@
 <div class="col-xs-12 col-md-3">
   <div class="panel panel-default">
     <div class="panel-body">
-      <%= link_to "Amazonで購入", thing_buys_path(@thing), class: "btn btn-primary btn-lg btn-block", id: "buy-btn", target: "_blank" -%>
+      <%= link_to "Amazonで購入", thing_buys_path(thing), class: "btn btn-primary btn-lg btn-block", id: "buy-btn", target: "_blank" -%>
       <hr />
 
       <ul class="list-unstyled">
 	<li>
-	  <%= link_to_like_li @thing -%>
+	  <%= link_to_like_li thing -%>
 	</li>
 	<li>
-	  <%= link_to_have_li @thing -%>
+	  <%= link_to_have_li thing -%>
 	</li>
 	<li>
-	  <%= link_to "https://www.facebook.com/sharer/sharer.php?u=#{thing_url(@thing)}", target: "_blank" do fa_stacked_icon "facebook", base: "square-o", text: "Facebookでシェア", class: "fa-lg" end -%>
+	  <%= link_to "https://www.facebook.com/sharer/sharer.php?u=#{thing_url(thing)}", target: "_blank" do fa_stacked_icon "facebook", base: "square-o", text: "Facebookでシェア", class: "fa-lg" end -%>
 	</li>
 	<li>
-	  <%= link_to "http://twitter.com/share?url=#{thing_url(@thing)}&text=#{@thing.name}", target: "_blank" do fa_stacked_icon "twitter", base: "square-o", text: "Twitterでつぶやく", class: "fa-lg" end -%>
+	  <%= link_to "http://twitter.com/share?url=#{thing_url(thing)}&text=#{thing.name}", target: "_blank" do fa_stacked_icon "twitter", base: "square-o", text: "Twitterでつぶやく", class: "fa-lg" end -%>
 	</li>
       </ul>
 
       <hr />
 
       <div class="media">
-	<% if @thing.user -%>
-	  <%= link_to_user_image @thing.user -%>
+	<% if thing.user -%>
+	  <%= link_to_user_image thing.user -%>
 	  <div class="media-body">
 	    <div class="media-heading">
 	      作成者：
 	    </div>
-	    <%= link_to_user_page @thing.user -%>
+	    <%= link_to_user_page thing.user -%>
 	  </div>
 	<% end -%>
       </div>
@@ -39,9 +39,9 @@
 	  <div class="media-heading">
 	    <%= fa_icon "heart-o", text: "Likeした人" -%>
 	  </div>
-	  <% if @thing.count_by(:like) > 0 -%>
+	  <% if thing.count_by(:like) > 0 -%>
 	    <div class="imgs">
-	      <% @thing.votes[0, 50].each do |vote| -%><%= link_to_user_mini_image vote.user if vote.vote_type == "like" -%><% end -%>
+	      <% thing.votes[0, 50].each do |vote| -%><%= link_to_user_mini_image vote.user if vote.vote_type == "like" -%><% end -%>
 	    </div>
 	  <% else -%>
 	    <div class="no">
@@ -51,14 +51,14 @@
 	</div>
       </div>
 
-      <% if @thing.count_by(:have) > 0 -%>
+      <% if thing.count_by(:have) > 0 -%>
 	<div class="row media suggestion">
 	  <div class="media-body">
 	    <div class="media-heading">
 	      <%= fa_icon "flag-o", text: "Havaした人" -%>
 	    </div>
 	    <div class="imgs">
-	      <% @thing.votes[0, 50].each do |vote| -%><%= link_to_user_mini_image vote.user if vote.vote_type == "have" -%><% end -%>
+	      <% thing.votes[0, 50].each do |vote| -%><%= link_to_user_mini_image vote.user if vote.vote_type == "have" -%><% end -%>
 	    </div>
 	  </div>
 	</div>
@@ -69,7 +69,7 @@
 	  <div class="media-heading">
 	    <%= fa_icon "thumbs-o-up", text: "これにも注目" -%>
 	  </div>
-	  <% @thing.other_things.each do |thing| -%>
+	  <% thing.other_things.each do |thing| -%>
 	    <% if thing.images.size > 0 -%>
 	      <div class="col-xs-4">
 		<%= link_to thing_path(thing) do image_tag thing.images.first.thumb_url, class: "img-thumbnail" end -%>
