@@ -2,7 +2,7 @@
 def login_as(user)
   visit new_user_session_path
   fill_in 'Email', with: user.email
-  fill_in 'Password', with: user.password
+  fill_in 'user_password', with: user.password
   click_button 'Sign in'
 end
 
@@ -10,7 +10,7 @@ def login_by_webkit(user)
   visit new_user_session_path
   click_link_or_button 'Kooleye IDでログイン'
   fill_in 'Email', with: user.email
-  fill_in 'Password', with: user.password
+  fill_in 'user_password', with: user.password
   click_link_or_button 'kooleye-id-sign-in'
 end
 
