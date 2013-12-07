@@ -14,6 +14,7 @@ else
       :provider               => 'AWS',
       :aws_access_key_id      => ENV["AWS_S3_KEY_ID"],
       :aws_secret_access_key  => ENV["AWS_S3_SECRET_KEY"],
+      :region                 => "ap-northeast-1",#tokyo
       :path_style             => true
     }
     config.asset_host     = ENV["CDN_HOST"]
