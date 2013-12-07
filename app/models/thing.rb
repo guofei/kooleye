@@ -48,12 +48,6 @@ class Thing < ActiveRecord::Base
     end
   end
 
-  def youtube_id
-    return $1 if video[/youtu\.be\/([^\?]*)/]
-    return $5 if video[/^.*((v\/)|(embed\/)|(watch\?))\??v?=?([^\&\?]*).*/]
-    nil
-  end
-
   #http://www.ruanyifeng.com/blog/2012/02/ranking_algorithm_hacker_news.html
   def score(votes)
     t = (Time.zone.now - self.created_at) / (60 * 60)

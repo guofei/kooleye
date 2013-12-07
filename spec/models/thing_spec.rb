@@ -6,7 +6,7 @@ describe Thing do
   subject{ thing }
 
   it { should respond_to(:other_things) }
-  it { should respond_to(:youtube_id) }
+  it { should respond_to(:has_video?) }
   it { should respond_to(:generate_token) }
   it { should respond_to(:token) }
   it { should respond_to(:count_by) }
@@ -67,18 +67,22 @@ describe Thing do
     its("other_things.size") { should eq 2 }
   end
 
-  describe "youtube it" do
-    context "www.youtube.com/watch?v=id" do
-      before{ thing.video = "www.youtube.com/watch?v=id" }
-      its(:youtube_id) { should eq("id") }
+  describe "has video?" do
+    context "youtube" do
+      before{ thing.video = "http://www.youtube.com/watch?v=h4B5vtaAGN0" }
+      its(:has_video?) { should be_true }
     end
-    context "youtu.be/id" do
-      before{ thing.video = "youtu.be/id" }
-      its(:youtube_id) { should eq("id") }
+    context "youtu.be" do
+      before{ thing.video = "http://youtu.be/h4B5vtaAGN0" }
+      its(:has_video?) { should be_true }
     end
-    context "noid" do
+    context "vimeo" do
+      before{ thing.video = "http://vimeo.com/80605992" }
+      its(:has_video?) { should be_true }
+    end
+    context "no video" do
       before{ thing.video = "" }
-      its(:youtube_id) { should be_nil }
+      its(:has_video?) { should be_false }
     end
   end
 end

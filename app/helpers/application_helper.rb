@@ -4,12 +4,6 @@ module ApplicationHelper
     content_for :title, page_title.to_s
   end
 
-  def youtube_embed(thing)
-    content_tag(:div, class: "video-container") do
-      content_tag(:iframe, '', src: "//www.youtube.com/embed/#{thing.youtube_id}", frameborder: "0", width: "560", height: "315")
-    end
-  end
-
   def timeago(t)
     humanword = time_ago_in_words t
     return humanword if humanword.include? "以" or humanword.include? "未満"
