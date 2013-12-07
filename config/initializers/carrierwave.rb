@@ -14,7 +14,7 @@ else
       :provider               => 'AWS',
       :aws_access_key_id      => ENV["AWS_S3_KEY_ID"],
       :aws_secret_access_key  => ENV["AWS_S3_SECRET_KEY"],
-      :endpoint               => 'http://s3.amazonaws.com'
+      :path_style             => true
     }
     config.asset_host     = ENV["CDN_HOST"]
     config.fog_directory  = ENV["AWS_S3_BUCKET"]                    # required
