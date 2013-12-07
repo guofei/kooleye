@@ -6,7 +6,7 @@ module ApplicationHelper
 
   def youtube_embed(thing)
     content_tag(:div, class: "video-container") do
-      content_tag(:iframe, '', src: "https://www.youtube.com/embed/#{thing.youtube_id}", frameborder: "0", width: "560", height: "315")
+      content_tag(:iframe, '', src: "//www.youtube.com/embed/#{thing.youtube_id}", frameborder: "0", width: "560", height: "315")
     end
   end
 
