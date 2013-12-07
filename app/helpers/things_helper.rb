@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+require 'video_info'
+
 module ThingsHelper
   def like_icon(thing)
     fa_icon "heart", text: "#{thing.count_by(:like)}"
@@ -42,5 +44,11 @@ module ThingsHelper
   def facebook?
     return false if not user_signed_in?
     return !current_user.get_auth(:facebook).blank?
+  end
+
+  def video_embed_code(thing)
+    content_tag(:div, class: "video-container") do
+      raw VideoInfo.new(thing.video).embed_code(iframe_attributes: { width: 560, height: 315 }, url_scheme: 'https')
+    end
   end
 end

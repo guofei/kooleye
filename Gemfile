@@ -88,6 +88,8 @@ gem 'ckeditor_rails'
 
 gem 'masonry-rails'
 
+gem 'video_info'
+
 # for heroku
 gem 'unicorn'
 gem 'rails_12factor', group: :production

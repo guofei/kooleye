@@ -1,3 +1,5 @@
+require 'video_info'
+
 class Thing < ActiveRecord::Base
   has_many :images, dependent: :destroy
   has_many :comments
@@ -35,6 +37,15 @@ class Thing < ActiveRecord::Base
 
   def count_by(type)
     votes.select { |v| v.vote_type == type.to_s }.count
+  end
+
+  def has_video?
+    begin
+      VideoInfo.new(video)
+      return true
+    rescue VideoInfo::UrlError => e
+      return false
+    end
   end
 
   def youtube_id

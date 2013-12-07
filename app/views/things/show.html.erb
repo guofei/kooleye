@@ -58,8 +58,8 @@
     <hr class="hidden-xs">
   <% end -%>
 
-  <% if not @thing.youtube_id.nil? -%>
-    <%= youtube_embed(@thing) -%>
+  <% if @thing.has_video? -%>
+    <%= video_embed_code @thing -%>
     <hr />
   <% end -%>
 
