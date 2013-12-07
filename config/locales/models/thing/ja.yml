@@ -5,6 +5,6 @@ ja:
     attributes:
       thing:
         name: 商品名
-        video: ビデオURL（YouTube）
+        video: ビデオURL（YouTubeあるいはvimeo）
         summary: 概要
         introduction: 詳細
