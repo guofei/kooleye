@@ -11,12 +11,12 @@ class Authorization < ActiveRecord::Base
     return if self.token.blank?
     begin
       graph = facebook_client
+      fbdata = graph.get_object("me")
+      self.user.set_profile fbdata['name'], fbdata['link'], "https://graph.facebook.com/" + fbdata['id'] + "/picture?type=square"
       if not graph.debug_token(self.token)["data"]["scopes"].include? "publish_stream"
         set_token_nil
         return
       end
-      fbdata = graph.get_object("me")
-      self.user.set_profile fbdata['name'], fbdata['link'], "https://graph.facebook.com/" + fbdata['id'] + "/picture?type=square"
     rescue Koala::KoalaError => e
       p e
       set_token_nil
