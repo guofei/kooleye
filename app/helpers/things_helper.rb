@@ -47,6 +47,7 @@ module ThingsHelper
   end
 
   def video_embed_code(thing)
+    return if !thing.has_video?
     content_tag(:div, class: "video-container") do
       raw VideoInfo.new(thing.video).embed_code(iframe_attributes: { width: 560, height: 315 }, url_scheme: 'https')
     end
