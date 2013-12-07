@@ -17,10 +17,10 @@
   </div>
   <div class="form-group">
     <label class="checkbox-inline">
-      <%= check_box 'sync', 'twitter', {:checked => twitter?(@thing)} %><%= fa_icon "twitter-square", text: "に投稿" -%>
+      <%= check_box 'sync', 'twitter', {:checked => twitter?} %><%= fa_icon "twitter-square", text: "に投稿" -%>
     </label>
     <label class="checkbox-inline">
-      <%= check_box 'sync', 'facebook', {:checked => facebook?(@thing)} %><%= fa_icon "facebook-square", text: "に投稿" -%>
+      <%= check_box 'sync', 'facebook', {:checked => facebook?} %><%= fa_icon "facebook-square", text: "に投稿" -%>
     </label>
   </div>
   <%= f.button :submit  %>

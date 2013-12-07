@@ -16,7 +16,7 @@ class Authorization < ActiveRecord::Base
         return
       end
       fbdata = graph.get_object("me")
-      self.user.set_profile fbdata['name'], fbdata['link'], "http://graph.facebook.com/" + fbdata['id'] + "/picture?type=square"
+      self.user.set_profile fbdata['name'], fbdata['link'], "https://graph.facebook.com/" + fbdata['id'] + "/picture?type=square"
     rescue Koala::KoalaError => e
       p e
       set_token_nil
@@ -27,7 +27,7 @@ class Authorization < ActiveRecord::Base
     return if self.token.blank? or self.secret.blank?
     begin
       twitter = twitter_client
-      self.user.set_profile twitter.user.user_name.to_s, twitter.user.url.to_s, twitter.user.profile_image_uri.to_s
+      self.user.set_profile twitter.user.user_name.to_s, twitter.user.url.to_s, twitter.user.profile_image_uri_https.to_s
     rescue Twitter::Error => e
       p e
       set_token_nil

@@ -34,15 +34,13 @@ module ThingsHelper
     end
   end
 
-  def twitter?(thing)
+  def twitter?
     return false if not user_signed_in?
-    return false if current_user.authorizations.size == 0
-    current_user.authorizations.last.provider == 'twitter'
+    return !current_user.get_auth(:twitter).blank?
   end
 
-  def facebook?(thing)
+  def facebook?
     return false if not user_signed_in?
-    return false if current_user.authorizations.size == 0
-    current_user.authorizations.last.provider == 'facebook'
+    return !current_user.get_auth(:facebook).blank?
   end
 end
