@@ -52,4 +52,10 @@ module ThingsHelper
       raw VideoInfo.new(thing.video).embed_code(iframe_attributes: { width: 560, height: 315 }, url_scheme: 'https')
     end
   end
+
+  def rank_tag(thing)
+    link_to "javascript:void(0)", "data-toggle" => "tooltip", title: "LikeやHaveで投票すると順位があがります", id: "rank" do
+      fa_icon "rocket", text: "ランキング順位: #{thing.rank}位"
+    end
+  end
 end

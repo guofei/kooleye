@@ -3,7 +3,7 @@
     <div class="panel-body">
       <%= link_to "Amazonで購入", thing_buys_path(thing), class: "btn btn-primary btn-lg btn-block", id: "buy-btn", target: "_blank" -%>
       <hr />
-
+      <h5><%= rank_tag thing -%></h5>
       <ul class="list-unstyled">
 	<li>
 	  <%= link_to_like_li thing -%>

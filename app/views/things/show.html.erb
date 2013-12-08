@@ -65,6 +65,7 @@
 
 
   <p><%= sanitize @thing.introduction -%></p>
+  <div class="fb-like" data-href="<%= thing_url @thing %>" data-layout="standard" data-action="recommend" data-show-faces="true" data-share="true"></div>
 
   <%= render template: "comments/index" -%>
   <br />

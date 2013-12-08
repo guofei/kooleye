@@ -3,6 +3,7 @@
 <% else %>
   if($("#<%= @type %>")[0]){
     $("#<%= @type %>").html('<%= j(render :partial=>"thing", locals: {thing: @thing, type: @type}) %>');
+    $("#rank").html('<%= rank_tag @thing %>');
   }
   if($("#<%= @type %>-<%= @thing.id %>")[0]){
     $("#<%= @type %>-<%= @thing.id %>").html('<%= j(render :partial=>"icons", locals: {thing: @thing, type: @type}) %>');

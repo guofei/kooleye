@@ -3,6 +3,7 @@ require 'spec_helper'
 describe Thing do
   let(:user) { FactoryGirl.create(:user) }
   let(:thing) { FactoryGirl.build(:thing) }
+  let(:thing2) { FactoryGirl.build(:thing) }
   subject{ thing }
 
   it { should respond_to(:other_things) }
@@ -24,6 +25,21 @@ describe Thing do
     end
     it "count by have" do
       expect(thing.count_by(:have)).to eq 1
+    end
+  end
+
+  describe "rank" do
+    before do
+      thing.save
+      FactoryGirl.create(:vote, user: user, thing: thing)
+      FactoryGirl.create(:vote, user: user, thing: thing)
+      FactoryGirl.create(:vote, user: user, thing: thing, vote_type: "have")
+    end
+    it "get rank 1" do
+      expect(thing.rank).to eq 1
+    end
+    it "get rank 2" do
+      expect(thing2.rank).to eq 2
     end
   end
 

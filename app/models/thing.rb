@@ -22,6 +22,12 @@ class Thing < ActiveRecord::Base
     all
   }
 
+  def rank
+    index = self.class.sort_by_hot.index(self)
+    return index + 1 if index
+    return self.class.all.size + 1
+  end
+
   def generate_token
     self.token = loop do
       random_token = SecureRandom.urlsafe_base64
