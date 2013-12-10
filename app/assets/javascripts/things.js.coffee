@@ -14,6 +14,33 @@ $ ->
         $("#upload-btn").click ->
                 $("#upload_file").click()
 
+# https://coderwall.com/p/uf2pka
+$ ->
+        items = $('#carousel-thing .item') ##grab all slides
+        heights = [] ##create empty array to store height values
+        tallest = 0 ##create variable to make note of the tallest slide
+        if items.length
+                normalizeHeights = ->
+                        ##add heights to array
+                        items.each (index, element) ->
+                                heights.push($(element).height())
+
+                        ##cache largest value
+                        tallest = Math.max.apply null, heights
+                        items.each (index, element) ->
+                                $(element).css('min-height', tallest + 'px')
+                normalizeHeights()
+                $(window).on 'resize orientationchange', ->
+                        ##reset vars
+                        tallest = 0
+                        heights.length = 0
+                        ##reset min-height
+                        items.each (index, element) ->
+                                $(element).css('min-height', '0')
+                        ##run it again
+                        normalizeHeights()
+
+
 jQuery ->
         $('#upload_file').attr('name','image[file]')
         $('#new_upload').fileupload
