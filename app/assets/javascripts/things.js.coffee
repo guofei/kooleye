@@ -17,15 +17,20 @@ $ ->
 $ ->
         $("#upload-btn").click ->
                 $("#upload_file").click()
+$ ->
+        $('#carousel-thing').carousel('pause')
+        $('#carousel-thing').on 'slide.bs.carousel', (e) ->
+                nextH = $(e.relatedTarget).height()
+                $(this).find('.active').parent().animate({ height: nextH }, 500)
+
 
 # https://coderwall.com/p/uf2pka
-$ ->
+setheight = ->
         items = $('#carousel-thing .item') ##grab all slides
         heights = [] ##create empty array to store height values
         tallest = 0 ##create variable to make note of the tallest slide
         normalizeHeights = ->
-                if items.length
-                        return
+                return if not items.length
                 ##add heights to array
                 items.each (index, element) ->
                         heights.push($(element).height())

@@ -63,11 +63,12 @@
     <hr />
   <% end -%>
 
-
   <p><%= sanitize @thing.introduction -%></p>
-  <div class="fb-like" data-href="<%= thing_url @thing %>" data-layout="standard" data-action="recommend" data-show-faces="true" data-share="true"></div>
+  <div class="fb-like" data-href="<%= thing_url @thing %>" data-layout="button_count" data-action="recommend" data-show-faces="true" data-share="true"></div>
 
-  <%= render template: "comments/index" -%>
+  <div id="comments">
+    <%= render template: "comments/index", locals: {thing: @thing} -%>
+  </div>
   <br />
 </div>
 
