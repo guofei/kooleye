@@ -4,34 +4,8 @@
   </h3>
 </div>
 
-<% thing.comments.each do |comment| -%>
-  <div class="media">
-    <%= link_to_user_image(comment.user) -%>
-    <div class="media-body">
-      <div class="media-heading">
-	<%= link_to_user_page comment.user -%>
-	<small><%= timeago comment.created_at -%></small>
-      </div>
-      <%= simple_format comment.content -%>
-    </div>
-  </div>
-<% end -%>
+<div id="comments">
+  <%= render partial: 'comments/comment', collection: thing.comments, as: :comment -%>
+</div>
 
-<% if thing.comments.size > 0 -%>
-  <hr />
-<% end -%>
-
-<%= simple_form_for([thing, thing.comments.build], remote: true) do |f| %>
-  <div class="form-group">
-    <%= f.input :content, label: false, input_html: { class: "form-control", rows: "5" } %>
-  </div>
-  <div class="form-group">
-    <label class="checkbox-inline">
-      <%= check_box 'sync', 'twitter', {:checked => twitter?} %><%= fa_icon "twitter-square", text: "に投稿" -%>
-    </label>
-    <label class="checkbox-inline">
-      <%= check_box 'sync', 'facebook', {:checked => facebook?} %><%= fa_icon "facebook-square", text: "に投稿" -%>
-    </label>
-  </div>
-  <%= f.button :submit, value: t('view.comment.submit'), class: "btn btn-primary" %>
-<% end -%>
+<%= render partial: 'comments/form', locals: {thing: thing} -%>

@@ -1,0 +1,10 @@
+<div class="media">
+  <%= link_to_user_image(comment.user) -%>
+  <div class="media-body">
+    <div class="media-heading">
+      <%= link_to_user_page comment.user -%>
+      <small><%= timeago comment.created_at -%></small>
+    </div>
+    <%= simple_format comment.content -%>
+  </div>
+</div>

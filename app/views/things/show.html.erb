@@ -66,9 +66,7 @@
   <p><%= sanitize @thing.introduction -%></p>
   <div class="fb-like" data-href="<%= thing_url @thing %>" data-layout="button_count" data-action="recommend" data-show-faces="true" data-share="true"></div>
 
-  <div id="comments">
-    <%= render template: "comments/index", locals: {thing: @thing} -%>
-  </div>
+  <%= render template: "comments/index", locals: {thing: @thing} -%>
   <br />
 </div>
 

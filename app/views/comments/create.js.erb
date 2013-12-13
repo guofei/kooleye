@@ -1,1 +1,9 @@
-$("#comments").html('<%= j(render template: 'comments/index', locals: {thing: @thing}) %>');
+<% if @comment -%>
+  $("#comments").append('<%= j(render partial: 'comments/comment', locals: {comment: @comment}) %>');
+<% else -%>
+  alert("Captcha入力が間違っています。もう一回入力してください");
+<% end %>
+
+if($(".recaptcha-reload")[0]){
+  Recaptcha.reload();
+}

@@ -1,0 +1,10 @@
+<div class="form-group">
+  <div id="recaptcha_widget" class="img-thumbnail">
+    <a class="btn recaptcha-reload" href="javascript:Recaptcha.reload()"><div id="recaptcha_image"></div></a>
+  </div>
+  <label>スパム投稿防止のため画像の文字を入力してください(<a data-toggle="modal" data-target="#loginModal" href="#">ログイン</a>するとなくなります)</label>
+</div>
+<div class="form-group">
+  <input class="input form-control" type="text" id="recaptcha_response_field" name="recaptcha_response_field" />
+  <%= recaptcha_tags display: { 'theme' => 'custom', 'custom_theme_widget' => 'recaptcha_widget' }, ajax: true %>
+</div>

@@ -46,3 +46,13 @@
     height:20px;
     border:none;
 }
+
+#recaptcha_image {
+    width: 150px !important;
+    height: 20px !important;
+}
+
+#recaptcha_image img {
+    max-width: 100%;
+    height: auto;
+}
