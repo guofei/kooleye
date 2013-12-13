@@ -36,6 +36,16 @@ module ThingsHelper
     end
   end
 
+  def link_to_thing_small_img(thing)
+    link_to thing_path(thing) do
+      if thing.images.size > 0
+        image_tag thing.images.first.thumb_url, class: "img-thumbnail img-responsive"
+      else
+        thing.name
+      end
+    end
+  end
+
   def twitter?
     return false if not user_signed_in?
     return !current_user.get_auth(:twitter).blank?

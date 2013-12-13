@@ -1,5 +1,26 @@
 <div class="panel panel-info">
   <div class="panel-heading">
+    新着コメント
+  </div>
+  <div class="panel-body">
+    <% Comment.take(10).each do |comment| -%>
+      <div class="media">
+	<div class="pull-right col-xs-4">
+	  <%= link_to_thing_small_img comment.thing -%>
+	</div>
+	<div class="media-body">
+	  <div class="media-heading">
+	    <%= link_to_user_page comment.user -%>さん：
+	  </div>
+	  <%= sanitize comment.short_content -%>
+	</div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="panel panel-info">
+  <div class="panel-heading">
     <%= link_to things_path do fa_icon "external-link", text: "新着アイテム" end -%>
   </div>
   <% @new_things.each do |thing| -%>
