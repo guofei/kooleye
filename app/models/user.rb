@@ -9,7 +9,11 @@ class User < ActiveRecord::Base
   has_many :things, -> { order(updated_at: :desc) }
   has_many :authorizations, :dependent => :destroy
   has_many :comments, :dependent => :destroy
-  has_many :votes, :dependent => :destroy
+  has_many :votes, -> { order(updated_at: :desc) }, :dependent => :destroy
+
+  def votes_by(type)
+    votes.select{|v| v.vote_type == type.to_s }
+  end
 
   def bind_service(response)
     provider = response["provider"]

@@ -2,3 +2,5 @@ ja:
   view:
     thing:
       image-error: "画像をアップロードしてください"
+      vote-like-hint: "クリックで投票(Like)"
+      vote-have-hint: "クリックで投票(Have)"

@@ -1,0 +1,55 @@
+<% if user_signed_in? -%>
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <%= link_to_user_page current_user %>
+    </div>
+    <div class="panel-body">
+	<div class="row media suggestion">
+	  <div class="media-body">
+	    <div class="media-heading">
+	      <%= t('view.user.current_like') %>
+	    </div>
+	    <% if (likes = current_user.votes_by(:like)).count > 0 -%>
+	      <% likes.each_with_index do |v, i| -%>
+		<% break if i >= 8 -%>
+		<%= link_to thing_path(v.thing) do -%>
+		  <div class="col-xs-3">
+		    <%= image_tag v.thing.images.first.thumb_url, class: "img-thumbnail" if v.thing.images.first -%>
+		    <%= link_to v.thing.name, thing_path(v.thing) if v.thing.images.first.blank? -%>
+		  </div>
+		<% end -%>
+	      <% end -%>
+	    <% else -%>
+	      <div class="col-xs-12">
+		<%= fa_icon "exclamation-circle", style: "color: red;" %>
+		<%= t('view.user.no_like') -%>
+	      </div>
+	    <% end -%>
+	  </div>
+	</div>
+	<div class="row media suggestion">
+	  <div class="media-body">
+	    <div class="media-heading">
+	      <%= t('view.user.current_have') %>
+	    </div>
+	    <% if (haves = current_user.votes_by(:have)).count > 0 -%>
+	      <% haves.each_with_index do |v, i| -%>
+		<% break if i >= 8 -%>
+		<%= link_to thing_path(v.thing) do -%>
+		  <div class="col-xs-3">
+		    <%= image_tag v.thing.images.first.thumb_url, class: "img-thumbnail" if v.thing.images.first -%>
+		    <%= link_to v.thing.name, thing_path(v.thing) if v.thing.images.first.blank? -%>
+		  </div>
+		<% end -%>
+	      <% end -%>
+	    <% else -%>
+	      <div class="col-xs-12">
+		<%= fa_icon "exclamation-circle", style: "color: red;" %>
+		<%= t('view.user.no_have') %>
+	      </div>
+	    <% end %>
+	  </div>
+	</div>
+    </div>
+  </div>
+<% end %>

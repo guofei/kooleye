@@ -11,19 +11,43 @@ module ThingsHelper
   end
 
   def link_to_like_icon(thing)
-    link_to thing_votes_path(thing, type: "like"), remote: true, method: "post", id: "like-#{thing.id}", "data-toggle" => "tooltip", title: "クリックで投票", style: "color: darkred" do like_icon thing end
+    link_to thing_votes_path(thing, type: "like"), remote: true, method: "post", id: "like-#{thing.id}", "data-toggle" => "tooltip", title: t('view.thing.vote-like-hint'), style: "color: darkred" do like_icon thing end
   end
 
   def link_to_have_icon(thing)
-    link_to thing_votes_path(thing, type: "have"), remote: true, method: "post", id: "have-#{thing.id}", "data-toggle" => "tooltip", title: "クリックで投票", style: "color: darkgreen;" do have_icon thing end
+    link_to thing_votes_path(thing, type: "have"), remote: true, method: "post", id: "have-#{thing.id}", "data-toggle" => "tooltip", title: t('view.thing.vote-have-hint'), style: "color: darkgreen;" do have_icon thing end
   end
 
   def link_to_like_li(thing)
-    link_to thing_votes_path(thing, type: "like"), remote: true, method: "post", id: 'like', "data-toggle" => "tooltip", title: "クリックで投票" do fa_stacked_icon "heart-o", base: "square-o", text: "Like it (#{thing.count_by(:like)}人)", class: "fa-lg" end
+    link_to thing_votes_path(thing, type: "like"), remote: true, method: "post", id: 'like', "data-toggle" => "tooltip", title: t('view.thing.vote-like-hint') do
+      if (n = thing.count_by(:like)) > 0
+        fa_stacked_icon("heart-o", base: "square-o", class: "fa-lg") + " Like it (#{n}人)" + fa_icon('level-up')
+      else
+        fa_stacked_icon("heart-o", base: "square-o", class: "fa-lg") + " Like it (#{n}人)" + fa_icon('level-down')
+      end
+    end
   end
 
   def link_to_have_li(thing)
-    link_to thing_votes_path(thing, type: "have"), remote: true, method: "post", id: 'have', "data-toggle" => "tooltip", title: "クリックで投票" do fa_stacked_icon "flag-o", base: "square-o", text: "Have it (#{thing.count_by(:have)}人)", class: "fa-lg" end
+    link_to thing_votes_path(thing, type: "have"), remote: true, method: "post", id: 'have', "data-toggle" => "tooltip", title: t('view.thing.vote-have-hint') do
+      if (n = thing.count_by(:have)) > 0
+        fa_stacked_icon("flag-o", base: "square-o", class: "fa-lg") + " Have it (#{n}人)" + fa_icon('level-up')
+      else
+        fa_stacked_icon("flag-o", base: "square-o", class: "fa-lg") + " Have it (#{n}人)" + fa_icon('level-down')
+      end
+    end
+  end
+
+  def send_to_twitter_li(thing)
+    link_to "http://twitter.com/share?url=#{thing_url(thing)}&text=#{thing.name}", target: "_blank" do
+      fa_stacked_icon "twitter", base: "square-o", text: "Twitterでつぶやく", class: "fa-lg"
+    end
+  end
+
+  def send_to_facebook_li(thing)
+    link_to "https://www.facebook.com/sharer/sharer.php?u=#{thing_url(thing)}", target: "_blank" do
+      fa_stacked_icon "facebook", base: "square-o", text: "Facebookでシェア", class: "fa-lg"
+    end
   end
 
   def link_to_thing_thumbnail(thing)

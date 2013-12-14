@@ -12,10 +12,10 @@
 	  <%= link_to_have_li thing -%>
 	</li>
 	<li>
-	  <%= link_to "https://www.facebook.com/sharer/sharer.php?u=#{thing_url(thing)}", target: "_blank" do fa_stacked_icon "facebook", base: "square-o", text: "Facebookでシェア", class: "fa-lg" end -%>
+	  <%= send_to_facebook_li thing -%>
 	</li>
 	<li>
-	  <%= link_to "http://twitter.com/share?url=#{thing_url(thing)}&text=#{thing.name}", target: "_blank" do fa_stacked_icon "twitter", base: "square-o", text: "Twitterでつぶやく", class: "fa-lg" end -%>
+	  <%= send_to_twitter_li thing -%>
 	</li>
       </ul>
 
@@ -45,7 +45,7 @@
 	    </div>
 	  <% else -%>
 	    <div class="no">
-	      <%= fa_icon "frown-o", text: "まだ1人もいません。私のことが好きなら、ぜひLikeしてください" -%>
+	      <%= fa_icon "frown-o", text: "まだ1人もいません。このアイテムが好きなら、ぜひLikeしてください" -%>
 	    </div>
 	  <% end -%>
 	</div>

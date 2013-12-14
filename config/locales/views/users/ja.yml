@@ -1,0 +1,7 @@
+ja:
+  view:
+    user:
+      no_like: "Like数は0です"
+      no_have: "Have数は0です"
+      current_like: "最近Likeしたモノ:"
+      current_have: "最近Haveしたモノ:"
