@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131206091930) do
+ActiveRecord::Schema.define(version: 20131214050214) do
 
   create_table "abouts", force: true do |t|
     t.string   "title"
@@ -71,20 +71,11 @@ ActiveRecord::Schema.define(version: 20131206091930) do
     t.integer  "thing_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
   end
 
   add_index "comments", ["thing_id"], name: "index_comments_on_thing_id"
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
-
-  create_table "havables", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "thing_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "havables", ["thing_id"], name: "index_havables_on_thing_id"
-  add_index "havables", ["user_id"], name: "index_havables_on_user_id"
 
   create_table "images", force: true do |t|
     t.string   "file"

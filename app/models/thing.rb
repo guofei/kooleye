@@ -2,8 +2,8 @@ require 'video_info'
 
 class Thing < ActiveRecord::Base
   has_many :images, -> { order(created_at: :asc) }, dependent: :destroy
-  has_many :comments
-  has_many :votes
+  has_many :comments, -> { order(created_at: :asc) }, dependent: :destroy
+  has_many :votes, dependent: :destroy
   belongs_to :user
   accepts_nested_attributes_for :images
 

@@ -3,9 +3,12 @@ class User
     def from_omniauth(auth, current_user)
       authorization = Authorization.where(:provider => auth["provider"], :uid => auth["uid"].to_s, :token => auth["credentials"]["token"], :secret => auth["credentials"]["secret"]).first_or_initialize
       if authorization.user.blank?
-        email = auth["info"]["email"]
-        email = twitter_uid_to_email auth["uid"] if auth["provider"] == "twitter"
-        user = current_user.nil? ? User.where('email = ?', email).first : current_user
+        if auth["provider"] == "twitter"
+          user = current_user.nil? ? Authorization.where(:provider => auth["provider"], :uid => auth["uid"].to_s).first_or_initialize.user : current_user
+        else
+          email = auth["info"]["email"]
+          user = current_user.nil? ? User.where('email = ?', email).first : current_user
+        end
         if user.blank?
           user = new_from_provider_data(auth["provider"], auth["uid"], auth["info"])
           user.save(:validate => false)

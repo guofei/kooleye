@@ -15,7 +15,6 @@ class CommentsController < ApplicationController
     @comment = @thing.comments.build(comment_params)
     @comment.user = current_user
     @comment.save
-
     if user_signed_in?
       current_user.send_to_twitter("#{@thing.name} #{@comment.content}", url_for(@thing)) if params[:sync][:twitter] == "1"
       current_user.send_to_facebook(@comment.content, @thing.name, url_for(@thing)) if params[:sync][:facebook] == "1"
@@ -27,6 +26,9 @@ class CommentsController < ApplicationController
   end
 
   private
+  def comment_params
+    params.require(:comment).permit(:name, :content)
+  end
   def authenticate_user!
     unless current_user
       respond_to do |format|
@@ -34,8 +36,5 @@ class CommentsController < ApplicationController
         format.html { super }
       end
     end
-  end
-  def comment_params
-    params.require(:comment).permit(:content)
   end
 end

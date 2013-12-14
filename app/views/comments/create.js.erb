@@ -1,7 +1,9 @@
-<% if @comment -%>
-  $("#comments").append('<%= j(render partial: 'comments/comment', locals: {comment: @comment}) %>');
-<% else -%>
+<% if @comment.blank? -%>
   alert("Captcha入力が間違っています。もう一回入力してください");
+<% elsif @comment.new_record? -%>
+  alert("コメントを入力してください");
+<% else -%>
+  $("#comments").append('<%= j(render partial: 'comments/comment', locals: {comment: @comment}) %>');
 <% end %>
 
 if($(".recaptcha-reload")[0]){
