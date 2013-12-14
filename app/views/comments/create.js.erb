@@ -4,6 +4,7 @@
   alert("コメントを入力してください");
 <% else -%>
   $("#comments").append('<%= j(render partial: 'comments/comment', locals: {comment: @comment}) %>');
+  $("#comment-success").append('<div class="alert alert-success">コメントありがとうございます！</div>');
 <% end %>
 
 if($(".recaptcha-reload")[0]){
