@@ -24,6 +24,7 @@ class User
         user.name = data["name"]
         user.email = data["email"]
         user.url = data["urls"][provider.capitalize]
+        user.url = data["urls"]["Google"] if provider.to_s == "google_oauth2"
         user.image = data["image"]
         if provider == "twitter"
           user.name = data["nickname"]

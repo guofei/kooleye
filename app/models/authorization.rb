@@ -34,6 +34,9 @@ class Authorization < ActiveRecord::Base
     end
   end
 
+  def fetch_details_from_google_oauth2
+  end
+
   def twitter_client
     return nil if provider != 'twitter'
     twitter = Twitter::REST::Client.new do |config|

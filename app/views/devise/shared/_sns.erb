@@ -5,7 +5,11 @@
       <%- resource_class.omniauth_providers.each do |provider| %>
 	<div class="row">
 	  <div class="col-xs-12 col-sm-10 col-sm-offset-2 col-md-9 col-md-offset-3">
-	    <%= link_to omniauth_authorize_path(resource_name, provider), class: "btn btn-lg btn-#{provider}" do fa_icon "#{provider}", text: "| #{provider.to_s.titleize}でスタートする" end %>
+	    <% if provider.to_s == "google_oauth2" %>
+	      <%= link_to omniauth_authorize_path(resource_name, provider), class: "btn btn-lg btn-google-plus" do fa_icon "google-plus", text: "| Googleでスタートする" end %>
+	    <% else %>
+	      <%= link_to omniauth_authorize_path(resource_name, provider), class: "btn btn-lg btn-#{provider}" do fa_icon "#{provider}", text: "| #{provider.to_s.titleize}でスタートする" end %>
+	    <% end %>
 	  </div>
 	</div>
 	<br />

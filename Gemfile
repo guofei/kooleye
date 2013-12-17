@@ -72,8 +72,9 @@ gem 'activeadmin', github: 'gregbell/active_admin'
 
 gem "koala", "~> 1.8.0rc1"
 gem 'omniauth-facebook'
-gem 'twitter', "~> 5.0.0.rc.1"
 gem 'omniauth-twitter'
+gem 'omniauth-google-oauth2'
+gem 'twitter', "~> 5.0.0.rc.1"
 
 gem 'carrierwave'
 gem 'jquery-fileupload-rails'
