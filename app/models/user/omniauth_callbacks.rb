@@ -23,8 +23,10 @@ class User
       User.new do |user|
         user.name = data["name"]
         user.email = data["email"]
-        user.url = data["urls"][provider.capitalize]
-        user.url = data["urls"]["Google"] if provider.to_s == "google_oauth2"
+        if data["urls"]
+          user.url = data["urls"][provider.capitalize]
+          user.url = data["urls"]["Google"] if provider.to_s == "google_oauth2"
+        end
         user.image = data["image"]
         if provider == "twitter"
           user.name = data["nickname"]

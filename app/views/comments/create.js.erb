@@ -1,10 +1,10 @@
 <% if @comment.blank? -%>
-  alert("Captcha入力が間違っています。もう一回入力してください");
+  $("#comment-success").html('<div class="alert alert-danger">画像文字の入力が間違っています。もう一回入力してください</div>');
 <% elsif @comment.new_record? -%>
-  alert("コメントを入力してください");
+  $("#comment-success").html('<div class="alert alert-danger">コメントを入力してください</div>');
 <% else -%>
   $("#comments").append('<%= j(render partial: 'comments/comment', locals: {comment: @comment}) %>');
-  $("#comment-success").append('<div class="alert alert-success">コメントありがとうございます！</div>');
+  $("#comment-success").html('<div class="alert alert-success">成功しました!コメントありがとうございます！</div>');
 <% end %>
 
 if($(".recaptcha-reload")[0]){
