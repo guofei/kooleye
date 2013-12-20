@@ -1,21 +1,26 @@
 <div class="col-xs-12 col-md-8 col-md-offset-2">
 
-  <h3>Edit <%= resource_name.to_s.humanize %></h3>
+  <div class="page-header">
+    <h3>基本情報</h3>
+  </div>
 
   <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
     <%= devise_error_messages! %>
     <div class="form-group">
-      <%= f.input :name, label: "Nickname", input_html: { class: "form-control" } -%>
+      <%= f.input :email, input_html: { class: "form-control", value: resource.email_view } -%>
     </div>
     <div class="form-group">
-      <%= f.input :email, input_html: { class: "form-control", value: resource.email_view } -%>
+      <%= f.input :name, label: "名前", input_html: { class: "form-control" } -%>
+    </div>
+    <div class="form-group">
+      <%= f.input :url, label: "ホームページ", input_html: { class: "form-control" } -%>
     </div>
     <%= f.button :submit %>
   <% end %>
 
   <hr />
-
-  <h3>Cancel my account</h3>
-  <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, class: "btn" %></p>
   <%= link_to "Back", :back %>
+  <div class="pull-right">
+    <%= link_to "退会する", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %>
+  </div>
 </div>
