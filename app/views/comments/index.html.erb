@@ -10,4 +10,18 @@
 
 <div id="comment-success"></div>
 
-<%= render partial: 'comments/form', locals: {thing: thing} -%>
+<div class="visible-xs text-center">
+  <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#comment-form">
+    新規書き込み
+  </button>
+</div>
+<div class="hidden-xs">
+  <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#comment-form">
+    新規書き込み
+  </button>
+</div>
+
+<div id="comment-form" class="collapse">
+  <br />
+  <%= render partial: 'comments/form', locals: {thing: thing} -%>
+</div>
