@@ -1,6 +1,9 @@
 <div class="panel panel-default">
   <div class="panel-heading">画像：（出来るだけ複数の画像を追加してくだい）</div>
   <ul class="list-group" id="show-images">
+    <% images.each do |image| -%>
+      <%= render partial: image %>
+    <% end %>
   </ul>
 </div>
 

@@ -23,12 +23,11 @@ class ThingsController < ApplicationController
     @thing.user = current_user
     @thing.images << Image.where(:thing_token => @thing.token)
     if @thing.save
-      current_user.send_to_twitter("#{@thing.name} #{@thing.summary} #{@thing.introduction}", url_for(@thing)) if params[:sync][:twitter] == "1"
-      current_user.send_to_facebook(@thing.name, @thing.summary, url_for(@thing)) if params[:sync][:facebook] == "1"
+      send_to_sns
       redirect_to thing_path(@thing)
     else
       @image = @thing.images.build
-      @image.thing_token = @thing.generate_token
+      @image.thing_token = @thing.token
       render 'new'
     end
   end
@@ -36,5 +35,10 @@ class ThingsController < ApplicationController
   private
   def thing_params
     params.require(:thing).permit(:name, :summary, :introduction, :video, :token, :images_attributes => [:file])
+  end
+
+  def send_to_sns
+    current_user.send_to_twitter("#{@thing.name} #{@thing.summary} #{@thing.introduction}", url_for(@thing)) if params[:sync][:twitter] == "1"
+    current_user.send_to_facebook(@thing.name, @thing.summary, url_for(@thing)) if params[:sync][:facebook] == "1"
   end
 end

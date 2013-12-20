@@ -3,7 +3,7 @@
 
   <hr />
 
-  <%= render 'images/form' -%>
+  <%= render partial: 'images/form', locals: {images: Image.where(:thing_token => @thing.token)} -%>
   <%= render 'form' %>
 
   <br />
