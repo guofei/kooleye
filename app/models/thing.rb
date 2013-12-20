@@ -14,6 +14,10 @@ class Thing < ActiveRecord::Base
   validates :introduction, presence: true, length: { minimum: 20 }
   validates :images, :length => { :minimum => 1, :message => I18n.t("view.thing.image-error") }
 
+  scope :sort_by_hot_and_time, -> {
+    all.sort{|t1, t2| t2.score <=> t2.score }
+  }
+
   scope :sort_by_hot, -> {
     joins(:votes).reorder("count(votes.id) DESC").group("things.id")
   }
@@ -55,8 +59,8 @@ class Thing < ActiveRecord::Base
   end
 
   #http://www.ruanyifeng.com/blog/2012/02/ranking_algorithm_hacker_news.html
-  def score(votes)
+  def score
     t = (Time.zone.now - self.created_at) / (60 * 60)
-    (votes - 1) / ((t + 2) ** 1.8)
+    (self.votes.size - 1) / ((t + 2) ** 1.8)
   end
 end
