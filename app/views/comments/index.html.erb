@@ -8,10 +8,6 @@
   <%= render partial: 'comments/comment', collection: thing.comments, as: :comment -%>
 </div>
 
-<% if thing.comments.size > 0 -%>
-  <hr />
-<% end -%>
-
 <div id="comment-success"></div>
 
 <%= render partial: 'comments/form', locals: {thing: thing} -%>

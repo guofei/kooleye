@@ -21,48 +21,52 @@
 
       <hr />
 
-      <div class="media">
-	<% if thing.user -%>
-	  <%= link_to_user_image thing.user -%>
-	  <div class="media-body">
-	    <div class="media-heading">
-	      作成者：
-	    </div>
-	    <%= link_to_user_page thing.user -%>
-	  </div>
-	<% end -%>
-      </div>
-      <hr />
+      <div id="some_id" class="hidden-xs">
 
-      <div class="row media suggestion">
-	<div class="media-body">
-	  <div class="media-heading">
-	    <%= fa_icon "heart-o", text: "Likeした人" -%>
-	  </div>
-	  <% if thing.count_by(:like) > 0 -%>
-	    <div class="imgs">
-	      <% thing.votes[0, 50].each do |vote| -%><%= link_to_user_mini_image vote.user if vote.vote_type == "like" -%><% end -%>
-	    </div>
-	  <% else -%>
-	    <div class="no">
-	      <%= fa_icon "frown-o", text: "まだ1人もいません。このアイテムが好きなら、ぜひLikeしてください" -%>
+	<div class="media">
+	  <% if thing.user -%>
+	    <%= link_to_user_image thing.user -%>
+	    <div class="media-body">
+	      <div class="media-heading">
+		作成者：
+	      </div>
+	      <%= link_to_user_page thing.user -%>
 	    </div>
 	  <% end -%>
 	</div>
-      </div>
+	<hr />
 
-      <% if thing.count_by(:have) > 0 -%>
 	<div class="row media suggestion">
 	  <div class="media-body">
 	    <div class="media-heading">
-	      <%= fa_icon "flag-o", text: "Havaした人" -%>
+	      <%= fa_icon "heart-o", text: "Likeした人" -%>
 	    </div>
-	    <div class="imgs">
-	      <% thing.votes[0, 50].each do |vote| -%><%= link_to_user_mini_image vote.user if vote.vote_type == "have" -%><% end -%>
-	    </div>
+	    <% if thing.count_by(:like) > 0 -%>
+	      <div class="imgs">
+		<% thing.votes[0, 50].each do |vote| -%><%= link_to_user_mini_image vote.user if vote.vote_type == "like" -%><% end -%>
+	      </div>
+	    <% else -%>
+	      <div class="no">
+		<%= fa_icon "frown-o", text: "まだ1人もいません。このアイテムが好きなら、ぜひLikeしてください" -%>
+	      </div>
+	    <% end -%>
 	  </div>
 	</div>
-      <% end -%>
+
+	<% if thing.count_by(:have) > 0 -%>
+	  <div class="row media suggestion">
+	    <div class="media-body">
+	      <div class="media-heading">
+		<%= fa_icon "flag-o", text: "Havaした人" -%>
+	      </div>
+	      <div class="imgs">
+		<% thing.votes[0, 50].each do |vote| -%><%= link_to_user_mini_image vote.user if vote.vote_type == "have" -%><% end -%>
+	      </div>
+	    </div>
+	  </div>
+	<% end -%>
+
+      </div>
 
       <div class="row media suggestion">
 	<div class="media-body">
@@ -81,5 +85,7 @@
     </div>
   </div>
 
-  <%= render "welcome/user_votes" -%>
+  <div class="hidden-xs">
+    <%= render "welcome/user_votes" -%>
+  </div>
 </div>

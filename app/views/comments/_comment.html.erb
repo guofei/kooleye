@@ -1,3 +1,5 @@
+<% if not comment.new_record? -%>
+
 <div class="media">
   <%= link_to_user_image(comment.user) -%>
   <div class="media-body">
@@ -9,3 +11,5 @@
   </div>
 </div>
 <hr class="hr-point">
+
+<% end %>
