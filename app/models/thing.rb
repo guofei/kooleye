@@ -15,15 +15,11 @@ class Thing < ActiveRecord::Base
   validates :images, :length => { :minimum => 1, :message => I18n.t("view.thing.image-error") }
 
   scope :sort_by_hot_and_time, -> {
-    all.sort{|t1, t2| t2.score <=> t2.score }
+    includes(:votes).load.sort{|t1, t2| t2.score <=> t2.score }
   }
 
   scope :sort_by_hot, -> {
     joins(:votes).reorder("count(votes.id) DESC").group("things.id")
-  }
-
-  scope :sort_by_new, -> {
-    all
   }
 
   def rank
