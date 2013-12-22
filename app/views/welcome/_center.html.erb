@@ -1,6 +1,6 @@
 <div class="row">
   <div id="masonry-container">
-    <% @newest.each do |thing| -%>
+    <% @top_things.each do |thing| -%>
       <div class="masonry-item col-xs-12 col-sm-6">
 	<div class="panel panel-default">
 	  <div class="panel-body">
@@ -14,7 +14,7 @@
       </div>
     <% end -%>
 
-    <% @hot_things.each do |thing| -%>
+    <% @center_things.each do |thing| -%>
       <div class="masonry-item col-xs-12 col-sm-6">
 	<div class="panel panel-default">
 	  <div class="panel-body">
@@ -29,4 +29,4 @@
     <% end -%>
   </div>
 </div><!--/row-->
-<%= paginate(@hot_things) -%>
+<%= paginate(@center_things) -%>

@@ -12,6 +12,7 @@ class ThingsController < ApplicationController
     else
       @things = Thing.page params[:page]
     end
+    @sort = params[:sort]
   end
 
   def show

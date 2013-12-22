@@ -1,7 +1,20 @@
 <%= title "人気モノ - kooleye" -%>
 
-<div class="row">
-  <div id="masonry-container">
+<div class="col-xs-12 visible-xs">
+  <ul class="nav nav-pills">
+    <li><a href="/">Home</a></li>
+    <% if @sort == "hot" -%>
+      <li class="active"><%= link_to "投票順", things_path + "?sort=hot" %></li>
+      <li><%= link_to "新着順", things_path %></li>
+    <% else -%>
+      <li><%= link_to "投票順", things_path + "?sort=hot" %></li>
+      <li class="active"><%= link_to "新着順", things_path %></li>
+    <% end -%>
+  </ul>
+  <br />
+</div>
+
+<div id="masonry-container">
   <% @things.each do |thing| %>
     <div class="masonry-item col-xs-12 col-sm-6 col-md-4">
       <div class="panel panel-default">
@@ -15,6 +28,6 @@
       </div>
     </div>
   <% end %>
-  </div>
 </div>
+
 <%= paginate(@things) -%>

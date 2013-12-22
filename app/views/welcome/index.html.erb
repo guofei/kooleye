@@ -1,7 +1,16 @@
+<div class="col-xs-12 visible-xs">
+  <ul class="nav nav-pills">
+    <li class="active"><a href="/">Home</a></li>
+    <li><%= link_to "投票順", things_path + "?sort=hot" %></li>
+    <li><%= link_to "新着順", things_path %></li>
+  </ul>
+  <br />
+</div>
+
 <div class="col-xs-12 col-md-8">
-  <%= render 'hot_things' %>
+  <%= render 'center' %>
 </div>
 <div class="col-xs-12 col-md-4">
   <%= render 'user_votes' -%>
-  <%= render 'new_things' %>
+  <%= render 'sider' %>
 </div>
