@@ -4,7 +4,7 @@ ja:
       thing: Thing
     attributes:
       thing:
-        name: 商品名
-        video: ビデオURL（YouTubeあるいはvimeo）
-        summary: 概要
-        introduction: 詳細
+        name: アイテムの名前
+        video: 動画（YouTubeやVimeoのURL）
+        summary: 概要（簡単なまとめ）
+        introduction: 詳細（特徴など）
