@@ -1,7 +1,9 @@
 <% if user_signed_in? -%>
   <div class="panel panel-info">
     <div class="panel-heading">
-      <%= link_to "マイページ", user_page_path(current_user) %>
+      <%= link_to user_page_path(current_user) do %>
+	<%= fa_icon "user", text: "マイページ" -%>
+      <% end -%>
     </div>
     <div class="panel-body">
       <%= t('view.user.like_num') %>

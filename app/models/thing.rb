@@ -19,7 +19,7 @@ class Thing < ActiveRecord::Base
   }
 
   scope :sort_by_hot, -> {
-    joins(:votes).reorder("count(votes.id) DESC").group("things.id")
+    joins('left join votes on votes.thing_id = things.id').reorder("count(votes.id) DESC").group("things.id")
   }
 
   def rank

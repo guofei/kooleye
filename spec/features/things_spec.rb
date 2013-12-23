@@ -15,7 +15,7 @@ feature 'things' do
       expect(page).to have_content thing.name
       expect(page).to have_content thing.summary
       expect(page).to have_content thing.introduction
-      expect(page).to have_link thing.user.name, href: thing.user.url
+      expect(page).to have_link thing.user.name, href: user_page_path(thing.user)
     end
 
     scenario 'login as facebook' do

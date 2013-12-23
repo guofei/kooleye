@@ -1,6 +1,6 @@
 <div class="panel panel-info">
   <div class="panel-heading">
-    新着クチコミ・レビュー
+    <%= fa_icon "comments", text: "新着クチコミ・レビュー" -%>
   </div>
   <div class="panel-body">
     <% Comment.take(10).each do |comment| -%>
@@ -22,7 +22,11 @@
 
 <div class="panel panel-info">
   <div class="panel-heading">
-    <%= link_to things_path do fa_icon "external-link", text: "新着アイテム" end -%>
+    <% if @sort == 'sortbynew' -%>
+      <%= link_to things_path(sort: 'hot') do fa_icon "external-link", text: "人気アイテム" end -%>
+    <% else -%>
+      <%= link_to things_path do fa_icon "external-link", text: "新着アイテム" end -%>
+    <% end %>
   </div>
   <% @sider_things.each do |thing| -%>
     <div class="panel-body">

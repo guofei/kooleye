@@ -13,6 +13,7 @@ class ThingsController < ApplicationController
       @things = Thing.page params[:page]
     end
     @sort = params[:sort]
+    cookies[:hometag] = { :value => "sortbynew", :expires => 1.week.from_now }
   end
 
   def show
