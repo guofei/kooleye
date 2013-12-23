@@ -34,7 +34,7 @@
 	      <div class="media-heading">
 		作成者：
 	      </div>
-	      <%= link_to_user_page thing.user -%>
+	      <%= link_to username(thing.user), user_page_path(thing.user) -%>
 	    </div>
 	  <% end -%>
 	</div>

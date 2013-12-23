@@ -15,6 +15,7 @@ module UsersHelper
   end
 
   def username(user)
+    return "Guest" if user.blank?
     if user.name.blank?
       user.email.split("@")[0]
     else
