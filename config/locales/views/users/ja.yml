@@ -1,7 +1,13 @@
 ja:
   view:
     user:
+      no_share: "Share数は0です"
       no_like: "Like数は0です"
       no_have: "Have数は0です"
+      no_comment: "Comment数は0です"
+      like_num: "Like数:"
+      have_num: "Have数:"
+      current_share: "最近共有したモノ:"
       current_like: "最近Likeしたモノ:"
       current_have: "最近Haveしたモノ:"
+      current_comment: "最近のコメント:"

@@ -14,11 +14,11 @@ feature 'profile' do
 
     context 'as guest' do
       scenario 'show likes' do
-        expect(page).not_to have_content I18n.t('view.user.current_like')
+        expect(page).not_to have_content I18n.t('view.user.like_num')
       end
 
       scenario 'show haves' do
-        expect(page).not_to have_content I18n.t('view.user.current_have')
+        expect(page).not_to have_content I18n.t('view.user.have_num')
       end
     end
 
@@ -28,11 +28,11 @@ feature 'profile' do
         visit root_path
       end
       scenario 'show likes' do
-        expect(page).to have_content I18n.t('view.user.current_like')
+        expect(page).to have_content I18n.t('view.user.like_num')
       end
 
       scenario 'show haves' do
-        expect(page).to have_content I18n.t('view.user.current_have')
+        expect(page).to have_content I18n.t('view.user.have_num')
       end
     end
 

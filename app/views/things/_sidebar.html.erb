@@ -1,4 +1,8 @@
 <div class="col-xs-12 col-md-3">
+  <div class="hidden-xs">
+    <%= render "welcome/user_votes" -%>
+  </div>
+
   <div class="panel panel-default">
     <div class="panel-body">
       <%= link_to "Amazonで購入", thing_buys_path(thing), class: "btn btn-primary btn-lg btn-block", id: "buy-btn", target: "_blank" -%>
@@ -83,9 +87,5 @@
 	</div>
       </div>
     </div>
-  </div>
-
-  <div class="hidden-xs">
-    <%= render "welcome/user_votes" -%>
   </div>
 </div>

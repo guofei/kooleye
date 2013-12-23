@@ -14,6 +14,14 @@ module UsersHelper
     end
   end
 
+  def username(user)
+    if user.name.blank?
+      user.email.split("@")[0]
+    else
+      user.name
+    end
+  end
+
   def link_to_user_image(user)
     if user.blank? or user.url.blank? or user.name.blank? or user.image.blank?
       link_to "#", class: "pull-left" do image_tag "none.png" end
