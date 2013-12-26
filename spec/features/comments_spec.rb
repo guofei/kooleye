@@ -15,7 +15,7 @@ feature 'comments' do
     end
 
     scenario 'read comment' do
-      expect(page).to have_link(comment.user.name, href: comment.user.url)
+      expect(page).to have_link(comment.user.name, href: user_page_path(comment.user))
     end
 
     scenario 'add comment' do

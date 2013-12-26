@@ -7,11 +7,7 @@ module UsersHelper
 
   def link_to_user_page(user)
     return "Guest" if user.blank?
-    if user.url.blank? or user.name.blank?
-      user.email.split("@")[0]
-    else
-      link_to user.name, user.url, target: "_blank"
-    end
+    link_to username(user), user_page_path(user), target: "_blank"
   end
 
   def username(user)
