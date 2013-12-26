@@ -23,6 +23,17 @@ $ ->
                 nextH = $(e.relatedTarget).height()
                 $(this).find('.active').parent().animate({ height: nextH }, 500)
 
+$ ->
+        $('.carousel-control.left').css('background-image', 'none')
+        $('.carousel-control.right').css('background-image', 'none')
+
+        $('#carousel-thing').mouseover ->
+                $('.carousel-control.left').css('background-image', '')
+                $('.carousel-control.right').css('background-image', '')
+
+        $('#carousel-thing').mouseout ->
+                $('.carousel-control.left').css('background-image', 'none')
+                $('.carousel-control.right').css('background-image', 'none')
 
 # https://coderwall.com/p/uf2pka
 setheight = ->

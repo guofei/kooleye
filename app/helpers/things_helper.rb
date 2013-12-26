@@ -51,7 +51,7 @@ module ThingsHelper
   end
 
   def link_to_thing_thumbnail(thing)
-    link_to thing_path(thing), class: "thumbnail" do
+    link_to thing_path(thing), class: "thumbnail", target: "_blank" do
       if thing.images.size > 0
         image_tag thing.images.first.normal_url
       else
@@ -61,7 +61,7 @@ module ThingsHelper
   end
 
   def link_to_thing_small_img(thing)
-    link_to thing_path(thing) do
+    link_to thing_path(thing), target: "_blank" do
       if thing.images.size > 0
         image_tag thing.images.first.thumb_url, class: "img-thumbnail img-responsive"
       else

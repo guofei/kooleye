@@ -23,7 +23,7 @@
       <% if @user.things.count > 0 -%>
 	<% @user.things.each_with_index do |thing, i| -%>
 	  <% break if i >= 20 -%>
-	  <%= link_to thing_path(thing) do -%>
+	  <%= link_to thing_path(thing), target: "_blank" do -%>
 	    <div class="col-xs-3 col-sm-2">
 	      <%= image_tag thing.images.first.thumb_url, class: "img-thumbnail" if thing.images.first -%>
 	    </div>
@@ -49,7 +49,7 @@
 	<% likes.each_with_index do |v, i| -%>
 	  <% break if i >= 20 -%>
 	  <div class="col-xs-3 col-sm-2">
-	    <%= link_to thing_path(v.thing) do -%>
+	    <%= link_to thing_path(v.thing), target: "_blank" do -%>
 	      <%= image_tag v.thing.images.first.thumb_url, class: "img-thumbnail" if v.thing.images.first -%>
 	    <% end -%>
 	  </div>
@@ -73,7 +73,7 @@
       <% if (haves = @user.votes_by(:have)).count > 0 -%>
 	<% haves.each_with_index do |v, i| -%>
 	  <% break if i >= 20 -%>
-	  <%= link_to thing_path(v.thing) do -%>
+	  <%= link_to thing_path(v.thing), target: "_blank" do -%>
 	    <div class="col-xs-3 col-sm-2">
 	      <%= image_tag v.thing.images.first.thumb_url, class: "img-thumbnail" if v.thing.images.first -%>
 	    </div>
@@ -103,7 +103,7 @@
 	<% @user.comments.each_with_index do |comment, i| -%>
 	  <% break if i >= 20 -%>
 	  <p>
-	    <%= link_to comment.thing.name, thing_path(comment.thing) -%>:
+	    <%= link_to comment.thing.name, thing_path(comment.thing), target: "_blank" -%>:
 	    <%= sanitize comment.short_content -%>
 	  </p>
 	<% end -%>
