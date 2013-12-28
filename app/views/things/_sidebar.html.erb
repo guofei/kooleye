@@ -80,7 +80,7 @@
 	  <% thing.other_things.each do |thing| -%>
 	    <% if thing.images.size > 0 -%>
 	      <div class="col-xs-4">
-		<%= link_to thing_path(thing), target: "_blank" do image_tag thing.images.first.thumb_url, class: "img-thumbnail" end -%>
+		<%= link_to thing_path(thing), target: "_blank" do image_tag thing.images.first.thumb_url, alt: thing.name, class: "img-thumbnail" end -%>
 	      </div>
 	    <% end -%>
 	  <% end -%>
