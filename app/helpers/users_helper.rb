@@ -5,6 +5,11 @@ module UsersHelper
     link_to user.url, target: "_blank" do image_tag user.image.gsub('normal.', 'mini.') end
   end
 
+  def user_name_or_email(user)
+    return user.email if user.name.blank?
+    user.name
+  end
+
   def link_to_user_page(user)
     return "Guest" if user.blank?
     link_to username(user), user_page_path(user), target: "_blank"

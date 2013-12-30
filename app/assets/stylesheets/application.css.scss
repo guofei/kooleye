@@ -63,3 +63,10 @@ footer {
     color:#FFFFFF;
     margin: 0 6 0 6;
 }
+
+.emailInputAlert {
+    position: fixed;
+    right: 1em;
+    top: 60px;
+    z-index: 100;
+}

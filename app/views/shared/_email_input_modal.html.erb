@@ -1,0 +1,27 @@
+<% if user_signed_in? and current_user.virtual_mail? -%>
+  <div class="emailInputAlert">
+    <div class="alert alert-warning">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      まもなく登録完了です。<a href="#" data-toggle="modal" data-target="#emailInputModal">基本情報を入力</a>しましょう。&nbsp;
+    </div>
+  </div>
+
+  <div class="modal fade" id="emailInputModal" tabindex="-1" role="dialog" aria-labelledby="emailInputModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+	<div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title" id="emailInputModalLabel">まもなく登録完了です。基本情報を入力しましょう。</h4>
+	</div>
+	<div class="modal-body">
+	  <%= simple_form_for(current_user, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+	    <div class="form-group">
+	      <%= f.input :email, input_html: { class: "form-control", value: resource.email_view } -%>
+	    </div>
+	    <%= f.button :submit, value: "登録する" %>
+	  <% end %>
+	</div>
+      </div>
+    </div>
+  </div>
+<% end %>

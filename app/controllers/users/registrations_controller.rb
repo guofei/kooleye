@@ -15,7 +15,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
       set_flash_message :notice, :updated
       # Sign in the user bypassing validation in case his password changed
       sign_in @user, :bypass => true
-      redirect_to edit_user_registration_path
+      #redirect_to edit_user_registration_path
+      redirect_to after_update_path_for(@user)
     else
       render "edit"
     end
@@ -27,5 +28,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # extend this as needed
   def needs_password?(user, params)
     params[:user][:password].present?
+  end
+
+  def after_update_path_for(user)
+    session[:previous_url] || edit_user_registration_path
   end
 end
