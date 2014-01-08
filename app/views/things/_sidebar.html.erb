@@ -29,12 +29,12 @@
 
 	<div class="media">
 	  <% if thing.user -%>
-	    <%= link_to_user_image thing.user -%>
+	    <%= link_to_user_sns_image thing.user -%>
 	    <div class="media-body">
 	      <div class="media-heading">
 		作成者：
 	      </div>
-	      <%= link_to username(thing.user), user_page_path(thing.user), target: "_blank" -%>
+	      <%= link_to_user_page thing.user -%>
 	    </div>
 	  <% end -%>
 	</div>
@@ -47,7 +47,7 @@
 	    </div>
 	    <% if thing.count_by(:like) > 0 -%>
 	      <div class="imgs">
-		<% thing.votes[0, 50].each do |vote| -%><%= link_to_user_mini_image vote.user if vote.vote_type == "like" -%><% end -%>
+		<% thing.votes[0, 50].each do |vote| -%><%= link_to_user_sns_mini_image vote.user if vote.vote_type == "like" -%><% end -%>
 	      </div>
 	    <% else -%>
 	      <div class="no">
@@ -64,7 +64,7 @@
 		<%= fa_icon "flag-o", text: "Havaした人" -%>
 	      </div>
 	      <div class="imgs">
-		<% thing.votes[0, 50].each do |vote| -%><%= link_to_user_mini_image vote.user if vote.vote_type == "have" -%><% end -%>
+		<% thing.votes[0, 50].each do |vote| -%><%= link_to_user_sns_mini_image vote.user if vote.vote_type == "have" -%><% end -%>
 	      </div>
 	    </div>
 	  </div>
