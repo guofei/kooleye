@@ -67,8 +67,8 @@ group :test do
 end
 
 gem "anjlab-bootstrap-rails", "~> 3.0.3.0", :require => 'bootstrap-rails'
-gem "simple_form", "~> 3.0.0"
-gem "devise", "~> 3.1.1"
+gem "simple_form", "~> 3.0.1"
+gem "devise", "~> 3.2.2"
 gem 'activeadmin', github: 'gregbell/active_admin'
 
 gem "koala", "~> 1.8.0rc1"

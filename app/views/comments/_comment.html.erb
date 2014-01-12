@@ -6,6 +6,9 @@
     <div class="media-heading">
       <%= link_to_comment_user_page comment -%>さん
       <small><%= timeago comment.created_at -%></small>
+      <div class="pull-right">
+	<%= link_to thing_comment_helpfulnesses_path(comment.thing, comment), class: "helpful", method: "post" do fa_icon "smile-o", text: "参考になった" end -%><%= comment.helpfulnesses.count %>人
+      </div>
     </div>
     <%= simple_format comment.content -%>
   </div>

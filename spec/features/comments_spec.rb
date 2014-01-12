@@ -1,12 +1,12 @@
+# -*- coding: utf-8 -*-
 require 'spec_helper'
 
 feature 'comments' do
   let(:thing) { FactoryGirl.create(:thing) }
   let(:user) { FactoryGirl.create(:user) }
-  let(:comment) { FactoryGirl.create(:comment, thing: thing, user: user) }
+  let!(:comment) { FactoryGirl.create(:comment, thing: thing, user: user) }
   context 'as a guest' do
     background do
-      comment
       visit thing_path(thing)
     end
 
@@ -35,6 +35,11 @@ feature 'comments' do
       fill_in 'comment_content', with: "thank you very much kaku"
       click_button I18n.t('view.comment.submit')
       expect(page).to have_content("thank you very much kaku")
+    end
+
+    scenario 'thanks to a comment' do
+      expect(page).to have_content("参考になった")
+      expect{ first('.helpful').click }.to change{ Helpfulness.count }.by(1)
     end
   end
 end

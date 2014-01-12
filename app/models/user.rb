@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   has_many :authorizations, :dependent => :destroy
   has_many :comments, :dependent => :destroy
   has_many :votes, -> { order(updated_at: :desc) }, :dependent => :destroy
+  has_many :helpfulnesses, :dependent => :destroy
 
   def votes_by(type)
     votes.select{|v| v.vote_type == type.to_s }

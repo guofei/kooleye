@@ -10,7 +10,9 @@ Lfti::Application.routes.draw do
   resources :abouts, :only => [:show]
   resources :user_pages, :only => [:show], path: 'u'
   resources :things, :only => [:index, :show, :new, :create] do
-    resources :comments, :only => [:create]
+    resources :comments, :only => [:create] do
+      resources :helpfulnesses, :only => [:create]
+    end
     resources :votes, :only => [:create]
     resources :havables, :only => [:create]
     resources :buys, only: [:index]

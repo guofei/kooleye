@@ -1,6 +1,7 @@
 class Comment < ActiveRecord::Base
   belongs_to :user
   belongs_to :thing
+  has_many :helpfulnesses, :dependent => :destroy
 
   validates :thing, presence: true
   validates :content, presence: true
