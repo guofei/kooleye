@@ -1,0 +1,12 @@
+<% if Event.count > 0 and Time.zone.now < Event.first.created_at + Event.first.day.day -%>
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <%= link_to event_path(Event.first) do %>
+	<%= fa_icon "bell", text: "イベント" -%>
+      <% end -%>
+    </div>
+    <div class="panel-body">
+      <%= Event.first.summary -%>
+    </div>
+  </div>
+<% end %>
