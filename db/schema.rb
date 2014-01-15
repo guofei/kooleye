@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20140112162224) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "abouts", force: true do |t|
     t.string   "title"
     t.text     "content"
@@ -31,9 +34,9 @@ ActiveRecord::Schema.define(version: 20140112162224) do
     t.datetime "updated_at"
   end
 
-  add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
-  add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace"
-  add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
+  add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
+  add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
+  add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
 
   create_table "admin_users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -50,8 +53,8 @@ ActiveRecord::Schema.define(version: 20140112162224) do
     t.datetime "updated_at"
   end
 
-  add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true
-  add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+  add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
+  add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "authorizations", force: true do |t|
     t.string   "provider"
@@ -63,7 +66,7 @@ ActiveRecord::Schema.define(version: 20140112162224) do
     t.string   "secret"
   end
 
-  add_index "authorizations", ["user_id"], name: "index_authorizations_on_user_id"
+  add_index "authorizations", ["user_id"], name: "index_authorizations_on_user_id", using: :btree
 
   create_table "comments", force: true do |t|
     t.text     "content"
@@ -74,8 +77,8 @@ ActiveRecord::Schema.define(version: 20140112162224) do
     t.string   "name"
   end
 
-  add_index "comments", ["thing_id"], name: "index_comments_on_thing_id"
-  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
+  add_index "comments", ["thing_id"], name: "index_comments_on_thing_id", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "events", force: true do |t|
     t.text     "content"
@@ -92,8 +95,8 @@ ActiveRecord::Schema.define(version: 20140112162224) do
     t.datetime "updated_at"
   end
 
-  add_index "helpfulnesses", ["comment_id"], name: "index_helpfulnesses_on_comment_id"
-  add_index "helpfulnesses", ["user_id"], name: "index_helpfulnesses_on_user_id"
+  add_index "helpfulnesses", ["comment_id"], name: "index_helpfulnesses_on_comment_id", using: :btree
+  add_index "helpfulnesses", ["user_id"], name: "index_helpfulnesses_on_user_id", using: :btree
 
   create_table "images", force: true do |t|
     t.string   "file"
@@ -104,7 +107,7 @@ ActiveRecord::Schema.define(version: 20140112162224) do
     t.string   "thing_token"
   end
 
-  add_index "images", ["thing_id"], name: "index_images_on_thing_id"
+  add_index "images", ["thing_id"], name: "index_images_on_thing_id", using: :btree
 
   create_table "things", force: true do |t|
     t.string   "name"
@@ -117,7 +120,7 @@ ActiveRecord::Schema.define(version: 20140112162224) do
     t.string   "token"
   end
 
-  add_index "things", ["user_id"], name: "index_things_on_user_id"
+  add_index "things", ["user_id"], name: "index_things_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -137,8 +140,8 @@ ActiveRecord::Schema.define(version: 20140112162224) do
     t.string   "url"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "votes", force: true do |t|
     t.integer  "user_id"
@@ -148,7 +151,7 @@ ActiveRecord::Schema.define(version: 20140112162224) do
     t.string   "vote_type"
   end
 
-  add_index "votes", ["thing_id"], name: "index_votes_on_thing_id"
-  add_index "votes", ["user_id"], name: "index_votes_on_user_id"
+  add_index "votes", ["thing_id"], name: "index_votes_on_thing_id", using: :btree
+  add_index "votes", ["user_id"], name: "index_votes_on_user_id", using: :btree
 
 end

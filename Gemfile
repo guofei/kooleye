@@ -98,5 +98,8 @@ gem "recaptcha", :require => "recaptcha/rails"
 # for heroku
 gem 'unicorn'
 gem 'rails_12factor', group: :production
+
 gem 'pg'
+gem 'execjs'
+gem 'therubyracer'
 
