@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/gregbell/active_admin.git
-  revision: 7465eb37877897849a2466a05afd2af4ee7a9338
+  revision: cc6ab9de3111ebedc2a370cc98ade0309b4b21dd
   specs:
     activeadmin (1.0.0.pre)
       arbre (~> 1.0)
@@ -206,8 +206,8 @@ GEM
     omniauth (1.1.4)
       hashie (>= 1.2, < 3)
       rack
-    omniauth-facebook (1.5.1)
-      omniauth-oauth2 (~> 1.1.0)
+    omniauth-facebook (1.6.0)
+      omniauth-oauth2 (~> 1.1)
     omniauth-google-oauth2 (0.2.2)
       omniauth (~> 1.0)
       omniauth-oauth2
