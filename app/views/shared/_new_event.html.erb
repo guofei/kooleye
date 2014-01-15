@@ -6,7 +6,7 @@
       <% end -%>
     </div>
     <div class="panel-body">
-      <%= Event.first.summary -%>
+      <%= Event.first.summary -%><%= link_to "詳細", event_path(Event.first)  %>
     </div>
   </div>
 <% end %>
