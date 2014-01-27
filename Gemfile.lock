@@ -16,6 +16,12 @@ GIT
       ransack (~> 1.0)
       sass-rails
 
+GIT
+  remote: git://github.com/tigrish/kaminari-i18n.git
+  revision: 3658208338f31a25588377ba7b7d285d65cbe6c7
+  specs:
+    kaminari-i18n (0.0.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -376,6 +382,7 @@ DEPENDENCIES
   jquery-fileupload-rails
   jquery-rails
   kaminari
+  kaminari-i18n!
   koala (~> 1.8.0rc1)
   masonry-rails
   mini_magick

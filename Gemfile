@@ -85,6 +85,7 @@ gem 'unf'
 gem 'mini_magick'
 
 gem 'kaminari'
+gem 'kaminari-i18n', github: 'tigrish/kaminari-i18n'
 
 gem "font-awesome-rails", "~> 4.0.3.0"
 gem 'ckeditor_rails'
