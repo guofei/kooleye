@@ -94,22 +94,7 @@
 
     <div class="container">
       <div class="row">
-	<div class="col-xs-12 text-center">
-	  <a href="https://twitter.com/kooleyecom" class="twitter-follow-button" data-show-count="false">Follow @kooleyecom</a>
-	  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>&nbsp;&nbsp;
-	  <a href="http://b.hatena.ne.jp/entry/https://www.kooleye.com" class="hatena-bookmark-button" data-hatena-bookmark-title="Kooleye" data-hatena-bookmark-layout="standard-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="https://b.hatena.ne.jp/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="https://b.hatena.ne.jp/js/bookmark_button.js" charset="utf-8" async="async"></script>&nbsp;&nbsp;
-	  <div class="g-plusone" data-size="medium" data-href="https://www.kooleye.com"></div>
-	  <script type="text/javascript">
-	    window.___gcfg = {lang: 'ja'};
-
-	    (function() {
-	    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-	    po.src = 'https://apis.google.com/js/platform.js';
-	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-	    })();
-	  </script>
-	  <div class="fb-like" data-href="https://www.facebook.com/kooleyecom" data-layout="button_count" data-action="like" data-show-faces="false" data-share="true"></div>
-	</div>
+	<%= render 'shared/sns' -%>
 	<br />
 	<%= render 'shared/email_input_modal' -%>
 
