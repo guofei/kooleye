@@ -19,6 +19,7 @@ Lfti::Application.routes.draw do
   end
   resources :images, :only => [:create, :destroy]
   resources :events, :only => [:show]
+  resources :shops, :only => [:index, :show]
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

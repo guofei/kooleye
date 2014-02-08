@@ -1,0 +1,31 @@
+<%= render 'shared/new_event' -%>
+
+<div class="panel panel-info">
+  <div class="panel-heading">
+    Ad
+  </div>
+  <div class="panel-body">
+    広告
+  </div>
+</div>
+
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <%= fa_icon "thumbs-o-up", text: "これにも注目" -%>
+  </div>
+  <div class="panel-body">
+    <div class="row media suggestion">
+      <div class="media-body">
+	<% @suggestions.each do |thing| -%>
+	  <% if thing.images.size > 0 -%>
+	    <div class="col-xs-4">
+	      <%= link_to thing_path(thing), target: "_blank" do image_tag thing.images.first.thumb_url, alt: thing.name, class: "img-thumbnail" end -%>
+	    </div>
+	  <% end -%>
+	<% end -%>
+      </div>
+    </div>
+  </div>
+</div>
+
+

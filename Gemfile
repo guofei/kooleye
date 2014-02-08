@@ -96,6 +96,10 @@ gem 'video_info'
 
 gem "recaptcha", :require => "recaptcha/rails"
 
+gem "amazon-ecs"
+gem "rakuten_web_service"
+gem "yahoo-api"
+
 # for heroku
 gem 'unicorn'
 gem 'rails_12factor', group: :production

@@ -1,0 +1,46 @@
+<div class="col-xs-12 col-md-9">
+  <%= render "search" -%>
+  <br />
+
+  <div class="row">
+    <div class="col-sm-3">
+      <div class="panel panel-default">
+	<div class="panel-heading">Amazon</div>
+	<div class="list-group">
+	  <%= render partial: "item", collection: @amazon_items -%>
+	</div>
+      </div>
+    </div>
+
+    <div class="col-sm-3">
+      <div class="panel panel-default">
+	<div class="panel-heading">楽天</div>
+	<div class="list-group">
+	  <%= render partial: "item", collection: @rakuten_items -%>
+	</div>
+      </div>
+    </div>
+
+    <div class="col-sm-3">
+      <div class="panel panel-default">
+	<div class="panel-heading">Yahoo!ショッピング</div>
+	<div class="list-group">
+	  <%= render partial: "item", collection: @y_items -%>
+	</div>
+      </div>
+    </div>
+
+    <div class="col-sm-3">
+      <div class="panel panel-default">
+	<div class="panel-heading">Yahoo!オークション</div>
+	<div class="list-group">
+	  <%= render partial: "item", collection: @y_a_items -%>
+	</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col-xs-12 col-md-3">
+  <%= render "sidebar" -%>
+</div>

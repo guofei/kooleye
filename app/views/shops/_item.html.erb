@@ -1,0 +1,19 @@
+<div class="list-group-item">
+  <%= link_to item[:url] ,class: "thumbnail" do -%>
+    <%= image_tag item[:image] -%>
+  <% end -%>
+  <center>
+    <%= item[:title] -%><br />
+    <font color="#ff0000"><%= "#{item[:price]} 円" -%></font><br />
+    <% if item[:ec_site] == "Amazon" -%>
+      <%= link_to item[:ec_site] + "レビュー", item[:url] -%><br />
+      <%= link_to "商品詳細", item[:url] -%>
+    <% elsif item[:ec_site] == "Rakuten" %>
+      <%= link_to "楽天レビュー", item[:url] -%><br />
+      <%= link_to "商品詳細", item[:url] -%>
+
+    <% else -%>
+      <%= link_to "商品詳細", item[:url] -%>
+    <% end %>
+  </center>
+</div>
