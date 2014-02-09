@@ -3,17 +3,26 @@
     <%= image_tag item[:image] -%>
   <% end -%>
   <center>
-    <%= item[:title] -%><br />
-    <font color="#ff0000"><%= "#{item[:price]} 円" -%></font><br />
-    <% if item[:ec_site] == "Amazon" -%>
-      <%= link_to item[:ec_site] + "レビュー", aff_link(item[:url]), target: "_blank" -%><br />
-      <%= link_to "商品詳細", aff_link(item[:url]), target: "_blank" -%>
-    <% elsif item[:ec_site] == "Rakuten" %>
-      <%= link_to "楽天レビュー", aff_link(item[:url]), target: "_blank" -%><br />
-      <%= link_to "商品詳細", aff_link(item[:url]), target: "_blank" -%>
-
-    <% else -%>
-      <%= link_to "商品詳細", aff_link(item[:url]), target: "_blank" -%>
-    <% end %>
+    <div class="price" style="color: red">
+      <%= fa_icon "jpy", text: "#{item[:price]} 円" -%>
+    </div>
+    <div class="wordwrap"><%= item[:title] -%></div>
+    <div class="more">
+      <%= link_to aff_link(item[:url]), target: "_blank" do -%>
+	<%= fa_icon "hand-o-right", text: "商品詳細" -%>
+      <% end %>
+    </div>
+    <div class="review">
+      <% if item[:ec_site] == "Amazon" -%>
+	<%= link_to aff_link(item[:url]), target: "_blank" do -%>
+	  <%= fa_icon "comment-o", text: "Amazonレビュー" -%>
+	<% end %>
+      <% elsif item[:ec_site] == "Rakuten" %>
+	<%= link_to aff_link(item[:url]), target: "_blank" do -%>
+	  <%= fa_icon "comment-o", text: "楽天レビュー" -%>
+	<% end %>
+      <% end -%>
+      <br />
+    </div>
   </center>
 </div>
