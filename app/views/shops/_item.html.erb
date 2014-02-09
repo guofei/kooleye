@@ -1,19 +1,19 @@
 <div class="list-group-item">
-  <%= link_to item[:url] ,class: "thumbnail" do -%>
+  <%= link_to aff_link(item[:url]) ,class: "thumbnail", target: "_blank" do -%>
     <%= image_tag item[:image] -%>
   <% end -%>
   <center>
     <%= item[:title] -%><br />
     <font color="#ff0000"><%= "#{item[:price]} 円" -%></font><br />
     <% if item[:ec_site] == "Amazon" -%>
-      <%= link_to item[:ec_site] + "レビュー", item[:url] -%><br />
-      <%= link_to "商品詳細", item[:url] -%>
+      <%= link_to item[:ec_site] + "レビュー", aff_link(item[:url]), target: "_blank" -%><br />
+      <%= link_to "商品詳細", aff_link(item[:url]), target: "_blank" -%>
     <% elsif item[:ec_site] == "Rakuten" %>
-      <%= link_to "楽天レビュー", item[:url] -%><br />
-      <%= link_to "商品詳細", item[:url] -%>
+      <%= link_to "楽天レビュー", aff_link(item[:url]), target: "_blank" -%><br />
+      <%= link_to "商品詳細", aff_link(item[:url]), target: "_blank" -%>
 
     <% else -%>
-      <%= link_to "商品詳細", item[:url] -%>
+      <%= link_to "商品詳細", aff_link(item[:url]), target: "_blank" -%>
     <% end %>
   </center>
 </div>
