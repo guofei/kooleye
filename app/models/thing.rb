@@ -42,7 +42,7 @@ class Thing < ActiveRecord::Base
   end
 
   def count_by(type)
-    votes.select { |v| v.vote_type == type.to_s }.count
+    votes.where(vote_type: type).count
   end
 
   def has_video?

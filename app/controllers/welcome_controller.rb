@@ -2,6 +2,7 @@ class WelcomeController < ApplicationController
   def index
     #@center_things = Kaminari.paginate_array(Thing.sort_by_hot_and_time).page(params[:page])
     @sort = cookies[:hometag]
+    @new_comments = Comment.limit(10).includes(:thing, :user)
     if @sort == "sortbynew"
       @center_things = Thing.all.page params[:page]
       @sider_things = Thing.sort_by_hot.take(10)

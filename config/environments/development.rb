@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 Lfti::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -27,4 +28,13 @@ Lfti::Application.configure do
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
   config.assets.debug = true
+
+  # N+1 problem
+  config.after_initialize do
+    Bullet.enable = true # Bulletプラグインを有効
+    Bullet.alert = true # JavaScriptでの通知
+    Bullet.bullet_logger = true # log/bullet.logへの出力
+    Bullet.console = true # ブラウザのコンソールログに記録
+    Bullet.rails_logger = true # Railsログに出力
+  end
 end

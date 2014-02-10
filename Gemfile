@@ -60,6 +60,9 @@ end
 
 group :development do
   gem 'rack-mini-profiler'
+
+  # N+1 problem
+  gem "bullet"
 end
 
 group :test do

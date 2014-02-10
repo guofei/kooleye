@@ -48,7 +48,7 @@
 	    </div>
 	    <% if thing.count_by(:like) > 0 -%>
 	      <div class="imgs">
-		<% thing.votes[0, 50].each do |vote| -%><%= link_to_user_sns_mini_image vote.user if vote.vote_type == "like" -%><% end -%>
+		<% thing.votes.includes(:user)[0, 50].each do |vote| -%><%= link_to_user_sns_mini_image vote.user if vote.vote_type == "like" -%><% end -%>
 	      </div>
 	    <% else -%>
 	      <div class="no">

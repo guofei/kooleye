@@ -3,7 +3,7 @@
     <%= fa_icon "comments", text: "新着クチコミ・レビュー" -%>
   </div>
   <div class="panel-body">
-    <% Comment.take(10).each do |comment| -%>
+    <% @new_comments.each do |comment| -%>
       <div class="media">
 	<div class="pull-right col-xs-4">
 	  <%= link_to_thing_small_img comment.thing -%>
