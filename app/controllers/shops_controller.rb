@@ -22,25 +22,27 @@ class ShopsController < ApplicationController
   private
 
   def get_amazon_items(keyword, sort: "dafault")
-    res = Amazon::Ecs.item_search(keyword, :search_index => 'All', :response_group => 'Medium, OfferSummary')
-    items = res.items.map do |item|
-      {
-        ec_site: "Amazon",
-        url: item.get('DetailPageURL'),
-        image: item.get('MediumImage/URL'),
-        title: item.get('ItemAttributes/Title'),
-        price: item.get('OfferSummary/LowestNewPrice/Amount')
-      }
+    items = []
+    [1, 2].each do |page|
+      res = Amazon::Ecs.item_search(keyword, :search_index => 'All', :response_group => 'Medium, OfferSummary', :ItemPage => page)
+      res.items.each do |item|
+        items.push({
+          ec_site: "Amazon", url: item.get('DetailPageURL'),
+          image: item.get('MediumImage/URL'),
+          title: item.get('ItemAttributes/Title'),
+          price: item.get('OfferSummary/LowestNewPrice/Amount')
+        })
+      end
     end
     items = items.sort{ |a, b| a[:price].to_i <=> b[:price].to_i} if sort == "price"
-    items
+    return items
   end
 
   def get_rakuten_items(keyword, sort: "dafault")
     options = { :keyword => keyword }
     options[:sort] = "+itemPrice" if sort == "price"
     items = RakutenWebService::Ichiba::Item.search(options)
-    items.first(10).map do |item|
+    items.first(15).map do |item|
       image = ActionController::Base.helpers.asset_path('noimage.jpg')
       if item["mediumImageUrls"].blank?
         if !item["smallImageUrls"].blank?
