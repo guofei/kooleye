@@ -105,9 +105,8 @@ gem "yahoo-api"
 
 gem 'redis-rails', group: :production
 
-# for heroku
 gem 'unicorn'
-#gem 'rails_12factor', group: :production
+gem 'rails_12factor', group: :production
 gem 'pg'
 gem 'execjs'
 gem 'therubyracer'
