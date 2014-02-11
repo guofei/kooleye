@@ -2,43 +2,62 @@
   <%= render "search" -%>
   <br />
 
-  <div class="row">
-    <div class="col-sm-3">
-      <div class="panel panel-default">
-	<div class="panel-heading">Amazon</div>
-	<div class="list-group">
-	  <%= render partial: "item", collection: @amazon_items -%>
+  <% if !params[:k].blank? -%>
+    <div class="row">
+      <div class="col-sm-3">
+	<div class="panel panel-default">
+	  <div class="panel-heading text-center">
+	    <%= link_to aff_link(amazon_url(params[:k])), target: "_blank" do -%>
+	      <%= fa_icon :search, text: "Amazon" -%>
+	    <% end -%>
+	  </div>
+	  <div class="list-group">
+	    <%= render partial: "item", collection: @amazon_items -%>
+	  </div>
 	</div>
       </div>
-    </div>
 
-    <div class="col-sm-3">
-      <div class="panel panel-default">
-	<div class="panel-heading">楽天</div>
-	<div class="list-group">
-	  <%= render partial: "item", collection: @rakuten_items -%>
+      <div class="col-sm-3">
+	<div class="panel panel-default">
+	  <div class="panel-heading text-center">
+	    <%= link_to aff_link(rakuten_url(params[:k])), target: "_blank" do -%>
+	      <%= fa_icon :search, text: "楽天" -%>
+	    <% end -%>
+	  </div>
+	  <div class="list-group">
+	    <%= render partial: "item", collection: @rakuten_items -%>
+	  </div>
 	</div>
       </div>
-    </div>
 
-    <div class="col-sm-3">
-      <div class="panel panel-default">
-	<div class="panel-heading">Yahoo!ショッピング</div>
-	<div class="list-group">
-	  <%= render partial: "item", collection: @y_items -%>
+      <div class="col-sm-3">
+	<div class="panel panel-default">
+	  <div class="panel-heading text-center">
+	    <%= link_to aff_link(yahoo_s_url(params[:k])), target: "_blank" do -%>
+	      <%= fa_icon :search, text: "Yahoo!ショッピング" -%>
+	    <% end -%>
+	  </div>
+	  <div class="list-group">
+	    <%= render partial: "item", collection: @y_items -%>
+	  </div>
 	</div>
       </div>
-    </div>
 
-    <div class="col-sm-3">
-      <div class="panel panel-default">
-	<div class="panel-heading">Yahoo!オークション</div>
-	<div class="list-group">
-	  <%= render partial: "item", collection: @y_a_items -%>
+      <div class="col-sm-3">
+	<div class="panel panel-default">
+	  <div class="panel-heading text-center">
+	    <%= link_to aff_link(yahoo_a_url(params[:k])), target: "_blank" do -%>
+	      <%= fa_icon :search, text: "Yahoo!オークション" -%>
+	    <% end -%>
+	  </div>
+	  <div class="list-group">
+	    <%= render partial: "item", collection: @y_a_items -%>
+	  </div>
 	</div>
       </div>
     </div>
-  </div>
+  <% end %>
+
 </div>
 
 <div class="col-xs-12 col-md-3">
