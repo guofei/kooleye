@@ -5,7 +5,7 @@
 </div>
 
 <div id="comments">
-  <%= render partial: 'comments/comment', collection: thing.comments, as: :comment -%>
+  <%= render partial: 'comments/comment', collection: thing.comments.includes(:user, :thing), as: :comment -%>
 </div>
 
 <div id="comment-success"></div>
