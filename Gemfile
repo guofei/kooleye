@@ -70,7 +70,7 @@ group :test do
   #gem "selenium-webdriver", "~> 2.37.0"
 end
 
-gem "anjlab-bootstrap-rails", "~> 3.0.3.0", :require => 'bootstrap-rails'
+gem 'bootstrap-sass', '~> 3.1.0'
 gem "simple_form", "~> 3.0.1"
 gem "devise", "~> 3.2.2"
 gem 'activeadmin', github: 'gregbell/active_admin'

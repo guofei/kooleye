@@ -53,14 +53,13 @@ GEM
     amazon-ecs (2.2.4)
       nokogiri (~> 1.4)
       ruby-hmac (~> 0.3)
-    anjlab-bootstrap-rails (3.0.3.0)
-      railties (>= 3.0)
-      sass (>= 3.2)
     arbre (1.0.1)
       activesupport (>= 3.0.0)
     arel (4.0.1)
     atomic (1.1.14)
     bcrypt-ruby (3.1.2)
+    bootstrap-sass (3.1.0.2)
+      sass (~> 3.2)
     bourbon (3.1.8)
       sass (>= 3.2.0)
       thor
@@ -396,7 +395,7 @@ PLATFORMS
 DEPENDENCIES
   activeadmin!
   amazon-ecs
-  anjlab-bootstrap-rails (~> 3.0.3.0)
+  bootstrap-sass (~> 3.1.0)
   bullet
   capybara
   capybara-webkit

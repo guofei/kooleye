@@ -16,5 +16,5 @@
 //= require jquery-fileupload/vendor/tmpl
 //= require ckeditor-jquery
 //= require_tree .
-//= require twitter/bootstrap
+//= require bootstrap
 //= require masonry/jquery.masonry
