@@ -93,6 +93,7 @@
     <%= render 'shared/login_modal' -%>
 
     <div class="container">
+      <div class="ie-alert"></div>
       <div class="row">
 	<%= render 'shared/sns' -%>
 	<br />
@@ -103,7 +104,7 @@
       <hr>
       <footer>
 	<p>
-	  &copy; kooleye.com 2013 
+	  &copy; kooleye.com 2013
 	  <% About.all.each do |about| -%>
 	    <small><%= link_to about.title, about_path(about) -%></small>
 	  <% end -%>

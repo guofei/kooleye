@@ -14,20 +14,26 @@
   <br />
 </div>
 
-<div id="masonry-container">
-  <% @things.each do |thing| %>
-    <div class="masonry-item col-xs-12 col-sm-6 col-md-4">
-      <div class="panel panel-default">
-	<div class="panel-body">
-	  <%= link_to_thing_thumbnail thing -%>
-	  <center>
-	    <%= content_tag(:p, "#{thing.name} #{thing.summary}") -%>
-	    <%= link_to_like_icon thing -%>&nbsp;<%= link_to_have_icon thing -%>
-	  </center>
+<div class="col-xs-12">
+  <div class="row">
+    <div id="masonry-container">
+      <% @things.each do |thing| %>
+	<div class="masonry-item col-xs-12 col-sm-6 col-md-4">
+	  <div class="panel panel-default">
+	    <div class="panel-body">
+	      <%= link_to_thing_thumbnail thing -%>
+	      <center>
+		<%= content_tag(:p, "#{thing.name} #{thing.summary}") -%>
+		<%= link_to_like_icon thing -%>&nbsp;<%= link_to_have_icon thing -%>
+	      </center>
+	    </div>
+	  </div>
 	</div>
-      </div>
+      <% end %>
     </div>
-  <% end %>
+  </div>
 </div>
 
-<%= paginate(@things) -%>
+<div class="col-xs-12">
+  <%= paginate(@things) -%>
+</div>
