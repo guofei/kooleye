@@ -1,18 +1,20 @@
-<%= render 'shared/new_event' -%>
-
 <div class="panel panel-info">
   <div class="panel-heading">
     <%= fa_icon "thumbs-o-up", text: "お得な買い物方法" -%>
   </div>
   <div class="panel-body">
     <% if params[:k].blank? -%>
-      楽天で購入するなら楽天カードがお勧め！ポイント2倍＆2000ポイントGET！<br />
+      楽天で購入するなら楽天カードがお勧め！ポイント2倍＆2000ポイントGET！
+      <%= link_to "詳細", aff_link("http://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3114519&pid=882508658"), target: "_blank" -%>
+      <br />
     <% else %>
-      <b><font color="red"><%= params[:k] %></font></b>購入するなら楽天カードがお勧め！ポイント2倍＆2000ポイントGET！<br />
+      <b><font color="red"><%= params[:k] %></font></b>購入するなら楽天カードがお勧め！ポイント2倍＆2000ポイントGET！
+      <%= link_to "詳細", aff_link("http://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3114519&pid=882508658"), target: "_blank" -%>
+      <br />
     <% end %>
     <div class="text-center">
-      <%= link_to aff_link("http://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3114519&pid=882508536") do -%>
-	<%= image_tag "http://ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=3114519&pid=882508536", :size => "125x125" -%>
+      <%= link_to aff_link("http://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3114519&pid=882508536"), target: "_blank" do -%>
+	<%= image_tag "http://ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=3114519&pid=882508536", :alt => "sponsor", :size => "125x125" -%>
       <% end -%>
     </div>
   </div>
