@@ -4,6 +4,7 @@ class ShopsController < ApplicationController
 
   def index
     @suggestions = Thing.sort_by_hot.take(12)
+    @new_comments = Comment.limit(5).includes(:thing, :user)
     @amazon_items = []
     @rakuten_items = []
     @y_items = []

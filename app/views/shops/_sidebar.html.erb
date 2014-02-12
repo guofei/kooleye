@@ -2,10 +2,15 @@
 
 <div class="panel panel-info">
   <div class="panel-heading">
-    Ad
+    <%= fa_icon "thumbs-o-up", text: "お得な買い物方法" -%>
   </div>
   <div class="panel-body">
-    広告
+    <div class="text-center">
+      楽天で購入するなら楽天カードがお勧め！ポイント2倍＆2000ポイントGET！<br />
+      <%= link_to aff_link("http://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3114519&pid=882508536") do -%>
+	<%= image_tag "http://ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=3114519&pid=882508536", :size => "125x125" -%>
+      <% end -%>
+    </div>
   </div>
 </div>
 
@@ -29,3 +34,24 @@
 </div>
 
 
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <%= fa_icon "comments", text: "新着クチコミ・レビュー" -%>
+  </div>
+  <div class="panel-body">
+    <% @new_comments.each do |comment| -%>
+      <div class="media">
+	<div class="pull-right col-xs-5">
+	  <%= link_to_thing_small_img comment.thing -%>
+	</div>
+	<div class="media-body">
+	  <div class="media-heading">
+	    <%= link_to_comment_user_page comment -%>さん：
+	  </div>
+	  <%= sanitize comment.short_content -%>
+	</div>
+      </div>
+      <hr class="hr-point">
+    <% end %>
+  </div>
+</div>
