@@ -3,12 +3,12 @@
     <%= fa_icon "thumbs-o-up", text: "お得な買い物方法" -%>
   </div>
   <div class="panel-body">
-    <% if params[:k].blank? -%>
+    <% if keyword.blank? -%>
       楽天で購入するなら楽天カードがお勧め！ポイント2倍＆2000ポイントGET！
       <%= link_to "詳細", aff_link("http://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3114519&pid=882508658"), target: "_blank" -%>
       <br />
     <% else %>
-      <b><font color="red"><%= params[:k] %></font></b>購入するなら楽天カードがお勧め！ポイント2倍＆2000ポイントGET！
+      <b><font color="red"><%= keyword %></font></b>購入するなら楽天カードがお勧め！ポイント2倍＆2000ポイントGET！
       <%= link_to "詳細", aff_link("http://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3114519&pid=882508658"), target: "_blank" -%>
       <br />
     <% end %>
@@ -27,7 +27,7 @@
   <div class="panel-body">
     <div class="row media suggestion">
       <div class="media-body">
-	<% @suggestions.each do |thing| -%>
+	<% suggestions.each do |thing| -%>
 	  <% if thing.images.size > 0 -%>
 	    <div class="col-xs-4">
 	      <%= link_to thing_path(thing), target: "_blank" do image_tag thing.images.first.thumb_url, alt: thing.name, class: "img-thumbnail" end -%>
@@ -45,15 +45,13 @@
     <%= fa_icon "comments", text: "新着クチコミ・レビュー" -%>
   </div>
   <div class="panel-body">
-    <% @new_comments.each do |comment| -%>
+    <% new_comments.each do |comment| -%>
       <div class="media">
-	<div class="pull-right col-xs-5">
-	  <%= link_to_thing_small_img comment.thing -%>
-	</div>
 	<div class="media-body">
-	  <div class="media-heading">
-	    <%= link_to_comment_user_page comment -%>さん：
+	  <div class="pull-right col-xs-5">
+	    <%= link_to_thing_small_img comment.thing -%>
 	  </div>
+	  <h5><%= link_to_comment_user_page comment -%>さん：</h5>
 	  <%= sanitize comment.short_content -%>
 	</div>
       </div>

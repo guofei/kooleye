@@ -1,5 +1,10 @@
 # -*- coding: utf-8 -*-
 module ShopsHelper
+  def keyword
+    return nil if params[:k].blank?
+    return params[:k]
+  end
+
   def amazon_url(keyword)
     amazon = URI.escape("http://www.amazon.co.jp/s/?_encoding=UTF8&camp=1207&creative=8415&linkCode=shr&tag=rookit03-22&field-keywords=#{keyword}")
   end

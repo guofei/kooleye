@@ -2,7 +2,7 @@
   <div class="col-xs-12">
     <%= form_tag shops_path, method: "get" do -%>
       <div class="input-group">
-	<input type="text" class="form-control" name="k" id="search" value="<%= params[:k] %>" placeholder="Search">
+	<input type="text" class="form-control" name="k" id="search" value="<%= keyword %>" placeholder="Search">
 	<div class="input-group-btn">
 	  <button type="submit" class="btn btn-default">最安値を検索</button>
 	</div>
@@ -14,7 +14,7 @@
   <div class="col-xs-12 text-center">
     <%= form_tag shops_path, method: "get" do -%>
     <div class="btn-group">
-      <% k_param = "&k=#{params[:k]}" if !params[:k].blank? %>
+      <% k_param = "&k=#{keyword}" if !keyword.blank? %>
       <% if params[:sort] == "price" -%>
 	<%= link_to "人気順", shops_path + "?sort=hot#{k_param}", class: "btn btn-default" -%>
 	<%= link_to "安値順", shops_path + "?sort=price#{k_param}", class: "btn btn-default active" -%>

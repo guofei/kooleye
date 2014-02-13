@@ -21,6 +21,10 @@
 	<%= link_to aff_link(item[:url]), target: "_blank" do -%>
 	  <%= fa_icon "comment-o", text: "楽天レビュー" -%>
 	<% end %>
+       <% else %>
+	<%= link_to aff_link(item[:url]), target: "_blank" do -%>
+	  <%= fa_icon "comment-o", text: "商品レビュー" -%>
+	<% end %>
       <% end -%>
       <br />
     </div>
