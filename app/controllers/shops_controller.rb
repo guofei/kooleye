@@ -2,6 +2,8 @@ class ShopsController < ApplicationController
   require 'shops'
   include Shops
 
+  helper_method :search_engine_keyword
+
   def index
     search_engine_keyword
     @suggestions = Thing.sort_by_hot.take(12)

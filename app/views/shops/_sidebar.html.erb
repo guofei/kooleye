@@ -8,7 +8,7 @@
       <%= link_to "詳細", aff_link("http://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3114519&pid=882508658"), target: "_blank" -%>
       <br />
     <% else %>
-      <b><font color="red"><%= keyword %></font></b>購入するなら楽天カードがお勧め！ポイント2倍＆2000ポイントGET！
+      <b><font color="red"><%= search_engine_keyword ? search_engine_keyword : keyword %></font></b>購入するなら楽天カードがお勧め！ポイント2倍＆2000ポイントGET！
       <%= link_to "詳細", aff_link("http://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3114519&pid=882508658"), target: "_blank" -%>
       <br />
     <% end %>
