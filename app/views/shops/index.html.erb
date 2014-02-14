@@ -1,9 +1,3 @@
-<script>
-  ga('send', 'dimension2', "<%= request.env["HTTP_X_FORWARDED_FOR"] || request.remote_ip %>");
-  <% if not request.headers[:referer].blank? -%>
-    ga('send', 'dimension3', "<%= request.headers[:referer] %>");
-  <% end %>
-</script>
 <div class="col-xs-12 col-md-9">
   <%= render "search" -%>
 
@@ -12,7 +6,7 @@
       <div class="col-sm-3">
 	<div class="panel panel-default">
 	  <div class="panel-heading text-center">
-	    <%= link_to aff_link(amazon_url(keyword)), target: "_blank", onclick: "affclicked(\"#{amazon_url(keyword)}\")" do -%>
+	    <%= link_to aff_link(amazon_url(keyword)), target: "_blank" do -%>
 	      <%= fa_icon :search, text: "Amazon" -%>
 	    <% end -%>
 	  </div>
@@ -25,7 +19,7 @@
       <div class="col-sm-3">
 	<div class="panel panel-default">
 	  <div class="panel-heading text-center">
-	    <%= link_to aff_link(rakuten_url(keyword)), target: "_blank", onclick: "affclicked(\"#{rakuten_url(keyword)}\")" do -%>
+	    <%= link_to aff_link(rakuten_url(keyword)), target: "_blank" do -%>
 	      <%= fa_icon :search, text: "楽天" -%>
 	    <% end -%>
 	  </div>
@@ -38,7 +32,7 @@
       <div class="col-sm-3">
 	<div class="panel panel-default">
 	  <div class="panel-heading text-center">
-	    <%= link_to aff_link(yahoo_s_url(keyword)), target: "_blank", onclick: "affclicked(\"#{yahoo_s_url(keyword)}\")" do -%>
+	    <%= link_to aff_link(yahoo_s_url(keyword)), target: "_blank" do -%>
 	      <%= fa_icon :search, text: "Yahoo!ショッピング" -%>
 	    <% end -%>
 	  </div>
@@ -51,7 +45,7 @@
       <div class="col-sm-3">
 	<div class="panel panel-default">
 	  <div class="panel-heading text-center">
-	    <%= link_to aff_link(yahoo_a_url(keyword)), target: "_blank", onclick: "affclicked(\"#{yahoo_a_url(keyword)}\")" do -%>
+	    <%= link_to aff_link(yahoo_a_url(keyword)), target: "_blank" do -%>
 	      <%= fa_icon :search, text: "Yahoo!オークション" -%>
 	    <% end -%>
 	  </div>
