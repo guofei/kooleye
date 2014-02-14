@@ -1,5 +1,5 @@
 <div class="list-group-item">
-  <%= link_to aff_link(item[:url]) ,class: "thumbnail", target: "_blank" do -%>
+  <%= link_to aff_link(item[:url]), class: "thumbnail", target: "_blank", onclick: "affclicked(\"#{item[:url]}\")" do -%>
     <%= image_tag item[:image] -%>
   <% end -%>
   <center>
@@ -8,21 +8,21 @@
     </div>
     <div class="wordwrap"><%= item[:title] -%></div>
     <div class="more">
-      <%= link_to aff_link(item[:url]), target: "_blank" do -%>
+      <%= link_to aff_link(item[:url]), target: "_blank", onclick: "affclicked(\"#{item[:url]}\")" do -%>
 	<%= fa_icon "hand-o-right", text: "商品詳細" -%>
       <% end %>
     </div>
     <div class="review">
       <% if item[:ec_site] == "Amazon" -%>
-	<%= link_to aff_link(item[:url]), target: "_blank" do -%>
+	<%= link_to aff_link(item[:url]), target: "_blank", onclick: "affclicked(\"#{item[:url]}\")" do -%>
 	  <%= fa_icon "comment-o", text: "Amazonレビュー" -%>
 	<% end %>
       <% elsif item[:ec_site] == "Rakuten" %>
-	<%= link_to aff_link(item[:url]), target: "_blank" do -%>
+	<%= link_to aff_link(item[:url]), target: "_blank", onclick: "affclicked(\"#{item[:url]}\")" do -%>
 	  <%= fa_icon "comment-o", text: "楽天レビュー" -%>
 	<% end %>
        <% else %>
-	<%= link_to aff_link(item[:url]), target: "_blank" do -%>
+	<%= link_to aff_link(item[:url]), target: "_blank", onclick: "affclicked(\"#{item[:url]}\")" do -%>
 	  <%= fa_icon "comment-o", text: "商品レビュー" -%>
 	<% end %>
       <% end -%>
