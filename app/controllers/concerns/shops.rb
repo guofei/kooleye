@@ -66,8 +66,13 @@ module Shops
       options = { :query => keyword }
       options[:sort] = "bidorbuy" if sort == "price"
       res = Yahoo::Api.get(Yahoo::Api::Auction::Search, options)
-      return [] if res["ResultSet"]["Result"]["Item"] == nil
-      res["ResultSet"]["Result"]["Item"].map do |i|
+      items = res["ResultSet"]["Result"]["Item"]
+      if items == nil
+        items = []
+      elsif items.instance_of?(Hash)
+        items = [res["ResultSet"]["Result"]["Item"]]
+      end
+      items.map do |i|
         {
           ec_site: "Yahoo Auction",
           url: ENV["YAHOO_AUCTION_AFF_ID"] + i["AuctionItemUrl"],
