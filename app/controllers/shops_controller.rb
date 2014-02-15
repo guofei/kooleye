@@ -33,8 +33,12 @@ class ShopsController < ApplicationController
   def search_engine_keyword
     begin
       querys = CGI::parse URI.parse(request.headers[:referer]).query
+      query = querys["keywords"][0] if querys["keywords"]
       query = querys["q"][0] if querys["q"]
       query = querys["p"][0] if querys["p"]
+      if not query.blank? and request.headers[:referer].downcase.include?("=euc-jp")
+        query = query.encode "UTF-8", "EUC-JP"
+      end
       if not params[:k].blank?
         query = nil if params[:k].include?(query)
       end
