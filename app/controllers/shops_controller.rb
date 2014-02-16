@@ -24,10 +24,10 @@ class ShopsController < ApplicationController
     end
     @items = []
     loop do
-      am = @amazon_items.pop
-      rt = @rakuten_items.pop
-      ys = @y_items.pop
-      ya = @y_a_items.pop
+      am = @amazon_items.shift
+      rt = @rakuten_items.shift
+      ys = @y_items.shift
+      ya = @y_a_items.shift
       break if am == nil and rt == nil and ys == nil and ya == nil
       @items << am if am
       @items << rt if rt
