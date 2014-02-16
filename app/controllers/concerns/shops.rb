@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 module Shops
   def get_amazon_items(keyword, sort: "dafault")
     Rails.cache.fetch("amazon_#{keyword}_#{sort}", expires_in: 1.hour) do
@@ -6,7 +7,9 @@ module Shops
         res = Amazon::Ecs.item_search(keyword, :search_index => 'All', :response_group => 'Medium, OfferSummary', :ItemPage => page)
         res.items.each do |item|
           items.push({
-                       ec_site: "Amazon", url: item.get('DetailPageURL'),
+                       ec_site: "amazon",
+                       publisher: "Amazon: #{item.get('ItemAttributes/Publisher')}",
+                       url: item.get('DetailPageURL'),
                        image: item.get('MediumImage/URL'),
                        title: item.get('ItemAttributes/Title'),
                        price: item.get('OfferSummary/LowestNewPrice/Amount')
@@ -33,7 +36,8 @@ module Shops
           image = item["mediumImageUrls"][0]["imageUrl"]
         end
         {
-          ec_site: "Rakuten",
+          ec_site: "rakuten",
+          publisher: "楽天ショップ: #{item['shopName']}",
           url: item["affiliateUrl"],
           image: image,
           price: item.price,
@@ -51,7 +55,8 @@ module Shops
       return [] if res["ResultSet"]["totalResultsReturned"] == "0"
       res["ResultSet"]["totalResultsReturned"].times.map do |i|
         {
-          ec_site: "Yahoo Shopping",
+          ec_site: "yahoo shopping",
+          publisher: "Yahoo!ショッピング: " + res["ResultSet"]["0"]["Result"]["#{i}"]["Store"]["Name"],
           url: res["ResultSet"]["0"]["Result"]["#{i}"]["Url"],
           image: res["ResultSet"]["0"]["Result"]["#{i}"]["Image"]["Medium"],
           title: res["ResultSet"]["0"]["Result"]["#{i}"]["Name"],
@@ -74,7 +79,8 @@ module Shops
       end
       items.map do |i|
         {
-          ec_site: "Yahoo Auction",
+          ec_site: "yahoo auction",
+          publisher: "#{i['Seller']['Id']} ヤフオクで#{keyword}検索",
           url: ENV["YAHOO_AUCTION_AFF_ID"] + i["AuctionItemUrl"],
           image: i["Image"],
           title: i["Title"],

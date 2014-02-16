@@ -22,6 +22,19 @@ class ShopsController < ApplicationController
         @y_a_items.concat(get_yahoo_auction_items k, sort: sort)
       end
     end
+    @items = []
+    loop do
+      am = @amazon_items.pop
+      rt = @rakuten_items.pop
+      ys = @y_items.pop
+      ya = @y_a_items.pop
+      break if am == nil and rt == nil and ys == nil and ya == nil
+      @items << am if am
+      @items << rt if rt
+      @items << ys if ys
+      @items << ya if ya
+    end
+    @items = @items.sort{ |a, b| a[:price].to_i <=> b[:price].to_i} if sort == "price"
   end
 
   def show
