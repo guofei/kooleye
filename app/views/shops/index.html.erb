@@ -18,12 +18,20 @@
 	<%= link_to aff_link(yahoo_a_url(keyword)), target: "_blank" do -%>
 	  <%= fa_icon :search, text: "Yahoo!オークションで検索" -%>
 	<% end -%>
-      </div>
-
-      <div class="col-sm-12">
 	<hr />
-	<%= render partial: "item", collection: @items -%>
       </div>
+    </div>
+
+    <div class="row">
+      <% if params[:style] == "grid" -%>
+	<div id="masonry-container">
+	  <%= render partial: "item_grid", collection: @items, as: :item -%>
+	</div>
+      <% else %>
+	<div class="col-sm-12">
+	  <%= render partial: "item", collection: @items, as: :item -%>
+	</div>
+      <% end %>
     </div>
   <% end %>
 </div>

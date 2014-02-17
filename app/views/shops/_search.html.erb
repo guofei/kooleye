@@ -1,29 +1,43 @@
+<% k_param = "?k=#{keyword}" if not keyword.blank? %>
+<% sort_param = "&sort=#{params[:sort]}" if not params[:sort].blank? -%>
+<% style_param = "&style=#{params[:style]}" if not params[:style].blank? -%>
+
 <div class="row">
   <div class="col-xs-12">
     <%= form_tag shops_path, method: "get" do -%>
       <div class="input-group">
-	<input type="text" class="form-control" name="k" id="search" value="<%= search_engine_keyword ? search_engine_keyword : keyword %>" placeholder="Search">
+	<%= text_field_tag :k, search_engine_keyword ? search_engine_keyword : keyword, class: "form-control", id: "search",  placeholder: "Search" -%>
+	<%= hidden_field_tag :sort, params[:sort] if sort_param -%>
+	<%= hidden_field_tag :style, params[:style] if style_param -%>
 	<div class="input-group-btn">
 	  <button type="submit" class="btn btn-default">最安値を検索</button>
 	</div>
       </div>
     <% end -%>
-    <br />
   </div>
+</div>
 
+<div class="row">
   <div class="col-xs-12 text-center">
-    <%= form_tag shops_path, method: "get" do -%>
-    <div class="btn-group">
-      <% k_param = "&k=#{keyword}" if !keyword.blank? %>
-      <% if params[:sort] == "price" -%>
-	<%= link_to "人気順", shops_path + "?sort=hot#{k_param}", class: "btn btn-default" -%>
-	<%= link_to "安値順", shops_path + "?sort=price#{k_param}", class: "btn btn-default active" -%>
-      <% else -%>
-	<%= link_to "人気順", shops_path + "?sort=hot#{k_param}", class: "btn btn-default active" -%>
-	<%= link_to "安値順", shops_path + "?sort=price#{k_param}", class: "btn btn-default" -%>
-      <% end -%>
-    </div>
-    <% end -%>
-    <br />
+    <p>
+      <div class="btn-group">
+	<% if k_param -%>
+	  <% if params[:sort] == "price" -%>
+	    <%= link_to "人気順", shops_path + "#{k_param}#{style_param}", class: "btn btn-default" -%>
+	    <%= link_to "安値順", shops_path + "#{k_param}&sort=price#{style_param}", class: "btn btn-default active" -%>
+	  <% else -%>
+	    <%= link_to "人気順", shops_path + "#{k_param}#{style_param}", class: "btn btn-default active" -%>
+	    <%= link_to "安値順", shops_path + "#{k_param}&sort=price#{style_param}", class: "btn btn-default" -%>
+	  <% end -%>
+	  <% if params[:style] == "grid" -%>
+	    <%= link_to "一覧", shops_path + "#{k_param}#{sort_param}", class: "btn btn-default" -%>
+	    <%= link_to "写真", shops_path + "#{k_param}#{sort_param}&style=grid", class: "btn btn-default active" -%>
+	  <% else -%>
+	    <%= link_to "一覧", shops_path + "#{k_param}#{sort_param}", class: "btn btn-default active" -%>
+	    <%= link_to "写真", shops_path + "#{k_param}#{sort_param}&style=grid", class: "btn btn-default" -%>
+	  <% end -%>
+	<% end %>
+      </div>
+    </p>
   </div>
 </div>
