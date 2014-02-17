@@ -23,18 +23,34 @@
       <div class="btn-group">
 	<% if k_param -%>
 	  <% if params[:sort] == "price" -%>
-	    <%= link_to "人気順", shops_path + "#{k_param}#{style_param}", class: "btn btn-default" -%>
-	    <%= link_to "安値順", shops_path + "#{k_param}&sort=price#{style_param}", class: "btn btn-default active" -%>
+	    <%= link_to shops_path + "#{k_param}#{style_param}", class: "btn btn-default" do -%>
+	      <%= fa_icon :rocket, text: "人気順" -%>
+	    <% end -%>
+	    <%= link_to shops_path + "#{k_param}&sort=price#{style_param}", class: "btn btn-default active" do -%>
+	      <%= fa_icon :jpy, text: "安値順" -%>
+	    <% end -%>
 	  <% else -%>
-	    <%= link_to "人気順", shops_path + "#{k_param}#{style_param}", class: "btn btn-default active" -%>
-	    <%= link_to "安値順", shops_path + "#{k_param}&sort=price#{style_param}", class: "btn btn-default" -%>
+	    <%= link_to shops_path + "#{k_param}#{style_param}", class: "btn btn-default active" do -%>
+	      <%= fa_icon :rocket, text: "人気順" -%>
+	    <% end -%>
+	    <%= link_to shops_path + "#{k_param}&sort=price#{style_param}", class: "btn btn-default" do -%>
+	      <%= fa_icon :jpy, text: "安値順" -%>
+	    <% end -%>
 	  <% end -%>
 	  <% if params[:style] == "grid" -%>
-	    <%= link_to "一覧", shops_path + "#{k_param}#{sort_param}", class: "btn btn-default" -%>
-	    <%= link_to "写真", shops_path + "#{k_param}#{sort_param}&style=grid", class: "btn btn-default active" -%>
+	    <%= link_to shops_path + "#{k_param}#{sort_param}", class: "btn btn-default" do -%>
+	      <%= fa_icon :list, text: "一覧" -%>
+	    <% end -%>
+	    <%= link_to shops_path + "#{k_param}#{sort_param}&style=grid", class: "btn btn-default active" do -%>
+	      <%= fa_icon :th, text: "写真" -%>
+	    <% end -%>
 	  <% else -%>
-	    <%= link_to "一覧", shops_path + "#{k_param}#{sort_param}", class: "btn btn-default active" -%>
-	    <%= link_to "写真", shops_path + "#{k_param}#{sort_param}&style=grid", class: "btn btn-default" -%>
+	    <%= link_to shops_path + "#{k_param}#{sort_param}", class: "btn btn-default active" do -%>
+	      <%= fa_icon :list, text: "一覧" -%>
+	    <% end -%>
+	    <%= link_to shops_path + "#{k_param}#{sort_param}&style=grid", class: "btn btn-default" do -%>
+	      <%= fa_icon :th, text: "写真" -%>
+	    <% end -%>
 	  <% end -%>
 	<% end %>
       </div>
