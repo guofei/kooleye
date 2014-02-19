@@ -58,7 +58,7 @@ Lfti::Application.configure do
     :port => 6379,
     :db => 0,
     :namespace => "kooleyecache",
-    :expires_in => 120.minutes
+    :expires_in => 6.hours
   }
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.

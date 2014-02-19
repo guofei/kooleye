@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 module Shops
   def get_amazon_items(keyword, sort: "dafault")
-    Rails.cache.fetch("amazon_#{keyword}_#{sort}", expires_in: 1.hour) do
+    Rails.cache.fetch("amazon_#{keyword}_#{sort}") do
       items = []
       [1, 2].each do |page|
         res = Amazon::Ecs.item_search(keyword, :search_index => 'All', :response_group => 'Medium, OfferSummary', :ItemPage => page)
@@ -22,7 +22,7 @@ module Shops
   end
 
   def get_rakuten_items(keyword, sort: "dafault")
-    Rails.cache.fetch("rakuten_#{keyword}_#{sort}", expires_in: 1.hour) do
+    Rails.cache.fetch("rakuten_#{keyword}_#{sort}") do
       options = { :keyword => keyword }
       options[:sort] = "+itemPrice" if sort == "price"
       items = RakutenWebService::Ichiba::Item.search(options)
@@ -48,7 +48,7 @@ module Shops
   end
 
   def get_yahoo_shopping_items(keyword, sort: "dafault")
-    Rails.cache.fetch("yahoo_s_#{keyword}_#{sort}", expires_in: 1.hour) do
+    Rails.cache.fetch("yahoo_s_#{keyword}_#{sort}") do
       options = { :category_id => "1", :query => keyword }
       options[:sort] = "+price" if sort == "price"
       res = Yahoo::Api.get(Yahoo::Api::Shopping::ItemSearch, options)
@@ -67,7 +67,7 @@ module Shops
   end
 
   def get_yahoo_auction_items(keyword, sort: "dafault")
-    Rails.cache.fetch("yahoo_a_#{keyword}_#{sort}", expires_in: 1.hour) do
+    Rails.cache.fetch("yahoo_a_#{keyword}_#{sort}") do
       options = { :query => keyword }
       options[:sort] = "bidorbuy" if sort == "price"
       res = Yahoo::Api.get(Yahoo::Api::Auction::Search, options)

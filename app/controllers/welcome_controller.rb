@@ -11,7 +11,7 @@ class WelcomeController < ApplicationController
       @center_things = Thing.sort_by_hot.page params[:page]
       @sider_things = Thing.take(10)
       @top_things = []
-      @top_things = Thing.offset(10).limit(4) if not params[:page]
+      @top_things = Thing.offset(10).limit(6) if not params[:page]
     end
   end
 end
