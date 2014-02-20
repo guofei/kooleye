@@ -24,14 +24,14 @@ class ShopsController < ApplicationController
     end
     @items = []
     if not keyword.blank?
-      things = Thing.search(name_cont: keyword).result
+      things = Thing.search(name_or_summary_cont: keyword).result
       things.each do |thing|
         item = {
           ec_site: "kooleye",
-          publisher: thing.name + " " + thing.summary,
+          publisher: thing.name,
           url: thing_path(thing),
           image: thing.images.first.normal_url,
-          title: thing.name
+          title: thing.summary
         }
         @items << item
       end
