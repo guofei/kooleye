@@ -96,6 +96,12 @@
               </li>
 	    <% end -%>
           </ul>
+	  <%= form_tag shops_path, method: "get", class: "navbar-form navbar-right", role: "search", target: "_blank" do -%>
+	    <div class="form-group">
+	      <%= text_field_tag :k, "", class: "form-control", placeholder: "検索" -%>
+	      <%= hidden_field_tag :style, "grid" -%>
+	    </div>
+	  <% end -%>
 	</div><!-- /.nav-collapse -->
       </div><!-- /.container -->
     </div><!-- /.navbar -->
@@ -107,7 +113,6 @@
       <div class="ie-alert"></div>
       <div class="row">
 	<%= render 'shared/sns' -%>
-	<br />
 	<%= render 'shared/email_input_modal' -%>
 
 	<%= yield %>

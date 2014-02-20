@@ -1,33 +1,33 @@
 <div class="masonry-item col-sm-3">
   <div class="panel panel-default">
     <div class="panel-body">
-      <%= link_to aff_link(item[:url]), class: "thumbnail", target: "_blank" do -%>
+      <%= link_to item_url(item), class: "thumbnail", target: "_blank" do -%>
 	<%= image_tag item[:image] -%>
       <% end -%>
       <center>
 	<div class="price" style="color: red">
-	  <%= fa_icon "jpy", text: "#{item[:price]} 円" -%>
+	  <%= fa_icon "jpy", text: "#{item[:price]} 円" if item[:ec_site] != "kooleye" -%>
 	</div>
 	<div class="item-publisher">
-	  <%= link_to item[:publisher], aff_link(item[:url]), target: "_blank" -%>
+	  <%= link_to item[:publisher], item_url(item), target: "_blank" -%>
 	</div>
 	<div class="wordwrap"><%= item[:title] -%></div>
 	<div class="more">
-	  <%= link_to aff_link(item[:url]), target: "_blank" do -%>
+	  <%= link_to item_url(item), target: "_blank" do -%>
 	    <%= fa_icon "hand-o-right", text: "商品詳細" -%>
 	  <% end %>
 	</div>
 	<div class="review">
 	  <% if item[:ec_site] == "Amazon" -%>
-	    <%= link_to aff_link(item[:url]), target: "_blank" do -%>
+	    <%= link_to item_url(item), target: "_blank" do -%>
 	      <%= fa_icon "comment-o", text: "Amazonレビュー" -%>
 	    <% end %>
 	  <% elsif item[:ec_site] == "Rakuten" %>
-	    <%= link_to aff_link(item[:url]), target: "_blank" do -%>
+	    <%= link_to item_url(item), target: "_blank" do -%>
 	      <%= fa_icon "comment-o", text: "楽天レビュー" -%>
 	    <% end %>
 	  <% else %>
-	    <%= link_to aff_link(item[:url]), target: "_blank" do -%>
+	    <%= link_to item_url(item), target: "_blank" do -%>
 	      <%= fa_icon "comment-o", text: "商品レビュー" -%>
 	    <% end %>
 	  <% end -%>

@@ -427,6 +427,7 @@ DEPENDENCIES
   rails (= 4.0.0)
   rails_12factor
   rakuten_web_service
+  ransack
   recaptcha
   redis-rails
   rspec-rails (~> 2.14.0)

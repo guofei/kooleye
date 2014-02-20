@@ -6,7 +6,7 @@ class ShopsController < ApplicationController
 
   def index
     search_engine_keyword
-    @suggestions = Thing.sort_by_hot.take(12)
+    @suggestions = Thing.sort_by_hot.limit(12)
     @new_comments = Comment.limit(8).includes(:thing, :user)
     @amazon_items = []
     @rakuten_items = []
@@ -23,6 +23,19 @@ class ShopsController < ApplicationController
       end
     end
     @items = []
+    if not keyword.blank?
+      things = Thing.search(name_cont: keyword).result
+      things.each do |thing|
+        item = {
+          ec_site: "kooleye",
+          publisher: thing.name + " " + thing.summary,
+          url: thing_path(thing),
+          image: thing.images.first.normal_url,
+          title: thing.name
+        }
+        @items << item
+      end
+    end
     loop do
       am = @amazon_items.shift
       rt = @rakuten_items.shift

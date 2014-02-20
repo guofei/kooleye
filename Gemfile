@@ -99,6 +99,7 @@ gem 'video_info'
 
 gem "recaptcha", :require => "recaptcha/rails"
 
+gem "ransack"
 gem "amazon-ecs"
 gem "rakuten_web_service"
 gem "yahoo-api"

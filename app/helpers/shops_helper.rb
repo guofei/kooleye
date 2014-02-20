@@ -23,4 +23,12 @@ module ShopsHelper
     keyword_encode = URI.escape(keyword)
     y = ENV["YAHOO_AUCTION_AFF_ID"] + CGI.escape("http://auctions.search.yahoo.co.jp/search?auccat=&p=#{keyword_encode}&tab_ex=commerce&ei=utf-8")
   end
+
+  def item_url(item)
+    if item[:ec_site] == "kooleye"
+      item[:url]
+    else
+      aff_link(item[:url])
+    end
+  end
 end
