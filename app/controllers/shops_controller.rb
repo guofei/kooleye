@@ -26,11 +26,13 @@ class ShopsController < ApplicationController
     if not keyword.blank?
       things = Thing.search(name_or_summary_cont: keyword).result
       things.each do |thing|
+        image = ActionController::Base.helpers.asset_path('noimage.jpg')
+        image = thing.images.first.normal_url if thing.images.first
         item = {
           ec_site: "kooleye",
           publisher: thing.name,
           url: thing_path(thing),
-          image: thing.images.first.normal_url,
+          image: image,
           title: thing.summary
         }
         @items << item
