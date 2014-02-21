@@ -1,21 +1,21 @@
 <div class="col-xs-12 col-md-9">
-  <%= render "search" -%>
-  <% if keyword -%>
+  <%= render "search", { keyword: @keyword, search_engine_keyword: @search_engine_keyword } -%>
+  <% if @keyword -%>
     <div class="row">
       <div class="col-sm-12 text-center">
-	<%= link_to aff_link(amazon_url(keyword)), target: "_blank" do -%>
+	<%= link_to aff_link(amazon_url(@keyword)), target: "_blank" do -%>
 	  <%= fa_icon :search, text: "Amazonで検索" -%>
 	<% end -%>
 	&nbsp;
-	<%= link_to aff_link(rakuten_url(keyword)), target: "_blank" do -%>
+	<%= link_to aff_link(rakuten_url(@keyword)), target: "_blank" do -%>
 	  <%= fa_icon :search, text: "楽天で検索" -%>
 	<% end -%>
 	&nbsp;
-	<%= link_to aff_link(yahoo_s_url(keyword)), target: "_blank" do -%>
+	<%= link_to aff_link(yahoo_s_url(@keyword)), target: "_blank" do -%>
 	  <%= fa_icon :search, text: "Yahoo!ショッピングで検索" -%>
 	<% end -%>
 	&nbsp;
-	<%= link_to aff_link(yahoo_a_url(keyword)), target: "_blank" do -%>
+	<%= link_to aff_link(yahoo_a_url(@keyword)), target: "_blank" do -%>
 	  <%= fa_icon :search, text: "Yahoo!オークションで検索" -%>
 	<% end -%>
 	<hr />
@@ -37,5 +37,5 @@
 </div>
 
 <div class="col-xs-12 col-md-3">
-  <%= render "sidebar", suggestions: @suggestions, new_comments: @new_comments -%>
+  <%= render "sidebar", suggestions: @suggestions, new_comments: @new_comments, search_engine_keyword: @search_engine_keyword, keyword: @keyword -%>
 </div>
