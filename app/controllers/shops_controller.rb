@@ -7,7 +7,7 @@ class ShopsController < ApplicationController
     @new_comments = Comment.limit(8).includes(:thing, :user)
     @keyword = get_keyword
     @search_engine_keyword = get_referrer_keyword
-    @items = get_thing_items(@keyword) + get_items([@search_engine_keyword, @keyword], sort: params[:sort])
+    @items = get_thing_items(@keyword) + get_items([@keyword], sort: params[:sort])
   end
 
   def show
@@ -15,7 +15,7 @@ class ShopsController < ApplicationController
     @new_comments = Comment.limit(8).includes(:thing, :user)
     @keyword = get_keyword
     @search_engine_keyword = get_referrer_keyword
-    @items = get_thing_items(@keyword) + get_items([@search_engine_keyword, @keyword], sort: params[:sort])
+    @items = get_thing_items(@keyword) + get_items([@keyword], sort: params[:sort])
     render 'index'
   end
 

@@ -6,7 +6,7 @@
   <div class="col-xs-12">
     <%= form_tag shops_path, method: "get" do -%>
       <div class="input-group">
-	<%= text_field_tag :k, search_engine_keyword ? search_engine_keyword : keyword, class: "form-control", id: "search",  placeholder: "Search" -%>
+	<%= text_field_tag :k, keyword, class: "form-control", id: "search",  placeholder: "Search" -%>
 	<%= hidden_field_tag :sort, params[:sort] if sort_param -%>
 	<%= hidden_field_tag :style, params[:style] if style_param -%>
 	<div class="input-group-btn">
