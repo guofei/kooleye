@@ -1,17 +1,20 @@
 # -*- coding: utf-8 -*-
 module Shops
-  def get_items(keywords, sort: "dafault")
+  def get_items(keyword, sort: "dafault", page: 1)
+    return {pages: 0, items: []} if keyword.blank?
+    sort = "default" if sort != "price"
+    page = page.to_i
+    page = 1 if page <= 0
+
     amazon_items = []
     rakuten_items = []
     y_items = []
     y_a_items = []
-    keywords.each do |k|
-      next if k.blank?
-      amazon_items.concat(get_amazon_items k, sort: sort)
-      rakuten_items.concat(get_rakuten_items k, sort: sort)
-      y_items.concat(get_yahoo_shopping_items k, sort: sort)
-      y_a_items.concat(get_yahoo_auction_items k, sort: sort)
-    end
+    amazon_items.concat get_amazon_items keyword, sort: sort, page: page
+    rakuten_items.concat get_rakuten_items keyword, sort: sort, page: page
+    y_items.concat get_yahoo_shopping_items keyword, sort: sort, page: page
+    y_a_items.concat get_yahoo_auction_items keyword, sort: sort, page: page
+
     items = []
     loop do
       am = amazon_items.shift
@@ -28,11 +31,13 @@ module Shops
     items
   end
 
-  def get_amazon_items(keyword, sort: "dafault")
-    Rails.cache.fetch("amazon_#{keyword}_#{sort}") do
+  def get_amazon_items(keyword, sort: "dafault", page: 1)
+    return [] if page * 2 > 6
+    Rails.cache.fetch("amazon_#{keyword}_#{sort}_#{page}") do
       items = []
-      [1, 2].each do |page|
-        res = Amazon::Ecs.item_search(keyword, :search_index => 'All', :response_group => 'Medium, OfferSummary', :ItemPage => page)
+      [1, 0].each do |i|
+        next if page * 2 - i > 5
+        res = Amazon::Ecs.item_search(keyword, search_index: 'All', response_group: 'Medium, OfferSummary', ItemPage: page * 2 - i)
         res.items.each do |item|
           items.push({
                        ec_site: "amazon",
@@ -44,14 +49,16 @@ module Shops
                      })
         end
       end
-      items = items.sort{ |a, b| a[:price].to_i <=> b[:price].to_i} if sort == "price"
       items
     end
   end
 
-  def get_rakuten_items(keyword, sort: "dafault")
-    Rails.cache.fetch("rakuten_#{keyword}_#{sort}") do
+  def get_rakuten_items(keyword, sort: "dafault", page: 1)
+    return [] if page > 100
+    Rails.cache.fetch("rakuten_#{keyword}_#{sort}_#{page}") do
       options = { :keyword => keyword }
+      options[:hits] = 15
+      options[:page] = page
       options[:sort] = "+itemPrice" if sort == "price"
       items = RakutenWebService::Ichiba::Item.search(options)
       items.first(15).map do |item|
@@ -75,7 +82,8 @@ module Shops
     end
   end
 
-  def get_yahoo_shopping_items(keyword, sort: "dafault")
+  def get_yahoo_shopping_items(keyword, sort: "dafault", page: 1)
+    return [] if page > 1
     Rails.cache.fetch("yahoo_s_#{keyword}_#{sort}") do
       options = { :category_id => "1", :query => keyword }
       options[:sort] = "+price" if sort == "price"
@@ -94,7 +102,8 @@ module Shops
     end
   end
 
-  def get_yahoo_auction_items(keyword, sort: "dafault")
+  def get_yahoo_auction_items(keyword, sort: "dafault", page: 1)
+    return [] if page > 1
     Rails.cache.fetch("yahoo_a_#{keyword}_#{sort}") do
       options = { :query => keyword }
       options[:sort] = "bidorbuy" if sort == "price"

@@ -7,7 +7,12 @@ class ShopsController < ApplicationController
     @new_comments = Comment.limit(8).includes(:thing, :user)
     @keyword = get_keyword
     @search_engine_keyword = get_referrer_keyword
-    @items = get_thing_items(@keyword) + get_items([@keyword], sort: params[:sort])
+    if params[:page].to_i <= 1
+      @items = get_thing_items(@keyword) + get_items(@keyword, sort: params[:sort], page: params[:page].to_i)
+    else
+      @items = get_items @keyword, sort: params[:sort], page: params[:page].to_i
+    end
+    @pages = 100
   end
 
   def show
@@ -15,8 +20,13 @@ class ShopsController < ApplicationController
     @new_comments = Comment.limit(8).includes(:thing, :user)
     @keyword = get_keyword
     @search_engine_keyword = get_referrer_keyword
-    @items = get_thing_items(@keyword) + get_items([@keyword], sort: params[:sort])
-    render 'index'
+    if params[:page].to_i <= 1
+      @items = get_thing_items(@keyword) + get_items(@keyword, sort: params[:sort], page: params[:page])
+    else
+      @items = get_items @keyword, sort: params[:sort], page: params[:page].to_i
+    end
+    @pages = 100
+    render :index
   end
 
   private

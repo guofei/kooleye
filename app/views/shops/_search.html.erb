@@ -1,6 +1,8 @@
 <% k_param = "?k=#{keyword}" if not keyword.blank? %>
 <% sort_param = "&sort=#{params[:sort]}" if not params[:sort].blank? -%>
 <% style_param = "&style=#{params[:style]}" if not params[:style].blank? -%>
+<% page_param = "&page=#{params[:page]}" if not params[:page].blank? -%>
+
 
 <div class="row">
   <div class="col-xs-12">
@@ -38,17 +40,17 @@
 	    <% end -%>
 	  <% end -%>
 	  <% if params[:style] == "grid" -%>
-	    <%= link_to shops_path + "#{k_param}#{sort_param}", class: "btn btn-default" do -%>
+	    <%= link_to shops_path + "#{k_param}#{sort_param}#{page_param}", class: "btn btn-default" do -%>
 	      <%= fa_icon :list, text: "一覧" -%>
 	    <% end -%>
-	    <%= link_to shops_path + "#{k_param}#{sort_param}&style=grid", class: "btn btn-default active" do -%>
+	    <%= link_to shops_path + "#{k_param}#{sort_param}#{page_param}&style=grid", class: "btn btn-default active" do -%>
 	      <%= fa_icon :th, text: "写真" -%>
 	    <% end -%>
 	  <% else -%>
-	    <%= link_to shops_path + "#{k_param}#{sort_param}", class: "btn btn-default active" do -%>
+	    <%= link_to shops_path + "#{k_param}#{sort_param}#{page_param}", class: "btn btn-default active" do -%>
 	      <%= fa_icon :list, text: "一覧" -%>
 	    <% end -%>
-	    <%= link_to shops_path + "#{k_param}#{sort_param}&style=grid", class: "btn btn-default" do -%>
+	    <%= link_to shops_path + "#{k_param}#{sort_param}#{page_param}&style=grid", class: "btn btn-default" do -%>
 	      <%= fa_icon :th, text: "写真" -%>
 	    <% end -%>
 	  <% end -%>

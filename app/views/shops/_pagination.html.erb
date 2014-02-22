@@ -1,0 +1,43 @@
+<% if pages.to_i > 0 -%>
+  <% current_page = params[:page].to_i -%>
+  <% current_page = 1 if current_page == 0 -%>
+  <% pages = pages.to_i -%>
+  <div>
+    <ul class="pagination">
+      <% if current_page - 3 > 1  -%>
+	<li>
+	  <a href="<%= page_url 1 %>">&laquo; 最初</a>
+	</li>
+	<li>
+	  <a href="<%= page_url current_page - 1 %>" rel="prev">&lsaquo; 前</a>
+	</li>
+        <li class="disabled">
+	  <a href="#">&hellip;</a>
+	</li>
+      <% end -%>
+
+      <% (current_page - 3 .. current_page + 3).each do |page| -%>
+	<% if page > 0 and page <= pages -%>
+	  <% if page == current_page -%>
+	    <li class="active">
+	      <%= link_to page, "#" -%>
+	    </li>
+	  <% else -%>
+	    <li class="">
+	      <%= link_to page, page_url(page) -%>
+	    </li>
+	  <% end -%>
+	<% end -%>
+      <% end -%>
+
+      <% if pages > current_page + 3 -%>
+	<li class="disabled">
+	  <a href="#">&hellip;</a>
+	</li>
+	<li>
+	  <a href="<%= page_url current_page + 1 %>" rel="next">次 &rsaquo;</a>
+	</li>
+      <% end -%>
+    </ul>
+  </div>
+<% end %>

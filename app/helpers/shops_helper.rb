@@ -26,4 +26,16 @@ module ShopsHelper
       aff_link(item[:url])
     end
   end
+
+  def page_url(current_page)
+    url = request.fullpath
+    if url.include? "page="
+      url = url.gsub(/page=[0-9]+/, "page=#{current_page}")
+    elsif url.include? "?"
+      url += "&page=#{current_page}"
+    else
+      url += "?page=#{current_page}"
+    end
+    url
+  end
 end
