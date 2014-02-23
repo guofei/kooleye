@@ -7,12 +7,15 @@ class ShopsController < ApplicationController
     @new_comments = Comment.limit(8).includes(:thing, :user)
     @keyword = get_keyword
     @search_engine_keyword = get_referrer_keyword
+    @items = []
+    @pages = 0
+    return if @keyword.blank?
     if params[:page].to_i <= 1
       @items = get_thing_items(@keyword) + get_items(@keyword, sort: params[:sort], page: params[:page].to_i)
     else
       @items = get_items @keyword, sort: params[:sort], page: params[:page].to_i
     end
-    @pages = 100
+    @pages = 100 if @items.length > 0
   end
 
   def show

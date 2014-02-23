@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 module Shops
   def get_items(keyword, sort: "dafault", page: 1)
-    return {pages: 0, items: []} if keyword.blank?
+    return [] if keyword.blank?
     sort = "default" if sort != "price"
     page = page.to_i
     page = 1 if page <= 0
