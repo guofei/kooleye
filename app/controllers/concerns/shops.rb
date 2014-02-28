@@ -2,30 +2,25 @@
 module Shops
   def get_items(keyword, sort: "dafault", page: 1)
     return [] if keyword.blank?
-    sort = "default" if sort != "price"
-    page = page.to_i
-    page = 1 if page <= 0
 
-    amazon_items = []
-    rakuten_items = []
-    y_items = []
-    y_a_items = []
-    amazon_items.concat get_amazon_items keyword, sort: sort, page: page
-    rakuten_items.concat get_rakuten_items keyword, sort: sort, page: page
-    y_items.concat get_yahoo_shopping_items keyword, sort: sort, page: page
-    y_a_items.concat get_yahoo_auction_items keyword, sort: sort, page: page
+    sort = "default" if sort != "price"
+    page = 1 if page.to_i < 1
+
+    amazon_items = get_amazon_items keyword, sort: sort, page: page
+    rakuten_items = get_rakuten_items keyword, sort: sort, page: page
+    y_items = get_yahoo_shopping_items keyword, sort: sort, page: page
+    y_a_items = get_yahoo_auction_items keyword, sort: sort, page: page
 
     items = []
+    index = 0
     loop do
-      am = amazon_items.shift
-      rt = rakuten_items.shift
-      ys = y_items.shift
-      ya = y_a_items.shift
-      break if am == nil and rt == nil and ys == nil and ya == nil
-      items << am if am
-      items << rt if rt
-      items << ys if ys
-      items << ya if ya
+      break if amazon_items[index] == nil and rakuten_items[index] == nil and y_items[index] == nil and y_a_items[index] == nil
+
+      items << amazon_items[index] if amazon_items[index]
+      items << rakuten_items[index] if rakuten_items[index]
+      items << y_items[index] if y_items[index]
+      items << y_a_items[index] if y_a_items[index]
+      index += 1
     end
     items = items.sort{ |a, b| a[:price].to_i <=> b[:price].to_i} if sort == "price"
     items
