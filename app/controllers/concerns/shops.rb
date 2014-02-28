@@ -83,7 +83,7 @@ module Shops
       options = { :category_id => "1", :query => keyword }
       options[:sort] = "+price" if sort == "price"
       res = Yahoo::Api.get(Yahoo::Api::Shopping::ItemSearch, options)
-      return [] if res["ResultSet"]["totalResultsReturned"] == "0"
+      return [] if res["ResultSet"] == nil or res["ResultSet"]["totalResultsReturned"] == "0"
       res["ResultSet"]["totalResultsReturned"].times.map do |i|
         {
           ec_site: "yahoo shopping",
