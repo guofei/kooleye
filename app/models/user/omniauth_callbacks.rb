@@ -15,10 +15,18 @@ class User
         end
         authorization = user.bind_service(auth)
       end
+      update_from_provider_data(authorization.user, auth["info"])
       authorization.user
     end
 
     private
+    def update_from_provider_data(user, data)
+      if data["image"]
+        user.image = data["image"]
+        user.save
+      end
+    end
+
     def new_from_provider_data(provider, uid, data)
       User.new do |user|
         user.name = data["name"]
