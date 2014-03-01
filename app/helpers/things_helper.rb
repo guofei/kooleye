@@ -39,7 +39,7 @@ module ThingsHelper
   end
 
   def send_to_twitter_li(thing)
-    link_to "http://twitter.com/share?url=#{thing_url(thing)}&text=#{thing.name}", target: "_blank" do
+    link_to "http://twitter.com/share?url=#{thing_url(thing)}&text=#{thing.name} @kooleyecom", target: "_blank" do
       fa_stacked_icon "twitter", base: "square-o", text: "Twitterでつぶやく", class: "fa-lg"
     end
   end
