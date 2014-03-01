@@ -49,6 +49,7 @@ module Shops
   end
 
   def get_rakuten_items(keyword, sort: "dafault", page: 1)
+    keyword = keyword.gsub(/[|&]/, " ")
     return [] if page > 100
     Rails.cache.fetch("rakuten_#{keyword}_#{sort}_#{page}") do
       options = { :keyword => keyword }
