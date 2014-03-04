@@ -6,22 +6,12 @@ module Shops
     sort = "default" if sort != "price"
     page = 1 if page.to_i < 1
 
-    amazon_items = get_amazon_items keyword, sort: sort, page: page
-    rakuten_items = get_rakuten_items keyword, sort: sort, page: page
-    y_items = get_yahoo_shopping_items keyword, sort: sort, page: page
-    y_a_items = get_yahoo_auction_items keyword, sort: sort, page: page
+    items4 = [ get_amazon_items(keyword, sort: sort, page: page),
+               get_rakuten_items(keyword, sort: sort, page: page),
+               get_yahoo_shopping_items(keyword, sort: sort, page: page),
+               get_yahoo_auction_items(keyword, sort: sort, page: page) ].sort{ |a, b| b.length <=> a.length }
 
-    items = []
-    index = 0
-    loop do
-      break if amazon_items[index] == nil and rakuten_items[index] == nil and y_items[index] == nil and y_a_items[index] == nil
-
-      items << amazon_items[index] if amazon_items[index]
-      items << rakuten_items[index] if rakuten_items[index]
-      items << y_items[index] if y_items[index]
-      items << y_a_items[index] if y_a_items[index]
-      index += 1
-    end
+    items = items4[0].zip(items4[1], items4[2], items4[3]).reduce([]){ |all_arr, arr| all_arr + arr }.compact
     items = items.sort{ |a, b| a[:price].to_i <=> b[:price].to_i} if sort == "price"
     items
   end
