@@ -70,7 +70,7 @@ group :test do
   #gem "selenium-webdriver", "~> 2.37.0"
 end
 
-gem 'bootstrap-sass', '~> 3.1.0'
+gem 'bootstrap-sass', '~> 3.1.1'
 gem "simple_form", "~> 3.0.1"
 gem "devise", "~> 3.2.2"
 gem 'activeadmin', github: 'gregbell/active_admin'

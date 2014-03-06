@@ -58,7 +58,7 @@ GEM
     arel (4.0.1)
     atomic (1.1.14)
     bcrypt-ruby (3.1.2)
-    bootstrap-sass (3.1.0.2)
+    bootstrap-sass (3.1.1.0)
       sass (~> 3.2)
     bourbon (3.1.8)
       sass (>= 3.2.0)
@@ -395,7 +395,7 @@ PLATFORMS
 DEPENDENCIES
   activeadmin!
   amazon-ecs
-  bootstrap-sass (~> 3.1.0)
+  bootstrap-sass (~> 3.1.1)
   bullet
   capybara
   capybara-webkit
