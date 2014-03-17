@@ -51,10 +51,9 @@ feature 'things' do
     pending "add image !!!!!!!!!!!"
 #    scenario 'add a image', js: true do
 #      upload_image
-#      expect(page).not_to have_errors
 #      expect(Image.all.size).to eq 1
 #    end
-
+#
 #    scenario 'shares a new thing', js: true do
 #      upload_image
 #      fill_in I18n.t('name'), with: newthing.name
