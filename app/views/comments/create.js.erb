@@ -5,6 +5,7 @@
 <% else -%>
   $("#comments").append('<%= j(render partial: 'comments/comment', locals: {comment: @comment}) %>');
   $("#comment-success").html('<div class="alert alert-success">成功しました!コメントありがとうございます！</div>');
+  $("#comment-form").collapse('hide');
 <% end %>
 
 if($(".recaptcha-reload")[0]){
