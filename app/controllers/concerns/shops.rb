@@ -6,12 +6,12 @@ module Shops
     sort = "default" if sort != "price"
     page = 1 if page.to_i < 1
 
-    items4 = [ get_amazon_items(keyword, sort: sort, page: page),
+    items3 = [ get_amazon_items(keyword, sort: sort, page: page),
                get_rakuten_items(keyword, sort: sort, page: page),
-               get_yahoo_shopping_items(keyword, sort: sort, page: page),
-               get_yahoo_auction_items(keyword, sort: sort, page: page) ].sort{ |a, b| b.length <=> a.length }
+               get_yahoo_shopping_items(keyword, sort: sort, page: page)
+             ].sort{ |a, b| b.length <=> a.length }
 
-    items = items4[0].zip(items4[1], items4[2], items4[3]).reduce([]){ |all_arr, arr| all_arr + arr }.compact
+    items = items3[0].zip(items3[1], items3[2]).reduce([]){ |all_arr, arr| all_arr + arr }.compact
     items = items.sort{ |a, b| a[:price].to_i <=> b[:price].to_i} if sort == "price"
     items
   end
@@ -88,11 +88,13 @@ module Shops
     end
   end
 
+  # FIXME
   def get_yahoo_auction_items(keyword, sort: "dafault", page: 1)
     return [] if page > 1
     Rails.cache.fetch("yahoo_a_#{keyword}_#{sort}") do
       options = { :query => keyword }
       options[:sort] = "bidorbuy" if sort == "price"
+      # ERROR HERE
       res = Yahoo::Api.get(Yahoo::Api::Auction::Search, options)
       items = res["ResultSet"]["Result"]["Item"]
       if items == nil
