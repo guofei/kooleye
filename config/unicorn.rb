@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 application = 'kooleye'
 
-worker_processes 3
+worker_processes 2
 working_directory "~/#{application}"
 
 listen "/var/run/unicorn/unicorn_#{application}.sock"   # Unix Domain Socket
