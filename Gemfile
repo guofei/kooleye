@@ -1,5 +1,4 @@
 source 'https://rubygems.org'
-ruby "2.1.0"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
@@ -36,6 +35,7 @@ end
 
 # Use unicorn as the app server
 # gem 'unicorn'
+gem 'puma', '~> 2.9.1'
 
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
@@ -47,7 +47,7 @@ group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
 
-  gem 'pry-debugger'
+  gem 'byebug'
 
   gem "rspec-rails", "~> 2.14.0"
   gem 'factory_girl_rails'
@@ -106,7 +106,6 @@ gem "yahoo-api"
 
 gem 'redis-rails', group: :production
 
-gem 'unicorn'
 gem 'rails_12factor', group: :production
 gem 'pg'
 gem 'execjs'
