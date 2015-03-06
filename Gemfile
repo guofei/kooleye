@@ -108,6 +108,4 @@ gem 'redis-rails', group: :production
 
 gem 'rails_12factor', group: :production
 gem 'pg'
-gem 'execjs'
-gem 'therubyracer'
 
