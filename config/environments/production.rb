@@ -40,6 +40,7 @@ Lfti::Application.configure do
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for nginx
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
+  # test
   config.force_ssl = false
 
   # Set to :debug to see everything in the log.
