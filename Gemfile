@@ -35,7 +35,7 @@ end
 
 # Use unicorn as the app server
 # gem 'unicorn'
-gem 'puma', '~> 2.9.1'
+gem 'puma', '~> 4.3.1'
 
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
